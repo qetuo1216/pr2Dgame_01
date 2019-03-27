@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="debug.h" />
+    <ClInclude Include="graphic.h" />
     <ClInclude Include="pr2Dgame_01.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="graphic.cpp" />
     <ClCompile Include="pr2Dgame_01.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

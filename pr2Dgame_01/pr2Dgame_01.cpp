@@ -4,11 +4,13 @@
 #include "stdafx.h"
 #include "pr2Dgame_01.h"
 #include "debug.h"
+#include "graphic.h"
 #define MAX_LOADSTRING 100
 
 
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
+HWND hWnd;
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
@@ -16,6 +18,10 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+//게임 장면 크기 지정
+#define WIDTH  800//윈도우 가로
+#define HEIGHT 600//윈도우 세로
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -42,11 +48,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_PR2DGAME01));
 
-    MSG msg;
+	MSG msg = {0};//모든요소를 0으로 초기화
 
+	//초기화 하기
+	initGraphic(hWnd, 0, 0, WIDTH, HEIGHT);
     // 기본 메시지 루프입니다:
     //while (GetMessage(&msg, nullptr, 0, 0))
-	while (true)
+	while (msg.message!=WM_QUIT)//종료가 나오기 전까지 실행된다.//true
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 			//윈도우에 구애받지 않고 메세지를 모두 가져옴,최소값과 최대값을 구분없이 가져오기 위해서 0을 씀
@@ -58,8 +66,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 				DispatchMessage(&msg);
 			}
 		}
-			printf("*");
+		//업데이트하기
+		clear(255, 0, 0);
+		//렌더링하기
+		render();
     }
+	//종료하기
+	exitGraphic();
+
 	//디버그 콘솔창 닫기
 	STOP_DEBUG_CONSOLE();
     return (int) msg.wParam;
@@ -94,17 +108,27 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, 
-							   szTitle, 
-							   WS_OVERLAPPEDWINDOW,
-							   CW_USEDEFAULT,
-							   0, 
-							   CW_USEDEFAULT, 
-							   0, 
-							   nullptr, 
-							   nullptr, 
-							   hInstance, 
-							   nullptr);
+   int style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX;// | WS_MAXIMIZEBOX;// , CW_USEDEFAULT
+   //윈도우 크기지정////////////////////////////////////////////////////////////
+   RECT rt = { 0,0,WIDTH,HEIGHT };
+
+   AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, true);//윈도우 크기계산
+
+   int width	= rt.right - rt.left;//윈도우 가로
+   int height	= rt.bottom - rt.top;//윈도우 세로
+   
+   //윈도우 위치 조정하기
+   int scrWidth = GetSystemMetrics(SM_CXSCREEN);//모니터 가로 해상도 구하기
+   int wndX = (scrWidth - WIDTH) / 2;//윈도우의 x좌표
+   int wndY = 150;//윈도우의 x좌표
+   hWnd = CreateWindowW(szWindowClass, //지역변수를 전역으로 바꿈
+								szTitle, 
+								style,		
+								wndX,//윈도우x
+								wndY,//윈도우Y좌표 
+								width,//윈도우 가로
+								height,//윈도우 세로
+								nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
