@@ -45,13 +45,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
+    //while (GetMessage(&msg, nullptr, 0, 0))
+	while (true)
+	{
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+			//윈도우에 구애받지 않고 메세지를 모두 가져옴,최소값과 최대값을 구분없이 가져오기 위해서 0을 씀
+		{
+		
+			if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+		}
+			printf("*");
     }
 	//디버그 콘솔창 닫기
 	STOP_DEBUG_CONSOLE();
