@@ -77,10 +77,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		//업데이트하기
 		clear(255, 0, 0);
 		updateTimer();
-		obj->update();
-		//게임 오브젝트 드로우 하기
 
+		//게임 겍체 업데이트 하기
+		obj->update();
+		
+		//게임 오브젝트 드로우 하기
 		obj->draw();
+		
 		//렌더링하기
 		render();
     }

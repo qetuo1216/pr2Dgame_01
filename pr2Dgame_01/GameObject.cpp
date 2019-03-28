@@ -33,3 +33,9 @@ void GameObject::update()
 void GameObject::draw()
 {
 }
+
+void GameObject::translate(float dx, float dy)
+{
+	px = px + dx;
+	py = py + dy;
+}
