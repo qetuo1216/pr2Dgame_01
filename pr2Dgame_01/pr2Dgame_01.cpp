@@ -5,8 +5,7 @@
 #include "pr2Dgame_01.h"
 #include "debug.h"
 #include "graphic.h"
-#include "GameObject.h"
-#include "SpliteObject.h"
+#include "BackGround.h"
 #define MAX_LOADSTRING 100
 
 
@@ -54,6 +53,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	//초기화 하기
 	initGraphic(hWnd, 0, 0, WIDTH, HEIGHT);
+	//게임 객체 생성 및 초기화 하기
+	GameObject *obj = new BackGround(0, 0);
+	obj->init();
+
     // 기본 메시지 루프입니다:
     //while (GetMessage(&msg, nullptr, 0, 0))
 	while (msg.message!=WM_QUIT)//종료가 나오기 전까지 실행된다.//true
@@ -70,6 +73,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		//업데이트하기
 		clear(255, 0, 0);
+		//게임 오브젝트 드로우 하기
+		obj->draw();
 		//렌더링하기
 		render();
     }
