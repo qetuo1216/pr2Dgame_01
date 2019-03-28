@@ -45,6 +45,9 @@
     <ClInclude Include="BackGround.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -69,6 +72,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

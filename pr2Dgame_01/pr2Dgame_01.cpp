@@ -6,6 +6,7 @@
 #include "debug.h"
 #include "graphic.h"
 #include "BackGround.h"
+#include "timer.h"
 #define MAX_LOADSTRING 100
 
 
@@ -22,7 +23,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 //게임 장면 크기 지정
 #define WIDTH  800//윈도우 가로
-#define HEIGHT 600//윈도우 세로
+#define HEIGHT 224//윈도우 세로
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -53,6 +54,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	//초기화 하기
 	initGraphic(hWnd, 0, 0, WIDTH, HEIGHT);
+	initTimer();//시간 초기화
+
 	//게임 객체 생성 및 초기화 하기
 	GameObject *obj = new BackGround(0, 0);
 	obj->init();
@@ -73,7 +76,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		//업데이트하기
 		clear(255, 0, 0);
+		updateTimer();
+		obj->update();
 		//게임 오브젝트 드로우 하기
+
 		obj->draw();
 		//렌더링하기
 		render();
