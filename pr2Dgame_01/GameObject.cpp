@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "GameObject.h"
 
+//아이디 static 변수 초기화
+int GameObject::ID = 0;//객체 생성시마다 증가시킴
 
 GameObject::GameObject(std::string name, int tag, int state, float px, float py)
 {
@@ -10,6 +12,8 @@ GameObject::GameObject(std::string name, int tag, int state, float px, float py)
 	this->px = px;
 	this->py = py;
 
+	//아이디 할당하기
+	id = ID++;//객체가 생성될 때 마다 증가한다.
 }
 
 
