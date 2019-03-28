@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="debug.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="graphic.h" />
     <ClInclude Include="pr2Dgame_01.h" />
     <ClInclude Include="Resource.h" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="pr2Dgame_01.cpp" />
     <ClCompile Include="stdafx.cpp">
