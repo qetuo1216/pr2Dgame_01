@@ -147,19 +147,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="bmp.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="graphic.h" />
     <ClInclude Include="pr2Dgame_01.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SpliteObject.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bmp.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="pr2Dgame_01.cpp" />
+    <ClCompile Include="SpliteObject.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

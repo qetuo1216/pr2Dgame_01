@@ -9,6 +9,7 @@ GameObject::GameObject(std::string name, int tag, int state, float px, float py)
 	this->name = name;//string을 사용하면 복사안하고 바로 넣을 수 있다.
 	this->tag = tag;
 	this->state = state;
+
 	this->px = px;
 	this->py = py;
 
