@@ -12,12 +12,12 @@ protected:		  //상속받을 때 보통 private대신 사용함
 	//기본 데이터 -이름(string) 태그(int),상태
 	std::string name;	//이름		//const char * name;	//string 사용시 	usingname space std;
 	int tag;			//태그				
-	int state;			//상태
+	bool state;			//상태
 	//transform - 이동
 	float px, py;		//위치이동
 public:
 	//생성자&소멸자
-	GameObject(std::string name, int tag, int state,float px, float py);
+	GameObject(std::string name, int tag, bool state,float px, float py);
 	virtual ~GameObject();
 
 	//기본활용 함수

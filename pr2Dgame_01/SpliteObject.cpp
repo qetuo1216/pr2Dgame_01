@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SpliteObject.h"
-SpliteObject::SpliteObject(std::string name, int tag, int state, float px, float py)
+SpliteObject::SpliteObject(std::string name, int tag, bool state, float px, float py)
 	:GameObject(name,tag,state,px,py)//게임오브젝트 내용을 상속받은 것
 {
 }

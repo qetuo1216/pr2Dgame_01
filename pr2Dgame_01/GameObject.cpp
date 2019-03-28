@@ -4,7 +4,7 @@
 //아이디 static 변수 초기화
 int GameObject::ID = 0;//객체 생성시마다 증가시킴
 
-GameObject::GameObject(std::string name, int tag, int state, float px, float py)
+GameObject::GameObject(std::string name, int tag, bool state, float px, float py)
 {
 	this->name = name;//string을 사용하면 복사안하고 바로 넣을 수 있다.
 	this->tag = tag;

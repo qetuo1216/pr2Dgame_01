@@ -5,6 +5,8 @@
 #include "pr2Dgame_01.h"
 #include "debug.h"
 #include "graphic.h"
+#include "GameObject.h"
+#include "SpliteObject.h"
 #define MAX_LOADSTRING 100
 
 
