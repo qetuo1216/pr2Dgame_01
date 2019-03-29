@@ -153,6 +153,7 @@
     <ClInclude Include="debug.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="graphic.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="pr2Dgame_01.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SpliteObject.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="graphic.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="pr2Dgame_01.cpp" />
     <ClCompile Include="SpliteObject.cpp" />
     <ClCompile Include="stdafx.cpp">

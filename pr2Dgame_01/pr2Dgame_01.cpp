@@ -7,6 +7,7 @@
 #include "graphic.h"
 #include "BackGround.h"
 #include "timer.h"
+#include "Player.h"
 #define MAX_LOADSTRING 100
 
 
@@ -57,8 +58,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	initTimer();//시간 초기화
 
 	//게임 객체 생성 및 초기화 하기
-	GameObject *obj = new BackGround(0, 0);
-	obj->init();
+	GameObject *obj[2] = { new BackGround(0, 0),
+							new Player(100,100)};
+
+	for (int i = 0; i < 2; i++)
+	{
+		obj[i]->init();
+	}
+	
 
     // 기본 메시지 루프입니다:
     //while (GetMessage(&msg, nullptr, 0, 0))
@@ -79,10 +86,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		updateTimer();
 
 		//게임 겍체 업데이트 하기
-		obj->update();
-		
+		for (int i = 0; i < 2; i++)
+		{
+			obj[i]->update();
+		}
+
 		//게임 오브젝트 드로우 하기
-		obj->draw();
+		for (int i = 0; i < 2; i++)
+		{
+			obj[i]->draw();
+		}
 		
 		//렌더링하기
 		render();
