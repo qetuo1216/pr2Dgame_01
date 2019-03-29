@@ -23,6 +23,6 @@ void BackGround::update()
 {
 	//스크롤 이동
 	float d = speed * getDelteTime();
-	translate(-d, 0);
+	//translate(-d, 0);//잠시 막아놓음
 	//px = px - d;
 }

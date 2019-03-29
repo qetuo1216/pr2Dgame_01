@@ -14,4 +14,5 @@ Animation::~Animation()
 
 void Animation::draw()
 {
+	drawBmp(px, py, &frames[0]);
 }
