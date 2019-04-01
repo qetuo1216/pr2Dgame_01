@@ -55,6 +55,8 @@ int readBmp(const char *fileName, Sprite *sprite)
 	/////이미지 저장 필요공간은 width * height * 4 바이트의 공간이 필요함
 	sprite->argb = new unsigned int[sprite->width * sprite->height]; //이미지 데이타 저장 공간 할당
 
+	sprite->ax = 0;//앵커포인트는 기본으로 0,0으로 한다.
+	sprite->ay = 0;
 	fread(sprite->argb, sizeof(sprite->argb[0]), sprite->width*sprite->height, stream);
 
 	//파일 닫기
@@ -128,6 +130,9 @@ int readBMPRect(const char * filename, int x, int y, int width, int height, Spri
 	sprite->width = width;
 	sprite->height = height;
 	sprite->argb = argb;
+
+	sprite->ax = 0;//앵커포인트는 기본으로 0,0으로 한다.
+	sprite->ay = 0;
 	//////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////
 
@@ -163,6 +168,8 @@ int readBMPRect(const char * filename, int x, int y, int width, int height, Spri
 
 void drawBmp(float px, float py, Sprite *sprite)
 {
+	int ax = sprite->ax;
+	int ay = sprite->ay;
 	///////////이미지 출력하기////////////
 	for (int y = 0; y < sprite->height; y++)
 	{
@@ -170,7 +177,7 @@ void drawBmp(float px, float py, Sprite *sprite)
 		{
 			//x,y 위치에..픽셀을 출력함
 			unsigned int pixel = sprite->argb[y*sprite->width + x];
-			setPixel(px + x, py + y, pixel);
+			setPixel(px + x-ax, py + y-ay, pixel);
 		}
 	}
 }

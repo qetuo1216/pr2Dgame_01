@@ -35,6 +35,9 @@ struct Sprite	//그림을 저장할 구조체
 	int width;  //스프라이트 이미지 가로 크기
 	int height; //스프라이트 이미지 세로 크기
 
+	int ax;		//앵커포인트 x좌표[객체의 px,py에 맞춰지는 이미지 위치]
+	int ay;		//앵커포인트 y좌표
+
 	unsigned int * argb;  //이미지 데이터 저장 
 };
 

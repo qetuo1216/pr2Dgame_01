@@ -11,5 +11,8 @@ public:
 
 	void init();
 	void update();
+
+	//
+	void aniTest();
 };
 
