@@ -49,6 +49,9 @@ void Animation::setFrameDelay(float delay)
 
 void Animation::play(int aniId)
 {
-	this->aniIdx = aniId;	//출력애니메 배열 변경
-	this->frameIdx = 0;		//0번 프레임부터 시작
+	if(aniIdx!=aniId)//다른 입력이 들어올 때만 변경
+	{ 
+		this->aniIdx = aniId;	//출력애니메 배열 변경
+		this->frameIdx = 0;		//0번 프레임부터 시작
+	}
 }
