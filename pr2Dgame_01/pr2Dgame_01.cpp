@@ -59,7 +59,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	//게임 객체 생성 및 초기화 하기
 	GameObject *obj[2] = { new BackGround(0, 0),
-							new Player(100,100)};
+							new Player(100,140)};
 
 	for (int i = 0; i < 2; i++)
 	{

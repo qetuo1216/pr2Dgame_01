@@ -35,9 +35,9 @@ void Animation::draw()
 	}
 }
 
-void Animation::addAniFrame(Sprite sprite)
+void Animation::addAniFrame(Sprite sprite,int aniId)
 {
-	frames[0].push_back(sprite);//애니메이션의 frames에 넣음
+	frames[aniId].push_back(sprite);//애니메이션의 frames에 넣음
 }
 
 void Animation::setFrameDelay(float delay)
