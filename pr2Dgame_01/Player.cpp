@@ -32,4 +32,7 @@ void Player::init()
 	}
 	//애니메 속도 지정하기
 	setFrameDelay(0.15);
+
+	//애니메 변경하기
+	play(walk);
 }
