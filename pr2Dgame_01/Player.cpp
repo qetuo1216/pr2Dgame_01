@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
-
+#include "Input.h"
 
 Player::Player(float px, float py):Animation("나루토",0,true,px,py)
 {
@@ -34,5 +34,19 @@ void Player::init()
 	setFrameDelay(0.15);
 
 	//애니메 변경하기
-	play(walk);
+	//play(walk);
+}
+
+void Player::update()
+{
+	//'1'키는 IDLE
+	//'2'키는 WALK
+	if (getKey('1') == true)
+	{
+		play(idle);
+	}
+	if (getKey('2') == true)
+	{
+		play(walk);
+	}
 }

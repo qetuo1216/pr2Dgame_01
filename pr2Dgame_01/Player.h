@@ -8,6 +8,8 @@ private:
 public:
 	Player(float px,float py);
 	~Player();
+
 	void init();
+	void update();
 };
 

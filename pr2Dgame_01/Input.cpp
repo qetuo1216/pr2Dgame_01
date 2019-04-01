@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Input.h"
 
 #define KEY_UP_REP   0  //키가 계속 놓인상태가 지속

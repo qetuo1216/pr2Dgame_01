@@ -8,6 +8,7 @@
 #include "BackGround.h"
 #include "timer.h"
 #include "Player.h"
+#include "Input.h"//윈도우 메세지 키업&다운 으로 변경이 가능
 #define MAX_LOADSTRING 100
 
 
@@ -56,7 +57,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	//초기화 하기
 	initGraphic(hWnd, 0, 0, WIDTH, HEIGHT);
 	initTimer();//시간 초기화
-
+	initInput();
 	//게임 객체 생성 및 초기화 하기
 	GameObject *obj[2] = { new BackGround(0, 0),
 							new Player(100,140)};
@@ -84,7 +85,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		//업데이트하기
 		clear(255, 0, 0);
 		updateTimer();
-
+		updateInput();
 		//게임 겍체 업데이트 하기
 		for (int i = 0; i < 2; i++)
 		{
