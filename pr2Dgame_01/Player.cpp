@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Player.h"
 #include "Input.h"
-
+#include "timer.h"
 Player::Player(float px, float py):Animation("나루토",0,true,px,py)
 {
 }
@@ -73,42 +73,38 @@ void Player::init()
 	//애니메 속도 지정하기
 	setFrameDelay(0.15);
 
-	//애니메 변경하기
-	//play(walk);
+	//초기 애니메 변경하기
+	state = idle;
+	play(idle);
+	
+	//이동 속도 세팅
+	walkSpeed = 20;
 }
 
 void Player::update()
 {
-	//'1'키는 IDLE
-	//'2'키는 WALK
-	if (getKey('1') == true)
+	if (state == idle)
 	{
-		play(idle);//0번 프레임부터 들어감
+		//이동키 눌리면
+		if (getKey(VK_LEFT) == true || getKey(VK_RIGHT) == true)
+		{
+			state = walk;
+			play(walk);
+		}
 	}
-
-	if (getKey('2') == true)
+	else if (state == walk)
 	{
-		play(walk);
-	}
+		float d = walkSpeed * getDelteTime();
 
-	if (getKey('3') == true)
-	{
-		play(run);
-	}
-
-	if (getKey('4') == true)
-	{
-		play(jump);
-	}
-
-	if (getKey('5') == true)
-	{
-		play(attack);
-	}
-
-	if (getKey('6') == true)
-	{
-		play(hit);
+		if (getKey(VK_RIGHT) == true)
+		{
+			translate(d, 0);
+		}		
+		if (getKey(VK_LEFT) == true)
+		{
+			translate(-d, 0);
+		}
+		
 	}
 }
 
