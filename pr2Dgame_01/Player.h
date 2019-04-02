@@ -9,6 +9,11 @@ private:
 
 	//속도
 	float walkSpeed;
+	float runSpeed;
+
+	//점프 상태 시간 변수
+	float jumpDelay;//점프 유지 시간
+	float jumpTimer;//점프 시간 측정 변수
 
 public:
 	Player(float px,float py);
