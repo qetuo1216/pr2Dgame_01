@@ -22,6 +22,11 @@ public:
 	void init();
 	void update();
 
+	//애니메 상태 함수
+	void aniIdle();
+	void aniWalk();
+	void aniRun();
+	void aniJump();
 	//
 	void aniTest();
 };

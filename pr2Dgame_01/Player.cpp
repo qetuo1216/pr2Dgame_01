@@ -86,108 +86,129 @@ void Player::init()
 	jumpTimer = 0;
 }
 void Player::update()
-{
+{	
+	//플레이어 애니메이션 스테이트 머신
 	if (state == idle)
 	{
-		//shift가 안눌리고 
-		if (getKey(VK_LSHIFT)!=true)
-		{	
-			if (getKey(VK_LEFT) == true || getKey(VK_RIGHT) == true)//이동키 눌리면
-				{
-					state = walk;
-					play(walk);
-				}
-		}
-		else//shift가 눌리고
-		{
-			if (getKey(VK_LEFT) == true || getKey(VK_RIGHT) == true)//이동키 눌리면
-			{
-				state = run;	//run 상태로
-				play(run);
-			}
-		}
-		if (getKeyDown(VK_SPACE) == true)//스페이스 눌리면
-		{
-			state = jump;	//점프 상태로
-			play(jump);
-		}
+		aniIdle();
 	}
 	else if (state == walk)
 	{
-		float d = walkSpeed * getDelteTime();
-
-		if (getKey(VK_RIGHT) == true)
-		{
-			translate(d, 0);
-		}		
-		if (getKey(VK_LEFT) == true)
-		{
-			translate(-d, 0);
-		}
-		//이동 키가 놓이면 idle로
-		if (getKey(VK_RIGHT) != true && getKey(VK_LEFT) != true)
-		{
-			state = idle;
-			play(idle);
-		}
-		if (getKey(VK_LSHIFT))
-		{
-			if (getKey(VK_RIGHT) == true || getKey(VK_LEFT) == true)
-			{
-				state = run;
-				play(run);
-			}
-		}
-		if (getKeyDown(VK_SPACE) == true)//스페이스 눌리면
-		{
-			state = jump;	//점프 상태로
-			play(jump);
-		}
+		aniWalk();
 		
 	}
 	else if (state == run)
 	{
-		float d = runSpeed * getDelteTime();
-
-		if (getKey(VK_LSHIFT) == true)//shift가 눌리고
-		{
-			if (getKey(VK_RIGHT) == true)//오른쪽 눌림
-			{
-				translate(d, 0);
-			}
-			if (getKey(VK_LEFT) == true)//왼쪽 눌림
-			{
-				translate(-d, 0);
-			}
-			
-		}
-		else//shift 놓임
-		{
-			state = idle;
-			play(idle);
-		}
-		if (getKeyDown(VK_SPACE) == true)//스페이스 눌리면
-		{
-			state = jump;	//점프 상태로
-			play(jump);
-		}
+		aniRun();
 		
 	}
 	else if (state == jump)
 	{
-		
-		if (getKeyDown(VK_SPACE) != true)
+		aniJump();
+	}
+}
+
+void Player::aniIdle()
+{
+	//shift가 안눌리고 
+	if (getKey(VK_LSHIFT) != true)
+	{
+		if (getKey(VK_LEFT) == true || getKey(VK_RIGHT) == true)//이동키 눌리면
 		{
-			//1.점프 시간 측정
-			jumpTimer = jumpTimer + getDelteTime();
+			state = walk;
+			play(walk);
+		}
+	}
+	else//shift가 눌리고
+	{
+		if (getKey(VK_LEFT) == true || getKey(VK_RIGHT) == true)//이동키 눌리면
+		{
+			state = run;	//run 상태로
+			play(run);
+		}
+	}
+	if (getKeyDown(VK_SPACE) == true)//스페이스 눌리면
+	{
+		state = jump;	//점프 상태로
+		play(jump);
+	}
+}
 
-			if (jumpTimer >= jumpDelay)
-			{
-				state = idle;
-				play(idle);
+void Player::aniWalk()
+{
+	float d = walkSpeed * getDelteTime();
 
-				jumpTimer = 0;//점프 측정 시간 초기화
-			}
+	if (getKey(VK_RIGHT) == true)
+	{
+		translate(d, 0);
+	}
+	if (getKey(VK_LEFT) == true)
+	{
+		translate(-d, 0);
+	}
+	//이동 키가 놓이면 idle로
+	if (getKey(VK_RIGHT) != true && getKey(VK_LEFT) != true)
+	{
+		state = idle;
+		play(idle);
+	}
+	if (getKey(VK_LSHIFT))
+	{
+		if (getKey(VK_RIGHT) == true || getKey(VK_LEFT) == true)
+		{
+			state = run;
+			play(run);
+		}
+	}
+	if (getKeyDown(VK_SPACE) == true)//스페이스 눌리면
+	{
+		state = jump;	//점프 상태로
+		play(jump);
+	}
+}
+
+void Player::aniRun()
+{
+	float d = runSpeed * getDelteTime();
+
+	if (getKey(VK_LSHIFT) == true)//shift가 눌리고
+	{
+		if (getKey(VK_RIGHT) == true)//오른쪽 눌림
+		{
+			translate(d, 0);
+		}
+		if (getKey(VK_LEFT) == true)//왼쪽 눌림
+		{
+			translate(-d, 0);
+		}
+
+	}
+	else//shift 놓임
+	{
+		state = idle;
+		play(idle);
+	}
+	if (getKeyDown(VK_SPACE) == true)//스페이스 눌리면
+	{
+		state = jump;	//점프 상태로
+		play(jump);
+	}
+}
+
+void Player::aniJump()
+{
+
+	if (getKeyDown(VK_SPACE) != true)
+	{
+		//1.점프 시간 측정
+		jumpTimer = jumpTimer + getDelteTime();
+
+		if (jumpTimer >= jumpDelay)
+		{
+			state = idle;
+			play(idle);
+
+			jumpTimer = 0;//점프 측정 시간 초기화
 		}
 	}
 }
