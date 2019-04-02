@@ -230,13 +230,18 @@ void Player::aniJump()
 
 void Player::aniAttack()
 {
-	//state = idle;
-	//play(idle);
+	
 }
 
 void Player::OnAnimationEvent(int aniId, int aniFrame)
 {
 	printf("애니 %d, 애니 프레임 %d\n", aniId, aniFrame);
+	if (aniId == attack&&aniFrame==0)
+	{
+		//공격 애니메 종료
+		state = idle;
+		play(state);
+	}
 }
 
 void Player::aniTest()
