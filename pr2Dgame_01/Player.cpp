@@ -104,7 +104,12 @@ void Player::update()
 		{
 			translate(-d, 0);
 		}
-		
+		//이동 키가 놓이면 idle로
+		if (getKey(VK_RIGHT) != true && getKey(VK_LEFT) != true)
+		{
+			state = idle;
+			play(idle);
+		}
 	}
 }
 
