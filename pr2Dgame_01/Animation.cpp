@@ -33,7 +33,9 @@ void Animation::draw()
 	{
 		frameIdx = 0;
 	}
-	frameTimer = 0;
+	//애니메 장면 바꿈을 알려주는 이벤트
+	OnAnimationEvent(aniIdx, frameIdx);
+	frameTimer = 0;//애니메 시간 리셋
 	}
 }
 
@@ -54,4 +56,9 @@ void Animation::play(int aniId)
 		this->aniIdx = aniId;	//출력애니메 배열 변경
 		this->frameIdx = 0;		//0번 프레임부터 시작
 	}
+}
+
+void Animation::OnAnimationEvent(int aniId, int aniFrame)
+{
+
 }

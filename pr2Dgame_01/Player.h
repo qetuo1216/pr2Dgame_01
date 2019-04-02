@@ -27,6 +27,10 @@ public:
 	void aniWalk();
 	void aniRun();
 	void aniJump();
+	void aniAttack();
+
+	//애니메 전환이벤트 오버라이딩
+	void OnAnimationEvent(int aniId, int aniFrame);
 	//
 	void aniTest();
 };

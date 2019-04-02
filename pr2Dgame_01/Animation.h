@@ -25,5 +25,8 @@ public:
 	void addAniFrame(Sprite sprite,int aniId);//애니메 프레임 추가 함수,aniId=애니메에 해당하는 배열에 애니메 추가
 	void setFrameDelay(float delay); //애니메 속도 지정 함수
 	void play(int aniId);//출력할 애니메 배열 인덱스
+
+	//애니메이션 장면 전환 이벤트(가상함수로 만들어 자식이 사용할 수 있도록 함)
+	virtual void OnAnimationEvent(int aniId,int aniFrame);
 };
 

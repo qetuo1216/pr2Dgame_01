@@ -106,6 +106,10 @@ void Player::update()
 	{
 		aniJump();
 	}
+	else if (state == attack)
+	{
+		aniAttack();
+	}
 }
 
 void Player::aniIdle()
@@ -131,6 +135,11 @@ void Player::aniIdle()
 	{
 		state = jump;	//점프 상태로
 		play(jump);
+	}
+	if (getKeyDown('A') == true)//a키는 공격
+	{
+		state = attack;
+		play(attack);
 	}
 }
 
@@ -165,6 +174,11 @@ void Player::aniWalk()
 		state = jump;	//점프 상태로
 		play(jump);
 	}
+	if (getKeyDown('A') == true)//a키는 공격
+	{
+		state = attack;
+		play(attack);
+	}
 }
 
 void Player::aniRun()
@@ -192,7 +206,8 @@ void Player::aniRun()
 	{
 		state = jump;	//점프 상태로
 		play(jump);
-	}
+	}		
+
 }
 
 void Player::aniJump()
@@ -211,6 +226,17 @@ void Player::aniJump()
 			jumpTimer = 0;//점프 측정 시간 초기화
 		}
 	}
+}
+
+void Player::aniAttack()
+{
+	//state = idle;
+	//play(idle);
+}
+
+void Player::OnAnimationEvent(int aniId, int aniFrame)
+{
+	printf("애니 %d, 애니 프레임 %d\n", aniId, aniFrame);
 }
 
 void Player::aniTest()
