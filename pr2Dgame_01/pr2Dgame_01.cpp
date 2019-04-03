@@ -9,6 +9,7 @@
 #include "timer.h"
 #include "Player.h"
 #include "Input.h"//윈도우 메세지 키업&다운 으로 변경이 가능
+#include "Knife.h"
 #define MAX_LOADSTRING 100
 
 
@@ -59,10 +60,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	initTimer();//시간 초기화
 	initInput();
 	//게임 객체 생성 및 초기화 하기
-	GameObject *obj[2] = { new BackGround(0, 0),
-							new Player(100,140)};
+	GameObject *obj[3] = { new BackGround(0, 0),
+							new Player(100,140),
+							new Knife(200,200)};
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		obj[i]->init();
 	}
@@ -87,13 +89,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		updateTimer();
 		updateInput();
 		//게임 겍체 업데이트 하기
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 3; i++)
 		{
 			obj[i]->update();
 		}
 
 		//게임 오브젝트 드로우 하기
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 3; i++)
 		{
 			obj[i]->draw();
 		}

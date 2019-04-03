@@ -25,17 +25,17 @@
     <Filter Include="헤더 파일\etc">
       <UniqueIdentifier>{1e385bd3-8895-4299-a0b6-27c083e4c661}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\GameObj\char">
-      <UniqueIdentifier>{e9754cd0-db31-4bbe-b0ea-4bc614420aae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\GameObj\bg">
       <UniqueIdentifier>{5d8fe793-76ea-445e-9906-fc3897bc0930}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\GameObj\char">
-      <UniqueIdentifier>{dad04556-c4b2-4126-879e-507a06f9811c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\GameObj\bg">
       <UniqueIdentifier>{d451835c-3de7-46ba-8c24-325b035148a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameObj\Animation">
+      <UniqueIdentifier>{e9754cd0-db31-4bbe-b0ea-4bc614420aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GameObj\Animation">
+      <UniqueIdentifier>{dad04556-c4b2-4126-879e-507a06f9811c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -76,10 +76,13 @@
       <Filter>헤더 파일\GameObj\bg</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>헤더 파일\GameObj\char</Filter>
+      <Filter>헤더 파일\GameObj\Animation</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>헤더 파일\GameObj\char</Filter>
+      <Filter>헤더 파일\GameObj\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Knife.h">
+      <Filter>헤더 파일\GameObj\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -114,10 +117,13 @@
       <Filter>소스 파일\GameObj\bg</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>소스 파일\GameObj\char</Filter>
+      <Filter>소스 파일\GameObj\Animation</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>소스 파일\GameObj\char</Filter>
+      <Filter>소스 파일\GameObj\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Knife.cpp">
+      <Filter>소스 파일\GameObj\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

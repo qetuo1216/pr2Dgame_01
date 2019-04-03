@@ -248,7 +248,7 @@ void Player::aniJump()
 		translate(moveDist, -upDist);
 		
 		//점프 후 원위치로 이동했는지 검사
-		if (jumpStartY <= py)
+		if (jumpStartY < py)
 		{
 			//점프 종료
 			py = jumpStartY;
