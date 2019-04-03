@@ -17,6 +17,12 @@ private:
 	
 	//점프 이동속도
 	float jumpMoveSpeed;//점프로 앞으로 이동하는 속도
+	float jumpUpSpeed;//점프 위로 올라가는 속도
+	float jumpAcc;//중력 가속도
+
+	//점프 시작 y좌표
+	float jumpStartY;
+
 public:
 	Player(float px,float py);
 	~Player();

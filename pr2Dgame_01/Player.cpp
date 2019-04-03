@@ -49,7 +49,7 @@ void Player::init()
 		readBMPRect("asset/naruto.bmp", 2 + i * (50 + 2), 332, 50, 51, &sprite);//크기가 42*54, 우측상단이 2.12
 
 		//앵커포인트 조정하기
-		sprite.ay = 20;//+는이미지가 위으로 이동,-는 아래로
+		//sprite.ay = 20;//+는이미지가 위으로 이동,-는 아래로
 		addAniFrame(sprite, jump);//3번 배열에 집어넣음
 	}
 
@@ -85,8 +85,10 @@ void Player::init()
 	jumpDelay = 0.5;
 	jumpTimer = 0;
 	
-	//점프 속도
+	//점프 이동 및 가속도
 	jumpMoveSpeed = 100;
+	jumpUpSpeed = 200;
+	jumpAcc = 400;//
 }
 void Player::update()
 {	
@@ -140,7 +142,9 @@ void Player::aniIdle()
 		play(jump);
 
 		//점프 속도 지정
-		jumpMoveSpeed = 0;
+		jumpTimer = 0;	//점프 측정시간 초기화
+		jumpMoveSpeed = 0;//점프 이동 속도 초기화
+		jumpStartY = py;//시작지점 초기화
 	}
 	if (getKeyDown('A') == true)//a키는 공격
 	{
@@ -181,7 +185,9 @@ void Player::aniWalk()
 		play(jump);
 
 		//점프 속도 지정
+		jumpTimer = 0;
 		jumpMoveSpeed = 50;
+		jumpStartY = py;
 	}
 	if (getKeyDown('A') == true)//a키는 공격
 	{
@@ -217,7 +223,9 @@ void Player::aniRun()
 		play(jump);
 
 		//점프 속도 지정
+		jumpTimer = 0;
 		jumpMoveSpeed = 100;
+		jumpStartY = py;
 	}		
 
 }
@@ -230,18 +238,25 @@ void Player::aniJump()
 		//1.점프 시간 측정
 		jumpTimer = jumpTimer + getDelteTime();
 
-		if (jumpTimer >= jumpDelay)
-		{
-			state = idle;
-			play(idle);
-
-			jumpTimer = 0;//점프 측정 시간 초기화
-		}
+	
 		//2.점프 이동시키기
-		float moveDist = jumpMoveSpeed * getDelteTime();
+		float upSpeed = jumpUpSpeed - jumpAcc * jumpTimer;//중력가속도로 계산 y축 이동
 
-		//if(getKey(VK_RIGHT) == true)
-		translate(moveDist, 0);
+		float moveDist = jumpMoveSpeed * getDelteTime();//x축 이동 시간
+		float upDist = upSpeed * getDelteTime();//위로 올라가기
+	
+		translate(moveDist, -upDist);
+		
+		//점프 후 원위치로 이동했는지 검사
+		if (jumpStartY <= py)
+		{
+			//점프 종료
+			py = jumpStartY;
+
+			//애니메이션 상태 종료
+			state = idle;
+			play(state);
+		}
 	}
 }
 
