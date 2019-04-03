@@ -84,6 +84,9 @@
     <ClInclude Include="Knife.h">
       <Filter>헤더 파일\GameObj\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="gameObjectPool.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -124,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="Knife.cpp">
       <Filter>소스 파일\GameObj\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="gameObjectPool.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

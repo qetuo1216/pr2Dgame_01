@@ -275,10 +275,12 @@ void Player::OnAnimationEvent(int aniId, int aniFrame)
 	printf("애니 %d, 애니 프레임 %d\n", aniId, aniFrame);
 	if (aniId == attack&&aniFrame==0)
 	{
+		//수리검 투척(싱글톤 활용=하나의객체를 여러곳에서 사용)
 		//공격 애니메 종료
 		state = idle;
 		play(state);
 	}
+
 }
 
 void Player::aniTest()

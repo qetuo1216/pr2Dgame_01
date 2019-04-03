@@ -152,6 +152,7 @@
     <ClInclude Include="bmp.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="gameObjectPool.h" />
     <ClInclude Include="graphic.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Knife.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="bmp.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="gameObjectPool.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Knife.cpp" />
