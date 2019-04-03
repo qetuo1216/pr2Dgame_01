@@ -78,12 +78,15 @@ void Player::init()
 	play(idle);
 	
 	//이동 속도 세팅
-	walkSpeed = 20;
-	runSpeed = 60;
+	walkSpeed = 50;
+	runSpeed = 100;
 
 	//점프 시간 변수 초기화
 	jumpDelay = 0.5;
 	jumpTimer = 0;
+	
+	//점프 속도
+	jumpMoveSpeed = 100;
 }
 void Player::update()
 {	
@@ -135,6 +138,9 @@ void Player::aniIdle()
 	{
 		state = jump;	//점프 상태로
 		play(jump);
+
+		//점프 속도 지정
+		jumpMoveSpeed = 0;
 	}
 	if (getKeyDown('A') == true)//a키는 공격
 	{
@@ -169,10 +175,13 @@ void Player::aniWalk()
 			play(run);
 		}
 	}
-	if (getKeyDown(VK_SPACE) == true)//스페이스 눌리면
+	if (getKeyDown(VK_SPACE) == true&& getKey(VK_LEFT) != true)//스페이스 눌리면
 	{
 		state = jump;	//점프 상태로
 		play(jump);
+
+		//점프 속도 지정
+		jumpMoveSpeed = 50;
 	}
 	if (getKeyDown('A') == true)//a키는 공격
 	{
@@ -202,10 +211,13 @@ void Player::aniRun()
 		state = idle;
 		play(idle);
 	}
-	if (getKeyDown(VK_SPACE) == true)//스페이스 눌리면
+	if (getKeyDown(VK_SPACE) == true && getKey(VK_LEFT) != true)//스페이스 눌리면
 	{
 		state = jump;	//점프 상태로
 		play(jump);
+
+		//점프 속도 지정
+		jumpMoveSpeed = 100;
 	}		
 
 }
@@ -225,6 +237,11 @@ void Player::aniJump()
 
 			jumpTimer = 0;//점프 측정 시간 초기화
 		}
+		//2.점프 이동시키기
+		float moveDist = jumpMoveSpeed * getDelteTime();
+
+		//if(getKey(VK_RIGHT) == true)
+		translate(moveDist, 0);
 	}
 }
 
