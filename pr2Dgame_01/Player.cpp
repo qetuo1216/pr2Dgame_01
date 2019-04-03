@@ -82,7 +82,7 @@ void Player::init()
 	runSpeed = 100;
 
 	//점프 시간 변수 초기화
-	jumpDelay = 0.5;
+	//jumpDelay = 0.5;
 	jumpTimer = 0;
 	
 	//점프 이동 및 가속도
@@ -258,6 +258,11 @@ void Player::aniJump()
 			play(state);
 		}
 	}
+		//2단 점프
+		if (getKeyDown(VK_SPACE)==true)
+		{
+			jumpTimer = 0;//타이머를 리셋해서 가속도를 초기호
+		}
 }
 
 void Player::aniAttack()
