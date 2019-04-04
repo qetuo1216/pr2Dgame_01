@@ -39,6 +39,16 @@ int GameObject::getId()
 	return id;
 }
 
+bool GameObject::getState()
+{
+	return state;
+}
+
+void GameObject::setState(bool state)
+{
+	this->state = state;
+}
+
 void GameObject::translate(float dx, float dy)
 {
 	px = px + dx;

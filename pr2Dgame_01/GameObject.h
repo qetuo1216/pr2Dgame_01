@@ -28,6 +28,8 @@ public:
 	//getter&setter
 	//필요시에 만듬
 	int getId();
+	bool getState();
+	void setState(bool state);
 	//기타
 	void translate(float dx,float dy);//이동(translate) 함수
 

@@ -60,6 +60,9 @@ void gameObjectPool::draw()
 {
 	for (int i = 0; i < obj.size(); i++)
 	{
-		obj[i]->draw();
+		if (obj[i]->getState() == true)//상태 검사
+		{
+			obj[i]->draw();
+		}
 	}
 }
