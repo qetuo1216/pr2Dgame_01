@@ -33,7 +33,7 @@ public:
 	//기타
 	void translate(float dx,float dy);//이동(translate) 함수
 
-	void addGameObject(GameObject * o);//객체 추가 메소드
+	void addGameObject(GameObject * o,int order);//객체 추가 메소드
 	void delGameObject(GameObject * o);//객체 삭제 메소드
 };
 

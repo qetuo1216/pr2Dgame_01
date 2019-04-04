@@ -68,8 +68,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	/*GameObject *obj[3] = { new BackGround(0, 0),
 							new Player(100,140),
 							new Knife(200,200)};*/
-	pool->addGameObject(new BackGround(0, 0));
-	pool->addGameObject(new Player(100, 140));
+	pool->addGameObject(new BackGround(0, 0),0);
+	pool->addGameObject(new Player(100, 140),1);
 	//pool->addGameObject(new Knife(200, 200));//플레이어에서 집어넣을 예정
 
 	/*for (int i = 0; i < 3; i++)

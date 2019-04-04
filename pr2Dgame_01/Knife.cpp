@@ -34,14 +34,14 @@ void Knife::update()
 	translate(dist, 0);
 
 	//state 테스트
-	if (getState() == true)
+	/*if (getState() == true)
 	{
 		setState(false);
 	}
 	else
 	{
 		setState(true);
-	}
+	}*/
 	//이동거리 구하기
 	moveDist = moveDist + dist;
 	if (moveDist > maxDist)

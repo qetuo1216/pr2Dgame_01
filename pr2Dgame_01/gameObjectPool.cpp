@@ -26,43 +26,56 @@ gameObjectPool * gameObjectPool::instance()
 
 }
 
-void gameObjectPool::addGameObject(GameObject * o)
+void gameObjectPool::addGameObject(GameObject * o, int order)//order은 레이어 번호
 {
-	obj.push_back(o);	//객체 추가//크기가 늘어나면서 저장이 된다.
-	o->init();			//객체 초기화
+
+
+		obj[order].push_back(o);	//객체 추가//크기가 늘어나면서 저장이 된다.
+		o->init();			//객체 초기화
+	
 }
 
 void gameObjectPool::delGameObject(GameObject * o)
 {
 	//객체 안에서 바로 delete하는 것은 코드가 안전하지 못한다.
 	int id = o->getId();
-	for (int i = 0; i < obj.size(); i++)
+	for (int l = 0; l < 5; l++)
 	{
-		if (obj[i]->getId() == id)//일치하는 아이디를 찾음
+		for (int i = 0; i < obj[l].size(); i++)
 		{
-			//1//객체 delete
-			delete obj[i];//또는 delete o;
-			//2//stl vector에서 저장공간 삭제
-			obj.erase(obj.begin() + i);
+			if (obj[l][i]->getId() == id)//일치하는 아이디를 찾음
+			{
+				//1//객체 delete
+				delete obj[l][i];//또는 delete o;
+				//2//stl vector에서 저장공간 삭제
+				obj[l].erase(obj[l].begin() + i);
+			}
 		}
 	}
 }
 
 void gameObjectPool::update()
 {
-	for (int i = 0; i < obj.size(); i++)
+	for (int l = 0; l < 5; l++)
 	{
-		obj[i]->update();
+		for (int i = 0; i < obj[l].size(); i++)
+		{
+			obj[l][i]->update();
+		}
 	}
 }
 
 void gameObjectPool::draw()
 {
-	for (int i = 0; i < obj.size(); i++)
+	for (int l = 0; l < 5; l++)//l은 레이어 번호
 	{
-		if (obj[i]->getState() == true)//상태 검사
+		for (int i = 0; i < obj[l].size(); i++)
 		{
-			obj[i]->draw();
+			if (obj[l][i]->getState() == true)//상태 검사
+			{
+				obj[l][i]->draw();
+			}
 		}
 	}
+	
 }
