@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Input.h"//윈도우 메세지 키업&다운 으로 변경이 가능
 #include "Knife.h"
+#include "gameObjectPool.h"//싱글톤 테스트
 #define MAX_LOADSTRING 100
 
 
@@ -55,19 +56,26 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	MSG msg = {0};//모든요소를 0으로 초기화
 
+	//오브젝트 풀 겍체 가져오기
+	gameObjectPool * pool = gameObjectPool::instance();//객체생성없이 클래스 단위로 생성
+	//new gameObjectPool();//이렇게 여러개 객체 생성 예방
+
 	//초기화 하기
 	initGraphic(hWnd, 0, 0, WIDTH, HEIGHT);
 	initTimer();//시간 초기화
 	initInput();
 	//게임 객체 생성 및 초기화 하기
-	GameObject *obj[3] = { new BackGround(0, 0),
+	/*GameObject *obj[3] = { new BackGround(0, 0),
 							new Player(100,140),
-							new Knife(200,200)};
+							new Knife(200,200)};*/
+	pool->addGameObject(new BackGround(0, 0));
+	pool->addGameObject(new Player(100, 140));
+	//pool->addGameObject(new Knife(200, 200));//플레이어에서 집어넣을 예정
 
-	for (int i = 0; i < 3; i++)
+	/*for (int i = 0; i < 3; i++)
 	{
 		obj[i]->init();
-	}
+	}*/
 	
 
     // 기본 메시지 루프입니다:
@@ -89,17 +97,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		updateTimer();
 		updateInput();
 		//게임 겍체 업데이트 하기
+		/*		
 		for (int i = 0; i < 3; i++)
 		{
 			obj[i]->update();
 		}
-
+		*/
+		pool->update();
 		//게임 오브젝트 드로우 하기
+		/*
 		for (int i = 0; i < 3; i++)
 		{
 			obj[i]->draw();
 		}
-		
+		*/
+		pool->draw();
 		//렌더링하기
 		render();
     }
