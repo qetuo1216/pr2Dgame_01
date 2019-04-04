@@ -34,6 +34,11 @@ void GameObject::draw()
 {
 }
 
+int GameObject::getId()
+{
+	return id;
+}
+
 void GameObject::translate(float dx, float dy)
 {
 	px = px + dx;

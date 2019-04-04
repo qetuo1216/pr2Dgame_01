@@ -32,6 +32,21 @@ void gameObjectPool::addGameObject(GameObject * o)
 	o->init();			//객체 초기화
 }
 
+void gameObjectPool::delGameObject(GameObject * o)
+{
+	int id = o->getId();
+	for (int i = 0; i < obj.size(); i++)
+	{
+		if (obj[i]->getId() == id)//일치하는 아이디를 찾음
+		{
+			//1//객체 delete
+			delete obj[i];//또는 delete o;
+			//2//stl vector에서 저장공간 삭제
+			obj.erase(obj.begin() + i);
+		}
+	}
+}
+
 void gameObjectPool::update()
 {
 	for (int i = 0; i < obj.size(); i++)

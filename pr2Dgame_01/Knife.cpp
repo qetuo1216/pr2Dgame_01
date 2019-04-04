@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Knife.h"
 #include "timer.h"
-
+#include "gameObjectPool.h"
 Knife::Knife(float px, float py):Animation("knife",1,true,px,py)
 {
 }
@@ -22,10 +22,23 @@ void Knife::init()
 	}
 	//이동속도 초기화
 	speed = 200;
+	//수리검 사정거리
+	maxDist = 200;
+	//
+	moveDist = 0;
 }
 
 void Knife::update()
 {
 	float dist = speed*getDelteTime();
 	translate(dist, 0);
+
+	//이동거리 구하기
+	moveDist = moveDist + dist;
+	if (moveDist > maxDist)
+	{
+		//수리검 제거
+		gameObjectPool * pool = gameObjectPool::instance();
+		pool->delGameObject(this);
+	}
 }

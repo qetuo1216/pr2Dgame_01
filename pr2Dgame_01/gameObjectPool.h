@@ -21,9 +21,9 @@ public:
 	//객체 가져오기 스테틱(정적) 메소드
 	static gameObjectPool * instance();//pool이 null이면 객체를 만들고, 있으면 계속 사용한다.
 
-	//게임 오브젝트 추가 메소드
+	//게임 오브젝트 추가 및 제거 메소드
 	void addGameObject(GameObject * o);//obj배열에 들어감
-
+	void delGameObject(GameObject * o);
 	//추가된 객체 업데이트
 	void update();
 

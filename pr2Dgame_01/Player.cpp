@@ -228,7 +228,12 @@ void Player::aniRun()
 		jumpTimer = 0;
 		jumpMoveSpeed = 100;
 		jumpStartY = py;
-	}		
+	}
+	if (getKeyDown('A') == true)//a키는 공격
+	{
+		state = attack;
+		play(attack);
+	}
 
 }
 
@@ -265,6 +270,8 @@ void Player::aniJump()
 		{
 			jumpTimer = 0;//타이머를 리셋해서 가속도를 초기호
 		}
+
+		
 }
 
 void Player::aniAttack()

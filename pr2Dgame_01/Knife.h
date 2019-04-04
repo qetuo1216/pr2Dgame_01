@@ -5,6 +5,10 @@ class Knife:public Animation
 private:
 	//이동 속도
 	float speed;
+
+	//수리검 사정거리
+	float maxDist;	//최대 사정거리
+	float moveDist;	//이동거리
 public:
 	Knife(float px,float py);
 	~Knife();

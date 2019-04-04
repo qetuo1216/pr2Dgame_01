@@ -27,7 +27,7 @@ public:
 
 	//getter&setter
 	//필요시에 만듬
-
+	int getId();
 	//기타
 	void translate(float dx,float dy);//이동(translate) 함수
 };
