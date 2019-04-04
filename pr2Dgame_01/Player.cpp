@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "Input.h"
 #include "timer.h"
+#include "gameObjectPool.h"
+#include "Knife.h"
 Player::Player(float px, float py):Animation("나루토",0,true,px,py)
 {
 }
@@ -276,6 +278,8 @@ void Player::OnAnimationEvent(int aniId, int aniFrame)
 	if (aniId == attack&&aniFrame==0)
 	{
 		//수리검 투척(싱글톤 활용=하나의객체를 여러곳에서 사용)
+		gameObjectPool * pool = gameObjectPool::instance();
+		pool->addGameObject(new Knife(px+10, py+10));
 		//공격 애니메 종료
 		state = idle;
 		play(state);
