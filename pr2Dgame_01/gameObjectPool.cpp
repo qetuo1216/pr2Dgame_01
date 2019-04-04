@@ -34,6 +34,7 @@ void gameObjectPool::addGameObject(GameObject * o)
 
 void gameObjectPool::delGameObject(GameObject * o)
 {
+	//객체 안에서 바로 delete하는 것은 코드가 안전하지 못한다.
 	int id = o->getId();
 	for (int i = 0; i < obj.size(); i++)
 	{

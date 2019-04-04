@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameObject.h"
-
+#include "gameObjectPool.h"
 //아이디 static 변수 초기화
 int GameObject::ID = 0;//객체 생성시마다 증가시킴
 
@@ -43,4 +43,22 @@ void GameObject::translate(float dx, float dy)
 {
 	px = px + dx;
 	py = py + dy;
+}
+
+void GameObject::addGameObject(GameObject * o)
+{
+	//1//게임 오브젝트 풀 객체 가져오기
+	gameObjectPool * pool = gameObjectPool::instance();
+
+	//2//풀에 객체 추가하기
+	pool->addGameObject(o);
+}
+
+void GameObject::delGameObject(GameObject * o)
+{
+	//1//게임 오브젝트 풀 객체 가져오기
+	gameObjectPool * pool = gameObjectPool::instance();
+
+	//2//풀에 객체 삭제하기
+	pool->delGameObject(o);//코드가 복잡해지면 문제가 생긴다.
 }

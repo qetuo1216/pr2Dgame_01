@@ -38,7 +38,10 @@ void Knife::update()
 	if (moveDist > maxDist)
 	{
 		//수리검 제거
+		/*
 		gameObjectPool * pool = gameObjectPool::instance();
-		pool->delGameObject(this);
+		pool->delGameObject(this);//코드가 복잡해지면 문제가 생긴다.
+		*/
+		delGameObject(this);
 	}
 }
