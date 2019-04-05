@@ -161,11 +161,14 @@ void Player::aniWalk()
 
 	if (getKey(VK_RIGHT) == true)
 	{
+		hFlip = false;
 		translate(d, 0);
 	}
 	if (getKey(VK_LEFT) == true)
 	{
+		hFlip = true;
 		translate(-d, 0);
+
 	}
 	//이동 키가 놓이면 idle로
 	if (getKey(VK_RIGHT) != true && getKey(VK_LEFT) != true)
@@ -206,10 +209,12 @@ void Player::aniRun()
 	{
 		if (getKey(VK_RIGHT) == true)//오른쪽 눌림
 		{
+			hFlip = false;
 			translate(d, 0);
 		}
 		if (getKey(VK_LEFT) == true)//왼쪽 눌림
 		{
+			hFlip = true;
 			translate(-d, 0);
 		}
 

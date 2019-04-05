@@ -177,8 +177,26 @@ void drawBmp(float px, float py, Sprite *sprite)
 		{
 			//x,y 위치에..픽셀을 출력함
 			unsigned int pixel = sprite->argb[y*sprite->width + x];
-			setPixel(px + x-ax, py + y-ay, pixel);
+			setPixel(px + x - ax, py + y - ay, pixel);
 		}
 	}
 }
+
+
+void drawBmpFlip(float px, float py, Sprite *sprite)
+{
+	int ax = sprite->ax;
+	int ay = sprite->ay;
+	///////////이미지 출력하기////////////
+	for (int y = 0; y < sprite->height; y++)
+	{
+		for (int x = 0; x < sprite->width; x++)
+		{
+			//x,y 위치에..픽셀을 출력함
+			unsigned int pixel = sprite->argb[y*sprite->width + x];
+			setPixel(px +(sprite->width-1 -x) - ax, py + y - ay, pixel);
+		}
+	}
+}
+
 

@@ -37,7 +37,7 @@ struct Sprite	//그림을 저장할 구조체
 
 	int ax;		//앵커포인트 x좌표[객체의 px,py에 맞춰지는 이미지 위치]
 	int ay;		//앵커포인트 y좌표
-
+	//[참고] 플립시 ax,ay를 따로 적용해야할 수 도 있다.
 	unsigned int * argb;  //이미지 데이터 저장 
 };
 
@@ -45,3 +45,4 @@ int readBmp(const char *fileName, Sprite *sprite);//전체 읽어오기
 int readBMPRect(const char * filename, int x, int y, int width, int height, Sprite *sprite);
 //일부분만 읽어오기
 void drawBmp(float px, float py, Sprite *sprite);
+void drawBmpFlip(float px, float py, Sprite *sprite);

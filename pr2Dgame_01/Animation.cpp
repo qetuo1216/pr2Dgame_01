@@ -11,6 +11,8 @@ Animation::Animation(std::string name, int tag, bool state, float px, float py)
 	this->frameTimer = 0;//속도측정 변수
 
 	this->aniIdx = 0;	//출력할 에니매의 배열 인덱스
+	
+	this->hFlip = false;
 }
 
 
@@ -33,8 +35,14 @@ Animation::~Animation()//캐릭터와 나이프가 애니메이션 클래스에서 상속받기에(fram
 
 void Animation::draw()
 {
-	drawBmp(px, py, &frames[aniIdx][frameIdx]);
-	
+	if (hFlip == true)
+	{
+		drawBmpFlip(px, py, &frames[aniIdx][frameIdx]);
+	}
+	else
+	{
+		drawBmp(px, py, &frames[aniIdx][frameIdx]);
+	}
 	//애니메 시간 측정
 	frameTimer = frameTimer + getDelteTime();
 

@@ -14,6 +14,9 @@ protected:
 
 	float frameDelay; //애니메 장면 출력 시간
 	float frameTimer; //애니메 시간 측정 변수
+
+	//좌우 플립 적용 테스트
+	bool hFlip;//true는 플립
 public:
 	//생성자
 	Animation(std::string name, int tag, bool state, float px, float py);
