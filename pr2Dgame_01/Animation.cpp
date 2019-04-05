@@ -23,7 +23,8 @@ Animation::~Animation()//캐릭터와 나이프가 애니메이션 클래스에서 상속받기에(fram
 		//1//splite구조체에서 동적할당한 메모리 해제
 		for (int k = 0; k<frames[i].size();k++)
 		{
-			delete[] frames[i][k].argb;//bmp에서 로드한 이미지(argb) 삭제
+			//delete[] frames[i][k].argb;//bmp에서 로드한 이미지(argb) 삭제
+			SafeDeleteArray(frames[i][k].argb);
 		}
 		//2//stl백터의 공간 삭제
 		frames[i].clear();
