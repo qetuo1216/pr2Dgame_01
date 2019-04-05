@@ -9,6 +9,7 @@ SpliteObject::SpliteObject(std::string name, int tag, bool state, float px, floa
 SpliteObject::~SpliteObject()
 {
 	//로드한 이미지 메모리를 해제함
+	delete splite.argb;
 }
 
 void SpliteObject::draw()
