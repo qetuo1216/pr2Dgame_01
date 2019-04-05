@@ -7,7 +7,6 @@ SpliteObject::SpliteObject(std::string name, int tag, bool state, float px, floa
 	ZeroMemory(&splite,0);//splite.height = 0 등등 메모리를 모두 0으로 초기화
 }
 
-#define SafeDeleteArray(X) if(X != NULL) {	delete[] X;	X = NULL;}
 SpliteObject::~SpliteObject()
 {
 	//로드한 이미지 메모리를 해제함
@@ -17,6 +16,7 @@ SpliteObject::~SpliteObject()
 		splite.argb = NULL;
 	}*/
 	SafeDeleteArray(splite.argb);
+	
 }
 
 void SpliteObject::draw()

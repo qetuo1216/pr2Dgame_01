@@ -1,5 +1,5 @@
 #include <string>
-
+#define SafeDeleteArray(X) if(X != NULL) {	delete[] X;	X = NULL;}
 #pragma once
 class GameObject	//플레이어,배경을 위한 최상위 계층
 {
