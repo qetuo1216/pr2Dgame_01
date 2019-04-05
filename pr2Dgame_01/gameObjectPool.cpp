@@ -46,7 +46,7 @@ void gameObjectPool::delGameObject(GameObject * o)
 			if (obj[l][i]->getId() == id)//일치하는 아이디를 찾음
 			{
 				//1//객체 delete
-				delete obj[l][i];//또는 delete o;
+				delete obj[l][i];//또는 delete o; //소멸자가 실행
 				//2//stl vector에서 저장공간 삭제
 				obj[l].erase(obj[l].begin() + i);
 			}

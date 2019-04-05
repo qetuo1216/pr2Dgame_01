@@ -14,8 +14,20 @@ Animation::Animation(std::string name, int tag, bool state, float px, float py)
 }
 
 
-Animation::~Animation()
+Animation::~Animation()//캐릭터와 나이프가 애니메이션 클래스에서 상속받기에(frame) 부모인 여기에 소멸자를 사용하자
 {
+	//printf("애니메 소멸자\n");
+	//로드한 애니메이션 delete하기
+	for (int i = 0; i < MAX_ANI; i++)
+	{
+		//1//splite구조체에서 동적할당한 메모리 해제
+		for (int k = 0; k<frames[i].size();k++)
+		{
+			delete[] frames[i][k].argb;//bmp에서 로드한 이미지(argb) 삭제
+		}
+		//2//stl백터의 공간 삭제
+		frames[i].clear();
+	}
 }
 
 void Animation::draw()
