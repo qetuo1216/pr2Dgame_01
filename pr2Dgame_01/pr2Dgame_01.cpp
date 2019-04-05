@@ -29,6 +29,9 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 #define WIDTH  800//윈도우 가로
 #define HEIGHT 224//윈도우 세로
 
+//메크로 함수(#define) 테스트 하기 : 일반함수보다 빠르다.
+#define TEST(X) printf("%d",X); 
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -41,6 +44,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	//디버그콘솔창 띄우기
 	START_DEBUG_CONSOLE();
 	printf("디버그 콘솔 열기");
+	TEST(100);
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_PR2DGAME01, szWindowClass, MAX_LOADSTRING);
