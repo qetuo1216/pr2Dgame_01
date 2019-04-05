@@ -1,7 +1,7 @@
 #pragma once
 #include "Animation.h"
 //애니메이션 상태 enum
-enum State { idle = 0, walk, run, jump, attack, hit };
+enum State { idle = 0, walk, run, jump, attack, hit,airAttack };
 class Player : public Animation
 {
 private:
@@ -36,6 +36,7 @@ public:
 	void aniRun();
 	void aniJump();
 	void aniAttack();
+	void aniAirAttack();
 
 	//애니메 전환이벤트 오버라이딩
 	void OnAnimationEvent(int aniId, int aniFrame);

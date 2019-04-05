@@ -72,6 +72,13 @@ void Player::init()
 	sprite.ax = 10;//+는이미지가 왼쪽으로 이동,-는 오른쪽
 	addAniFrame(sprite, hit);//5번 배열에 집어넣음
 
+	//6번 airAttack
+	for (size_t i = 0; i < 3; i++)
+	{
+		readBMPRect("asset/naruto.bmp", 2 + i * (57 + 2), 1416, 57, 56, &sprite);
+		
+		addAniFrame(sprite, airAttack);//4번 배열에 집어넣음
+	}
 	//애니메 속도 지정하기
 	setFrameDelay(0.15);
 
@@ -116,6 +123,10 @@ void Player::update()
 	else if (state == attack)
 	{
 		aniAttack();
+	}
+	else if (state == airAttack)
+	{
+		aniAirAttack();
 	}
 }
 
@@ -194,7 +205,7 @@ void Player::aniWalk()
 		jumpMoveSpeed = 50;
 		jumpStartY = py;
 	}
-	if (getKeyDown('A') == true)//a키는 공격
+	if (getKeyDown('A') == true && getKey(VK_LEFT) != true)//a키는 공격
 	{
 		state = attack;
 		play(attack);
@@ -269,6 +280,7 @@ void Player::aniJump()
 			state = idle;
 			play(state);
 		}
+		
 	}
 		//2단 점프
 		if (getKeyDown(VK_SPACE)==true)
@@ -276,6 +288,12 @@ void Player::aniJump()
 			jumpTimer = 0;//타이머를 리셋해서 가속도를 초기호
 		}
 
+		//air점프 전환
+		if (getKeyDown('A') == true)
+		{
+			state = airAttack;
+			play(state);
+		}
 		
 }
 
@@ -300,6 +318,32 @@ void Player::OnAnimationEvent(int aniId, int aniFrame)
 
 }
 
+
+void Player::aniAirAttack()
+{
+	//1.점프 시간 측정
+	jumpTimer = jumpTimer + getDelteTime();
+
+
+	//2.점프 이동시키기
+	float upSpeed = jumpUpSpeed - jumpAcc * jumpTimer;//중력가속도로 계산 y축 이동
+
+	float moveDist = jumpMoveSpeed * getDelteTime();//x축 이동 시간
+	float upDist = upSpeed * getDelteTime();//위로 올라가기
+
+	translate(moveDist, -upDist);
+
+	//점프 후 원위치로 이동했는지 검사
+	if (jumpStartY < py)
+	{
+		//점프 종료
+		py = jumpStartY;
+
+		//애니메이션 상태 종료
+		state = idle;
+		play(state);
+	}
+}
 void Player::aniTest()
 {
 	//'1'키는 IDLE
