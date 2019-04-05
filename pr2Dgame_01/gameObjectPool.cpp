@@ -39,7 +39,7 @@ void gameObjectPool::delGameObject(GameObject * o)
 {
 	//객체 안에서 바로 delete하는 것은 코드가 안전하지 못한다.
 	int id = o->getId();
-	for (int l = 0; l < 5; l++)
+	for (int l = 0; l < MAX_LAYER; l++)
 	{
 		for (int i = 0; i < obj[l].size(); i++)
 		{
@@ -56,7 +56,7 @@ void gameObjectPool::delGameObject(GameObject * o)
 
 void gameObjectPool::update()
 {
-	for (int l = 0; l < 5; l++)
+	for (int l = 0; l < MAX_LAYER; l++)
 	{
 		for (int i = 0; i < obj[l].size(); i++)
 		{
@@ -67,7 +67,7 @@ void gameObjectPool::update()
 
 void gameObjectPool::draw()
 {
-	for (int l = 0; l < 5; l++)//l은 레이어 번호
+	for (int l = 0; l < MAX_LAYER; l++)//l은 레이어 번호
 	{
 		for (int i = 0; i < obj[l].size(); i++)
 		{
