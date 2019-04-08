@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "AABB.h"
-
+#include "graphic.h"
 
 AABB::AABB(float x, float y, float width, float height)
 {
@@ -17,5 +17,11 @@ AABB::~AABB()
 
 void AABB::debugDraw(unsigned char r, unsigned char g, unsigned char b)
 {
+	float x0 = x;
+	float y0 = y;
+	float x1 = x + width;
+	float y1 = y + height;
+
+	drawRect(x0,x1,y0,y1,r,g,b);
 }
 

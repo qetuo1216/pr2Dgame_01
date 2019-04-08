@@ -20,6 +20,9 @@ protected:		  //상속받을 때 보통 private대신 사용함
 
 	//충돌체 추가하기
 	std::vector<AABB *> col;
+	//충돌체 rgb 색상
+	unsigned char colR, colG, colB;
+
 public:
 	//생성자&소멸자
 	GameObject(std::string name, int tag, bool state,float px, float py);
@@ -29,7 +32,8 @@ public:
 	virtual void init();
 	virtual void update();
 	virtual void draw();
-
+	//충돌체 그리기함수 추가
+	virtual void debugDraw();
 	//getter&setter
 	//필요시에 만듬
 	int getId();
