@@ -67,6 +67,12 @@ void GameObject::translate(float dx, float dy)
 {
 	px = px + dx;
 	py = py + dy;
+
+	//충돌체 이동시키기
+	for (int i = 0; i < col.size(); i++)
+	{
+		col[i]->translate(dx, dy);
+	}
 }
 
 void GameObject::addGameObject(GameObject * o,int order)

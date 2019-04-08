@@ -15,6 +15,12 @@ AABB::~AABB()
 {
 }
 
+void AABB::translate(float dx, float dy)
+{
+	x = x + dx;
+	y = y + dy;
+}
+
 void AABB::debugDraw(unsigned char r, unsigned char g, unsigned char b)
 {
 	float x0 = x;

@@ -14,7 +14,7 @@ public:
 	//getter setter
 
 	//기타 활용 함수
+	void translate(float dx, float dy);
 	void debugDraw(unsigned char r, unsigned char g, unsigned char b);
-
 };
 
