@@ -10,5 +10,9 @@ public:
 	//생성 소멸자
 	AABB();
 	virtual ~AABB();
+
+	//getter setter
+
+	//기타 활용 함수
 };
 
