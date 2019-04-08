@@ -1,5 +1,7 @@
 #include <string>
 #define SafeDeleteArray(X) if(X != NULL) {	delete[] X;	X = NULL;}
+#include <vector>
+#include "AABB.h"
 #pragma once
 class GameObject	//플레이어,배경을 위한 최상위 계층
 {
@@ -15,6 +17,9 @@ protected:		  //상속받을 때 보통 private대신 사용함
 	bool state;			//상태
 	//transform - 이동
 	float px, py;		//위치이동
+
+	//충돌체 추가하기
+	std::vector<AABB *> col;
 public:
 	//생성자&소멸자
 	GameObject(std::string name, int tag, bool state,float px, float py);
