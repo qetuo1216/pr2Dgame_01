@@ -34,6 +34,8 @@ public:
 	virtual void draw();
 	//충돌체 그리기함수 추가
 	virtual void debugDraw();
+
+
 	//getter&setter
 	//필요시에 만듬
 	int getId();
@@ -44,5 +46,9 @@ public:
 
 	void addGameObject(GameObject * o,int order);//객체 추가 메소드
 	void delGameObject(GameObject * o);//객체 삭제 메소드
+	
+	//충돌체 추가 함수
+	void addCollider(AABB *aabb);
+	void setColColor(unsigned char r, unsigned char g, unsigned char b);//충돌체 출력 색상
 };
 

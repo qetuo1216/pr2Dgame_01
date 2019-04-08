@@ -48,6 +48,7 @@ void GameObject::debugDraw()
 	}
 }
 
+
 int GameObject::getId()
 {
 	return id;
@@ -91,4 +92,21 @@ void GameObject::delGameObject(GameObject * o)
 
 	//2//풀에 객체 삭제하기
 	pool->delGameObject(o);//코드가 복잡해지면 문제가 생긴다.
+}
+
+void GameObject::addCollider(AABB * aabb)
+{
+	//게임오브젝트 좌표 적용하기
+	aabb->translate(px, py);
+
+	//충돌체 추가하기 
+	col.push_back(aabb);
+
+}
+
+void GameObject::setColColor(unsigned char r, unsigned char g, unsigned char b)
+{
+	colR = r;
+	colG = g;
+	colB = b;
 }

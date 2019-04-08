@@ -54,6 +54,7 @@ void gameObjectPool::delGameObject(GameObject * o)
 	}
 }
 
+
 void gameObjectPool::update()
 {
 	for (int l = 0; l < MAX_LAYER; l++)
