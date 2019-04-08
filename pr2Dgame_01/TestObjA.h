@@ -4,6 +4,8 @@ class TestObjA : public GameObject
 {
 public:
 	TestObjA(float px,float py);
-	~TestObjA();
+	virtual ~TestObjA();
+
+	void init();
 };
 
