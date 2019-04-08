@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AABB.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="bmp.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="bmp.cpp" />
