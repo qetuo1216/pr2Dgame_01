@@ -14,3 +14,8 @@ AABB::AABB(float x, float y, float width, float height)
 AABB::~AABB()
 {
 }
+
+void AABB::debugDraw(unsigned char r, unsigned char g, unsigned char b)
+{
+}
+
