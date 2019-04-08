@@ -13,6 +13,11 @@ GameObject::GameObject(std::string name, int tag, bool state, float px, float py
 	this->px = px;
 	this->py = py;
 
+	//충돌체 기본 색상 지정
+	colR = 255;
+	colG = 0;
+	colB = 0;
+
 	//아이디 할당하기
 	id = ID++;//객체가 생성될 때 마다 증가한다.
 }
@@ -32,6 +37,15 @@ void GameObject::update()
 
 void GameObject::draw()
 {
+}
+
+void GameObject::debugDraw()
+{
+	//게임오브젝트 충돌체 그리기
+	for (int i = 0; i < col.size(); i++)
+	{
+		col[i]->debugDraw(colR,colG,colB);
+	}
 }
 
 int GameObject::getId()
