@@ -12,5 +12,5 @@ TestObjA::~TestObjA()
 void TestObjA::init()
 {
 	//충돌체 추가하기
-	col.push_back(new AABB(0, 0, 100, 100));
+	col.push_back(new AABB(0+px, 0+py, 100, 100));//게임오브젝트를 기준으로
 }
