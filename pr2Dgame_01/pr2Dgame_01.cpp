@@ -11,6 +11,7 @@
 #include "Input.h"//윈도우 메세지 키업&다운 으로 변경이 가능
 #include "Knife.h"
 #include "gameObjectPool.h"//싱글톤 테스트
+#include "TestObjA.h"
 #define MAX_LOADSTRING 100
 
 
@@ -80,7 +81,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		obj[i]->init();
 	}*/
-	
+	//메인에 테스트 객체 추가
+	pool->addGameObject(new TestObjA(100, 100), 1);
 
     // 기본 메시지 루프입니다:
     //while (GetMessage(&msg, nullptr, 0, 0))
