@@ -79,3 +79,17 @@ void gameObjectPool::draw()
 	}
 	
 }
+
+void gameObjectPool::debugDraw()
+{
+	for (int l = 0; l < MAX_LAYER; l++)//l은 레이어 번호
+	{
+		for (int i = 0; i < obj[l].size(); i++)
+		{
+			//if (obj[l][i]->getState() == true)//상태 검사
+			{
+				obj[l][i]->debugDraw();
+			}
+		}
+	}
+}

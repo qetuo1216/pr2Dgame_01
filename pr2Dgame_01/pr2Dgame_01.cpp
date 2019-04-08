@@ -118,6 +118,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		*/
 		pool->draw();
+		
+		//게임 객체 debugDrow하기
+		pool->debugDraw();		
+
 		//렌더링하기
 		render();
     }

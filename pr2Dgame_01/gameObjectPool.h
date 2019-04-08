@@ -30,5 +30,8 @@ public:
 
 	//眠啊等 按眉 draw
 	void draw();
+
+	//眠啊等 按眉 debugDraw
+	void debugDraw();
 };
 

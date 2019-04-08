@@ -22,6 +22,6 @@ void AABB::debugDraw(unsigned char r, unsigned char g, unsigned char b)
 	float x1 = x + width;
 	float y1 = y + height;
 
-	drawRect(x0,x1,y0,y1,r,g,b);
+	drawRect(x0,y0,x1,y1,r,g,b);
 }
 
