@@ -8,7 +8,7 @@ private:
 	float width, height;//가로 세로 길이
 public:
 	//생성 소멸자
-	AABB();
+	AABB(float x,float y,float width,float height);
 	virtual ~AABB();
 
 	//getter setter
