@@ -83,8 +83,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		obj[i]->init();
 	}*/
 	//메인에 테스트 객체 추가
-	pool->addGameObject(new TestObjA(100, 100), 1);
-	pool->addGameObject(new TestObjB(300, 100), 1);
+	pool->addGameObject(new TestObjA(100, 50), 1);
+	pool->addGameObject(new TestObjB(300, 50), 1);
 
     // 기본 메시지 루프입니다:
     //while (GetMessage(&msg, nullptr, 0, 0))
@@ -112,6 +112,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		*/
 		pool->update();
+
+		//게임 객체 충돌검사하기
+		pool->checkCollision();
+
 		//게임 오브젝트 드로우 하기
 		/*
 		for (int i = 0; i < 3; i++)

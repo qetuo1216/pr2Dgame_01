@@ -64,6 +64,11 @@ void GameObject::setState(bool state)
 	this->state = state;
 }
 
+std::string GameObject::GetName()
+{
+	return name;
+}
+
 void GameObject::translate(float dx, float dy)
 {
 	px = px + dx;

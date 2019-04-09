@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "gameObjectPool.h"
-
+#include <iostream>
 //static 포인터 만들기
 gameObjectPool * gameObjectPool::pool=NULL;
 
@@ -79,6 +79,16 @@ void gameObjectPool::draw()
 		}
 	}
 	
+}
+
+void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
+{
+	//1//1번 레이어 충돌검사하기
+	for (int i = 0; i < obj[1].size(); i++)
+	{
+		//printf("%s", obj[1][i]->GetName);;
+		std::cout<< obj[1][i]->GetName() <<endl;
+	}
 }
 
 void gameObjectPool::debugDraw()

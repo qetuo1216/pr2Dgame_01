@@ -31,6 +31,9 @@ public:
 	//추가된 객체 draw
 	void draw();
 
+	//풀에 추가된 객체 충돌검사하기
+	void checkCollision();
+
 	//추가된 객체 debugDraw
 	void debugDraw();
 };
