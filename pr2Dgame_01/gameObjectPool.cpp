@@ -87,8 +87,9 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 	for (int i = 0; i < obj[1].size(); i++)
 	{
 		//printf("%s", obj[1][i]->GetName);;
-		std::cout<< obj[1][i]->GetName() <<endl;
+		std::cout << obj[1][i]->GetName()<<", ";
 	}
+		std::cout <<endl<< "--------------------" << endl;
 }
 
 void gameObjectPool::debugDraw()
