@@ -12,6 +12,7 @@
 #include "Knife.h"
 #include "gameObjectPool.h"//싱글톤 테스트
 #include "TestObjA.h"
+#include "TestObjB.h"
 #define MAX_LOADSTRING 100
 
 
@@ -74,7 +75,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 							new Player(100,140),
 							new Knife(200,200)};*/
 	pool->addGameObject(new BackGround(0, 0),0);
-	pool->addGameObject(new Player(100, 140),1);
+	//pool->addGameObject(new Player(100, 140),1);
 	//pool->addGameObject(new Knife(200, 200));//플레이어에서 집어넣을 예정
 
 	/*for (int i = 0; i < 3; i++)
@@ -83,6 +84,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}*/
 	//메인에 테스트 객체 추가
 	pool->addGameObject(new TestObjA(100, 100), 1);
+	pool->addGameObject(new TestObjB(300, 100), 1);
 
     // 기본 메시지 루프입니다:
     //while (GetMessage(&msg, nullptr, 0, 0))

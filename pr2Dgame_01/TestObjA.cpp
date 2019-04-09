@@ -28,4 +28,19 @@ void TestObjA::update()
 		translate(dist, 0);
 		//printf("오른쪽으로 이동");
 	}
+	if (getKey(VK_LEFT) == true)
+	{
+		translate(-dist, 0);
+		//printf("오른쪽으로 이동");
+	}
+	if (getKey(VK_UP) == true)
+	{
+		translate(0, -dist);
+		//printf("오른쪽으로 이동");
+	}
+	if (getKey(VK_DOWN) == true)
+	{
+		translate(0, dist);
+		//printf("오른쪽으로 이동");
+	}
 }
