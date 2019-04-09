@@ -90,8 +90,14 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 		{
 			//printf("%s", obj[1][i]->GetName);;
 			//if (i < j)//중복된 순서쌍 제거
-			std::cout << "[" << obj[1][i]->GetName() << ", " << obj[1][j]->GetName() << "]";
-			
+			//std::cout << "[" << obj[1][i]->GetName() << ", " << obj[1][j]->GetName() << "]";
+			GameObject * objI = obj[1][i];
+			GameObject * objJ = obj[1][j];
+
+			//objI와 objJ에서 충돌체 목록 가져오기
+			std::vector<AABB *> colI = objI->getCollider();
+			std::vector<AABB *> colJ = objJ->getCollider();
+
 		}
 
 		std::cout<<endl;

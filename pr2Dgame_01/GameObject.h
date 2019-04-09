@@ -42,6 +42,7 @@ public:
 	bool getState();
 	void setState(bool state);
 	std::string GetName();
+	std::vector<AABB *> getCollider();
 	//기타
 	void translate(float dx,float dy);//이동(translate) 함수
 

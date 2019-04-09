@@ -69,6 +69,11 @@ std::string GameObject::GetName()
 	return name;
 }
 
+std::vector<AABB*> GameObject::getCollider()
+{
+	return col;
+}
+
 void GameObject::translate(float dx, float dy)
 {
 	px = px + dx;
