@@ -84,10 +84,17 @@ void gameObjectPool::draw()
 void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 {
 	//1//1번 레이어 충돌검사하기
-	for (int i = 0; i < obj[1].size(); i++)
+	for (int j = 0; j < obj[1].size(); j++)
 	{
-		//printf("%s", obj[1][i]->GetName);;
-		std::cout << obj[1][i]->GetName()<<", ";
+		for (int i = 0; i < j; i++)
+		{
+			//printf("%s", obj[1][i]->GetName);;
+			//if (i < j)//중복된 순서쌍 제거
+			std::cout << "[" << obj[1][i]->GetName() << ", " << obj[1][j]->GetName() << "]";
+			
+		}
+
+		std::cout<<endl;
 	}
 		std::cout <<endl<< "--------------------" << endl;
 }
