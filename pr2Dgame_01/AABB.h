@@ -12,6 +12,8 @@ public:
 	virtual ~AABB();
 
 	//getter setter
+	void getBB(float *x0, float *y0, float *x1, float *y1);
+	void getBB(float &x0, float &y0, float &x1, float &y1);
 
 	//기타 활용 함수
 	void translate(float dx, float dy);

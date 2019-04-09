@@ -91,6 +91,7 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 			//printf("%s", obj[1][i]->GetName);;
 			//if (i < j)//중복된 순서쌍 제거
 			//std::cout << "[" << obj[1][i]->GetName() << ", " << obj[1][j]->GetName() << "]";
+			//충돌체 생성
 			GameObject * objI = obj[1][i];
 			GameObject * objJ = obj[1][j];
 
@@ -98,6 +99,25 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 			std::vector<AABB *> colI = objI->getCollider();
 			std::vector<AABB *> colJ = objJ->getCollider();
 
+			//충돌체 (AABB)간의 충돌검사
+			for (int ii = 0; ii < colI.size(); ii++)
+			{
+				for (int jj = 0; jj < colJ.size(); jj++)
+				{
+					AABB * aabbI = colI[ii];//objI에서 가져온 ii번째 AABB//출력된 사각형
+					AABB * aabbJ = colI[jj];//objI에서 가져온 ii번째 AABB
+
+					//aabbI와 aabbJ가 사각형 단위로 충돌했는지 검사
+					//cout << objI->GetName() << ", " << objJ->GetName() << endl;
+					
+					//사각형의 좌표를 가져와서 선 단위로 가져온다.(좌측상단,우측하단)
+					float x0, y0, x1, y1;//aabbI의 꼭지점 좌표
+					float a0, b0, a1, b1;//aabbJ의 꼭지점 좌표
+
+					aabbI->getBB(x0, y0, x1, y1);
+					aabbJ->getBB(a0, b0, a1, b1);
+				}
+			}
 		}
 
 		std::cout<<endl;

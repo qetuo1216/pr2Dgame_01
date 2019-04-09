@@ -15,6 +15,22 @@ AABB::~AABB()
 {
 }
 
+void AABB::getBB(float * x0, float * y0, float * x1, float * y1)
+{
+	*x0 = x;
+	*y0 = y;
+	*x1 = x+width;
+	*y1 = y+height;
+}
+
+void AABB::getBB(float & x0, float & y0, float & x1, float & y1)//오버로딩
+{
+	x0 = x;
+	y0 = y;
+	x1 = x + width;
+	y1 = y + height;
+}
+
 void AABB::translate(float dx, float dy)
 {
 	x = x + dx;
