@@ -9,7 +9,7 @@ GameObject::GameObject(std::string name, int tag, bool state, float px, float py
 	this->name = name;//string을 사용하면 복사안하고 바로 넣을 수 있다.
 	this->tag = tag;
 	this->state = state;
-
+	this->alive = true;	//생성자에서 객체가 살아있음으로 초기화
 	this->px = px;
 	this->py = py;
 
@@ -67,6 +67,16 @@ bool GameObject::getState()
 void GameObject::setState(bool state)
 {
 	this->state = state;
+}
+
+bool GameObject::getAlive()
+{
+	return alive;
+}
+
+void GameObject::setAlive(bool alive)
+{
+	this->alive = alive;
 }
 
 std::string GameObject::GetName()

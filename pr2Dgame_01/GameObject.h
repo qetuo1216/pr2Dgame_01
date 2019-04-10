@@ -15,9 +15,9 @@ protected:		  //상속받을 때 보통 private대신 사용함
 	std::string name;	//이름		//const char * name;	//string 사용시 	usingname space std;
 	int tag;			//태그				
 	bool state;			//상태
+	bool alive;			//이동/충돌체에 의해 지워져야 하는지를 판단하는 변수
 	//transform - 이동
 	float px, py;		//위치이동
-
 	//충돌체 추가하기
 	std::vector<AABB *> col;
 	//충돌체 rgb 색상
@@ -40,8 +40,13 @@ public:
 	//필요시에 만듬
 	int getId();
 	int getTag();
+
 	bool getState();
 	void setState(bool state);
+
+	bool getAlive();
+	void setAlive(bool alive);
+
 	std::string GetName();
 	std::vector<AABB *> getCollider();
 	//기타
