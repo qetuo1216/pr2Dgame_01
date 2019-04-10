@@ -119,13 +119,13 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 
 					if (x1 >= a0 && x0 <= a1 && y1 >= b0 && b1 >= y0)
 					{
-						printf("충돌");
+						printf("충돌\n");
 					}
 				}
 			}
 		}
 
-		std::cout<<endl;
+		
 	}
 		//std::cout <<endl<< "--------------------" << endl;
 }
