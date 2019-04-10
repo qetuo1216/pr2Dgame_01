@@ -22,7 +22,7 @@ void Knife::init()
 	}
 
 	//충돌체 추가하기
-	addCollider(new AABB(0, 0, 40, 16));
+	addCollider(new AABB(0, 0, 40, 16,1));
 
 	//이동속도 초기화
 	speed = 200;

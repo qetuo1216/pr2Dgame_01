@@ -12,8 +12,8 @@ TestObjB::~TestObjB()
 
 void TestObjB::init()
 {
-	addCollider(new AABB(0 , 0, 100, 100));
-	addCollider(new AABB(100 , 0, 50,50));
+	addCollider(new AABB(0 , 0, 100, 100,0));
+	addCollider(new AABB(200 , 0, 50,50,1));
 	//이동속도 초기화
 	setColColor(0, 0, 255);
 }

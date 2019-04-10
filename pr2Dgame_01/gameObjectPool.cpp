@@ -119,7 +119,12 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 
 					if (x1 >= a0 && x0 <= a1 && y1 >= b0 && b1 >= y0)
 					{
-						printf("충돌\n");
+						cout << "충돌 정보----------------------" << endl;
+						cout << "첫번째 객체 :" << objI->GetName() << endl;
+						cout << "첫번째 객체 aabb의 ID:" << aabbI->getId() << endl;
+
+						cout << "두번째 객체 :" << objJ->GetName() << endl;
+						cout << "첫번째 객체 aabb의 ID:" << aabbJ->getId() << endl;
 					}
 				}
 			}

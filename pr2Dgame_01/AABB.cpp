@@ -2,12 +2,13 @@
 #include "AABB.h"
 #include "graphic.h"
 
-AABB::AABB(float x, float y, float width, float height)
+AABB::AABB(float x, float y, float width, float height,int id)
 {
 	this->x = x;
 	this->y = y;
 	this->width = width;
 	this->height = height;
+	this->id = id;
 }
 
 
@@ -29,6 +30,16 @@ void AABB::getBB(float & x0, float & y0, float & x1, float & y1)//오버로딩
 	y0 = y;
 	x1 = x + width;
 	y1 = y + height;
+}
+
+int AABB::getId()
+{
+	return id;
+}
+
+void AABB::setId(int id)
+{
+	this->id = id;
 }
 
 void AABB::translate(float dx, float dy)
