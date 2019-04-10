@@ -54,6 +54,11 @@ int GameObject::getId()
 	return id;
 }
 
+int GameObject::getTag()
+{
+	return tag;
+}
+
 bool GameObject::getState()
 {
 	return state;

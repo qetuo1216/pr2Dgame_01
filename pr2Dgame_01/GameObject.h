@@ -39,6 +39,7 @@ public:
 	//getter&setter
 	//필요시에 만듬
 	int getId();
+	int getTag();
 	bool getState();
 	void setState(bool state);
 	std::string GetName();

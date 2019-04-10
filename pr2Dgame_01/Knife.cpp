@@ -58,3 +58,12 @@ void Knife::update()
 		delGameObject(this);
 	}
 }
+
+void Knife::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	using namespace std;
+	if (OtherObj->getTag() == 1)
+	{
+		delGameObject(this);
+	}
+}

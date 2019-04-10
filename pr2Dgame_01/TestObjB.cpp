@@ -2,7 +2,7 @@
 #include "TestObjB.h"
 
 
-TestObjB::TestObjB(float px, float py):GameObject("테스트B",0,true,px,py)
+TestObjB::TestObjB(float px, float py):GameObject("테스트B",1,true,px,py)
 {
 }
 
