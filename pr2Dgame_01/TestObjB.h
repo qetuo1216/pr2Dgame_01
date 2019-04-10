@@ -4,7 +4,8 @@
 class TestObjB : public GameObject
 {
 private:
-
+	//hpÅ×½ºÆ®
+	int hp;
 public:
 	TestObjB(float px,float py);
 	~TestObjB();
