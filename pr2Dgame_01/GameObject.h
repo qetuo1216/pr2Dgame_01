@@ -52,5 +52,8 @@ public:
 	//충돌체 추가 함수
 	void addCollider(AABB *aabb);
 	void setColColor(unsigned char r, unsigned char g, unsigned char b);//충돌체 출력 색상
+
+	//충돌 이벤트 메소드
+	virtual void onTriggerEnter(AABB* myAABB,GameObject *OtherObj,AABB* otherAABB);
 };
 

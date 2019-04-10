@@ -44,3 +44,9 @@ void TestObjA::update()
 		//printf("오른쪽으로 이동");
 	}
 }
+
+void TestObjA::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	std::cout << "testObjA가 " << OtherObj->GetName() << " 과 충돌함" << std::endl;
+	std::cout << "myAABB 아이디 " << myAABB->getId() << ", otherAABB 아이디" << otherAABB->getId()<<std::endl;
+}

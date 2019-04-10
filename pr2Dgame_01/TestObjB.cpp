@@ -17,3 +17,7 @@ void TestObjB::init()
 	//이동속도 초기화
 	setColColor(0, 0, 255);
 }
+
+void TestObjB::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+}

@@ -120,3 +120,7 @@ void GameObject::setColColor(unsigned char r, unsigned char g, unsigned char b)
 	colG = g;
 	colB = b;
 }
+
+void GameObject::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+}
