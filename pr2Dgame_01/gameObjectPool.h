@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "GameObject.h"
+#include "ColPair.h"
 //싱글톤사용하기
 //게임오브젝트를 배열 형태로 밖에서 객체를 접근 못 만들게 한다.
 #define MAX_LAYER 5
@@ -17,6 +18,9 @@ private:
 	
 	//게임 오브젝트를 저장하는 배열(stl vector) 자동 할당
 	vector<GameObject *> obj[MAX_LAYER];//레이어 설정 //0은 0번 레이어,1은 1번 레이어  
+
+	//충돌쌍 저장 배열(stl Vector)
+	vector<ColPair *> colPair;
 
 public:
 	//객체 가져오기 스테틱(정적) 메소드

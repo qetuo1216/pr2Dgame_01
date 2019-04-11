@@ -2,8 +2,12 @@
 #include "ColPair.h"
 
 
-ColPair::ColPair()
+ColPair::ColPair(GameObject *objI, GameObject *objJ, AABB *aabbI, AABB *aabbJ)
 {
+	this->objI = objI;
+	this->objJ = objJ;
+	this->aabbI = aabbI;
+	this->aabbJ = aabbJ;
 }
 
 
