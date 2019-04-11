@@ -122,15 +122,32 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 
 					if (x1 >= a0 && x0 <= a1 && y1 >= b0 && b1 >= y0)
 					{
+						bool checkInCol=false;
 						//충돌쌍이 저장되어있는지 판단.
 						for (int k = 0; k < colPair.size(); k++)
 						{
 							//calPair쌍과 objI(aabbI),objJ(aabbJ)이 저장되어있는가
-							colPair[k]
+							if (colPair[k]->equal(objI, objJ, aabbI, aabbJ)==true)
+							{
+								checkInCol = true;
+							}
 						}
 
+						if (checkInCol == false)
+						{
 						//A//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있지 않으면
 						//////onTrigerEnter이벤트 발생
+						//충돌 정보(이벤트) 전달
+							//1//objI에게 자신의 충돌체 aabbI와 게임오브젝트 ObjJ와 충돌하고, objJ의 aabbJ와 충돌이 발생
+							objI->onTriggerEnter(aabbI, objJ, aabbJ);
+
+							//2//objJ에게 자신의 충돌체 aabbJ와 게임오브젝트 ObjI와 충돌하고, objI의 aabbI와 충돌이 발생
+							objJ->onTriggerEnter(aabbJ, objI, aabbI);
+
+							//3//충돌 정보 저장하기
+							colPair.push_back(new ColPair(objI, objJ, aabbI, aabbJ));
+						}
+
 
 						//B//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있으면
 						//////onTrigerStay이벤트 발생
@@ -141,12 +158,7 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 
 						cout << "두번째 객체 :" << objJ->GetName() << endl;
 						cout << "첫번째 객체 aabb의 ID:" << aabbJ->getId() << endl;*/
-						//충돌 정보(이벤트) 전달
-						//1//objI에게 자신의 충돌체 aabbI와 게임오브젝트 ObjJ와 충돌하고, objJ의 aabbJ와 충돌이 발생
-						objI->onTriggerEnter(aabbI, objJ, aabbJ);
-
-						//2//objJ에게 자신의 충돌체 aabbJ와 게임오브젝트 ObjI와 충돌하고, objI의 aabbI와 충돌이 발생
-						objJ->onTriggerEnter(aabbJ, objI, aabbI);
+						
 					}
 				}
 			}
