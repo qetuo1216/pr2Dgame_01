@@ -148,7 +148,6 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 							colPair.push_back(new ColPair(objI, objJ, aabbI, aabbJ));
 						}
 
-
 						//B//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있으면
 						//////onTrigerStay이벤트 발생
 
