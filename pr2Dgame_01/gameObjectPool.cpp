@@ -160,6 +160,9 @@ void gameObjectPool::removeDeadObjs()
 
 				//2//stl vector에서 저장공간 삭제
 				obj[l].erase(obj[l].begin() + i);
+
+				i--;//지원진 경우 1칸이 비는 것을 당겨와야한다.
+				
 			}
 		}
 	}
