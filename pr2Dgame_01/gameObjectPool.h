@@ -34,7 +34,11 @@ public:
 	//풀에 추가된 객체 충돌검사하기
 	void checkCollision();
 
+	//삭제 표시된 게임오브젝트 제거하기
+	void removeDeadObjs();
+	
 	//추가된 객체 debugDraw
 	void debugDraw();
+
 };
 

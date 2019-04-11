@@ -116,6 +116,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		//게임 객체 충돌검사하기
 		pool->checkCollision();
 
+		//삭제표시된 게임 오브젝트 객체 제거하기
+		pool->removeDeadObjs();
+
 		//게임 오브젝트 드로우 하기
 		/*
 		for (int i = 0; i < 3; i++)

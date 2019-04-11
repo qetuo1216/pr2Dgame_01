@@ -144,6 +144,27 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 		//std::cout <<endl<< "--------------------" << endl;
 }
 
+void gameObjectPool::removeDeadObjs()
+{
+	//객체 안에서 바로 delete하는 것은 코드가 안전하지 못한다.
+	for (int l = 0; l < MAX_LAYER; l++)
+	{
+		for (int i = 0; i < obj[l].size(); i++)
+		{
+				GameObject *o = obj[l][i];
+			
+			if (obj[l][i]->getAlive()==false)//일치하는 아이디를 찾음
+			{
+				//1//게임오브젝트 delete
+				delete o;
+
+				//2//stl vector에서 저장공간 삭제
+				obj[l].erase(obj[l].begin() + i);
+			}
+		}
+	}
+}
+
 
 void gameObjectPool::debugDraw()
 {
