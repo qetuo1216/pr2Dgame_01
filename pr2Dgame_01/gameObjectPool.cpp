@@ -46,9 +46,12 @@ void gameObjectPool::delGameObject(GameObject * o)
 			if (obj[l][i]->getId() == id)//일치하는 아이디를 찾음
 			{
 				//1//객체 delete
-				delete obj[l][i];//또는 delete o; //소멸자가 실행
+				//delete obj[l][i];//또는 delete o; //소멸자가 실행
 				//2//stl vector에서 저장공간 삭제
-				obj[l].erase(obj[l].begin() + i);
+				//obj[l].erase(obj[l].begin() + i);
+
+				//수정)바로 지우지 말고 나중에 지우도록 임시로 게임오브젝트가 삭제되어야함을 표시해둔다.
+				obj[l][i]->setAlive(false);
 			}
 		}
 	}
