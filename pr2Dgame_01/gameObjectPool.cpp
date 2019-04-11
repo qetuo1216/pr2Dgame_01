@@ -122,6 +122,19 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 
 					if (x1 >= a0 && x0 <= a1 && y1 >= b0 && b1 >= y0)
 					{
+						//충돌쌍이 저장되어있는지 판단.
+						for (int k = 0; k < colPair.size(); k++)
+						{
+							//calPair쌍과 objI(aabbI),objJ(aabbJ)이 저장되어있는가
+							colPair[k]
+						}
+
+						//A//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있지 않으면
+						//////onTrigerEnter이벤트 발생
+
+						//B//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있으면
+						//////onTrigerStay이벤트 발생
+
 						/*cout << "충돌 정보----------------------" << endl;
 						cout << "첫번째 객체 :" << objI->GetName() << endl;
 						cout << "첫번째 객체 aabb의 ID:" << aabbI->getId() << endl;

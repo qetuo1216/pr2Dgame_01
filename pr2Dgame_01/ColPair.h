@@ -9,5 +9,8 @@ private:
 public:
 	ColPair(GameObject *objI, GameObject *objJ, AABB *aabbI, AABB *aabbJ);
 	virtual ~ColPair();
+
+	//같은 충돌쌍인지 검사하는 함수
+	bool equal(GameObject *objI, GameObject *objJ, AABB *aabbI, AABB *aabbJ);
 };
 
