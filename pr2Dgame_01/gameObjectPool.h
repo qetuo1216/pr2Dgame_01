@@ -41,6 +41,8 @@ public:
 	//삭제 표시된 게임오브젝트 제거하기
 	void removeDeadObjs();
 	
+	//충돌쌍이 저장되었는지 판단하기
+	bool checkInColPairs(GameObject *objI, GameObject *objJ, AABB *aabbI, AABB *aabbJ);
 	//추가된 객체 debugDraw
 	void debugDraw();
 

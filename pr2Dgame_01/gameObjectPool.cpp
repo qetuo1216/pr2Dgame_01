@@ -122,18 +122,9 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 
 					if (x1 >= a0 && x0 <= a1 && y1 >= b0 && b1 >= y0)
 					{
-						bool checkInCol=false;
-						//충돌쌍이 저장되어있는지 판단.
-						for (int k = 0; k < colPair.size(); k++)
-						{
-							//calPair쌍과 objI(aabbI),objJ(aabbJ)이 저장되어있는가
-							if (colPair[k]->equal(objI, objJ, aabbI, aabbJ)==true)
-							{
-								checkInCol = true;
-							}
-						}
+						bool checkColPair = checkInColPairs(objI, objJ, aabbI, aabbJ);
 
-						if (checkInCol == false)
+						if (checkColPair==false)
 						{
 						//A//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있지 않으면
 						//////onTrigerEnter이벤트 발생
@@ -201,6 +192,22 @@ void gameObjectPool::removeDeadObjs()
 	}
 }
 
+
+bool gameObjectPool::checkInColPairs(GameObject * objI, GameObject * objJ, AABB * aabbI, AABB * aabbJ)
+{
+	
+	//충돌쌍이 저장되어있는지 판단.
+	for (int k = 0; k < colPair.size(); k++)
+	{
+		//calPair쌍과 objI(aabbI),objJ(aabbJ)이 저장되어있는가
+		if (colPair[k]->equal(objI, objJ, aabbI, aabbJ) == true)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 void gameObjectPool::debugDraw()
 {
