@@ -25,6 +25,13 @@ GameObject::GameObject(std::string name, int tag, bool state, float px, float py
 
 GameObject::~GameObject()//new를 생성하면 delete를 하기위해 사용
 {
+	//게임 오브젝트에 추가된 AABB제거하기
+	for (int i = 0; i < col.size(); i++)
+	{
+		delete col[i];
+	}
+	//stl vector 한꺼번에 지우기
+	col.clear();
 }
 
 void GameObject::init()
