@@ -60,6 +60,7 @@ public:
 	void setColColor(unsigned char r, unsigned char g, unsigned char b);//충돌체 출력 색상
 
 	//충돌 이벤트 메소드
-	virtual void onTriggerEnter(AABB* myAABB,GameObject *OtherObj,AABB* otherAABB);
+	virtual void onTriggerEnter(AABB* myAABB,GameObject *OtherObj,AABB* otherAABB);//처음 충돌
+	virtual void onTriggerStay(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//반복
 };
 

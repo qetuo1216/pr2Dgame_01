@@ -35,3 +35,8 @@ void TestObjB::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * other
 		}
 	}
 }
+
+void TestObjB::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	printf("*");
+}

@@ -147,9 +147,18 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 							//3//충돌 정보 저장하기
 							colPair.push_back(new ColPair(objI, objJ, aabbI, aabbJ));
 						}
-
+						else
+						{
 						//B//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있으면
-						//////onTrigerStay이벤트 발생
+						//////onTrigerStay이벤트 발생(반복 충돌)
+							//objI->onTriggerStay()
+
+							//1//objI에게 자신의 충돌체 aabbI와 게임오브젝트 ObjJ와 충돌하고, objJ의 aabbJ와 충돌이 발생(계속)
+							objI->onTriggerStay(aabbI, objJ, aabbJ);
+
+							//2//objJ에게 자신의 충돌체 aabbJ와 게임오브젝트 ObjI와 충돌하고, objI의 aabbI와 충돌이 발생(계속)
+							objJ->onTriggerStay(aabbJ, objI, aabbI);
+						}
 
 						/*cout << "충돌 정보----------------------" << endl;
 						cout << "첫번째 객체 :" << objI->GetName() << endl;
