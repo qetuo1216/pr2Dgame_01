@@ -8,6 +8,8 @@ ColPair::ColPair(GameObject *objI, GameObject *objJ, AABB *aabbI, AABB *aabbJ)
 	this->objJ = objJ;
 	this->aabbI = aabbI;
 	this->aabbJ = aabbJ;
+
+	collided = true;//충돌상태일때 생성자가 동작
 }
 
 
@@ -52,4 +54,14 @@ AABB * ColPair::getAABBI()
 AABB * ColPair::getAABBJ()
 {
 	return aabbJ;
+}
+
+bool ColPair::getCollided()
+{
+	return collided;
+}
+
+void ColPair::setCollided(bool collided)
+{
+	this->collided = collided;
 }
