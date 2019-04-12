@@ -12,5 +12,9 @@ public:
 
 	//같은 충돌쌍인지 검사하는 함수
 	bool equal(GameObject *objI, GameObject *objJ, AABB *aabbI, AABB *aabbJ);
+
+	//getter
+	GameObject * getObjI();
+	GameObject * getObjJ();
 };
 

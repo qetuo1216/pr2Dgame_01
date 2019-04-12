@@ -33,3 +33,13 @@ bool ColPair::equal(GameObject * objI, GameObject * objJ, AABB * aabbI, AABB * a
 		return false;
 
 }
+
+GameObject * ColPair::getObjI()
+{
+	return objI;
+}
+
+GameObject * ColPair::getObjJ()
+{
+	return objJ;
+}

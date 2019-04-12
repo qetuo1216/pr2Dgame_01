@@ -179,6 +179,25 @@ void gameObjectPool::removeDeadObjs()
 			
 			if (obj[l][i]->getAlive()==false)//일치하는 아이디를 찾음
 			{
+				//삭제되는 게임오브젝트가 충돌쌍에 있으면 제거함
+				for (int k = 0; k < colPair.size(); k++)
+				{
+					GameObject * objI = colPair[k]->getObjI();
+					GameObject * objJ = colPair[k]->getObjJ();
+					//o가 colPair의 i번째에 있는 objI나 J와 같으면 쌍을 제거
+					if (o->getId()==objI->getId()|| o->getId() == objJ->getId())
+					{
+						//충돌쌍 delete하기
+						delete colPair[k];
+
+						//백터 자리 제거
+						colPair.erase(colPair.begin() + k);
+
+						//지우지 않은때만 k를 증가
+						k--;
+					}
+				}
+
 				//1//게임오브젝트 delete
 				delete o;
 
