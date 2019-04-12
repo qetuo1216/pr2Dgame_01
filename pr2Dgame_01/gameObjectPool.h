@@ -47,6 +47,9 @@ public:
 	//삭제되는 겍체가저장된 충돌쌍 제거하기
 	void removeDeadColPair(GameObject *o);
 
+	//충돌쌍 상태 리셋(충돌 끝으로 상태 변경)
+	void resetColPairs();
+
 	//추가된 객체 debugDraw
 	void debugDraw();
 

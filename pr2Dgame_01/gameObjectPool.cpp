@@ -84,8 +84,19 @@ void gameObjectPool::draw()
 	
 }
 
+void gameObjectPool::resetColPairs()
+{
+	for (int k = 0; k < colPair.size(); k++)
+	{
+		colPair[k]->setCollided = false;//충돌이 끝났다고 상태 변경
+	}
+}
+
 void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 {
+	//모든 충돌쌍의 상태를 충돌이 끝났다고 상태를 표시함.
+	resetColPairs();
+
 	//1//1번 레이어 충돌검사하기
 	for (int j = 0; j < obj[1].size(); j++)
 	{
@@ -238,6 +249,7 @@ bool gameObjectPool::checkInColPairs(GameObject * objI, GameObject * objJ, AABB 
 		//calPair쌍과 objI(aabbI),objJ(aabbJ)이 저장되어있는가
 		if (colPair[k]->equal(objI, objJ, aabbI, aabbJ) == true)
 		{
+			colPair[k]->setCollided = true;//아직 충돌이 끝나지 않음
 			return true;
 		}
 	}
