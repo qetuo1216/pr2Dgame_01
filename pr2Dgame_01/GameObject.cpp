@@ -150,3 +150,7 @@ void GameObject::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * oth
 void GameObject::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
 }
+
+void GameObject::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+}

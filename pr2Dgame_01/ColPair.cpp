@@ -43,3 +43,13 @@ GameObject * ColPair::getObjJ()
 {
 	return objJ;
 }
+
+AABB * ColPair::getAABBI()
+{
+	return aabbI;
+}
+
+AABB * ColPair::getAABBJ()
+{
+	return aabbJ;
+}

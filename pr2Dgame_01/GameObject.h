@@ -62,5 +62,6 @@ public:
 	//충돌 이벤트 메소드
 	virtual void onTriggerEnter(AABB* myAABB,GameObject *OtherObj,AABB* otherAABB);//처음 충돌
 	virtual void onTriggerStay(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//반복
+	virtual void onTriggerExit(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//충돌 종료
 };
 

@@ -40,3 +40,8 @@ void TestObjB::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * otherA
 {
 	printf("*");
 }
+
+void TestObjB::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	printf("충돌 종료");
+}

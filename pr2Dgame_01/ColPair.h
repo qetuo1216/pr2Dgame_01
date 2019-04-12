@@ -16,5 +16,9 @@ public:
 	//getter
 	GameObject * getObjI();
 	GameObject * getObjJ();
+
+	//충돌쌍에 저장된 AABB가져오기
+	AABB * getAABBI();
+	AABB * getAABBJ();
 };
 

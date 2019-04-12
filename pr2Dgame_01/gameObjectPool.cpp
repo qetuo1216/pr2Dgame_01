@@ -187,6 +187,14 @@ void gameObjectPool::removeDeadObjs()
 					//o가 colPair의 i번째에 있는 objI나 J와 같으면 쌍을 제거
 					if (o->getId()==objI->getId()|| o->getId() == objJ->getId())
 					{
+
+						AABB * aabbI = colPair[k]->getAABBI();
+						AABB * aabbJ = colPair[k]->getAABBJ();
+
+						//충돌쌍이 제거되면서 발생하는 충돌 종료 이벤트를 발생
+						objI->onTriggerExit(aabbI, objJ, aabbJ);
+						objJ->onTriggerExit(aabbJ, objI, aabbI);
+						
 						//충돌쌍 delete하기
 						delete colPair[k];
 
