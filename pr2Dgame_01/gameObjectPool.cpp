@@ -98,66 +98,70 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 			GameObject * objI = obj[1][i];
 			GameObject * objJ = obj[1][j];
 
-			//objI와 objJ에서 충돌체 목록 가져오기
-			std::vector<AABB *> colI = objI->getCollider();
-			std::vector<AABB *> colJ = objJ->getCollider();
+			//objI와 objJ가 삭제 대상이 아닌 경우만 충돌검사한다.
+			if(objI->getAlive()==true&&objJ->getAlive()==true)
+			{ 
+				//objI와 objJ에서 충돌체 목록 가져오기
+				std::vector<AABB *> colI = objI->getCollider();
+				std::vector<AABB *> colJ = objJ->getCollider();
 
-			//충돌체 (AABB)간의 충돌검사
-			for (int ii = 0; ii < colI.size(); ii++)
-			{
-				for (int jj = 0; jj < colJ.size(); jj++)
+				//충돌체 (AABB)간의 충돌검사
+				for (int ii = 0; ii < colI.size(); ii++)
 				{
-					AABB * aabbI = colI[ii];//objI에서 가져온 ii번째 AABB//출력된 사각형
-					AABB * aabbJ = colJ[jj];//objI에서 가져온 ii번째 AABB
-
-					//aabbI와 aabbJ가 사각형 단위로 충돌했는지 검사
-					//cout << objI->GetName() << ", " << objJ->GetName() << endl;
-					
-					//사각형의 좌표를 가져와서 선 단위로 가져온다.(좌측상단,우측하단)
-					float x0, y0, x1, y1;//aabbI의 꼭지점 좌표
-					float a0, b0, a1, b1;//aabbJ의 꼭지점 좌표
-
-					aabbI->getBB(x0, y0, x1, y1);
-					aabbJ->getBB(a0, b0, a1, b1);
-
-					if (x1 >= a0 && x0 <= a1 && y1 >= b0 && b1 >= y0)
+					for (int jj = 0; jj < colJ.size(); jj++)
 					{
-						bool checkColPair = checkInColPairs(objI, objJ, aabbI, aabbJ);
+						AABB * aabbI = colI[ii];//objI에서 가져온 ii번째 AABB//출력된 사각형
+						AABB * aabbJ = colJ[jj];//objI에서 가져온 ii번째 AABB
 
-						if (checkColPair==false)
+						//aabbI와 aabbJ가 사각형 단위로 충돌했는지 검사
+						//cout << objI->GetName() << ", " << objJ->GetName() << endl;
+
+						//사각형의 좌표를 가져와서 선 단위로 가져온다.(좌측상단,우측하단)
+						float x0, y0, x1, y1;//aabbI의 꼭지점 좌표
+						float a0, b0, a1, b1;//aabbJ의 꼭지점 좌표
+
+						aabbI->getBB(x0, y0, x1, y1);
+						aabbJ->getBB(a0, b0, a1, b1);
+
+						if (x1 >= a0 && x0 <= a1 && y1 >= b0 && b1 >= y0)
 						{
-						//A//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있지 않으면
-						//////onTrigerEnter이벤트 발생
-						//충돌 정보(이벤트) 전달
-							//1//objI에게 자신의 충돌체 aabbI와 게임오브젝트 ObjJ와 충돌하고, objJ의 aabbJ와 충돌이 발생
-							objI->onTriggerEnter(aabbI, objJ, aabbJ);
+							bool checkColPair = checkInColPairs(objI, objJ, aabbI, aabbJ);
 
-							//2//objJ에게 자신의 충돌체 aabbJ와 게임오브젝트 ObjI와 충돌하고, objI의 aabbI와 충돌이 발생
-							objJ->onTriggerEnter(aabbJ, objI, aabbI);
+							if (checkColPair == false)
+							{
+								//A//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있지 않으면
+								//////onTrigerEnter이벤트 발생
+								//충돌 정보(이벤트) 전달
+									//1//objI에게 자신의 충돌체 aabbI와 게임오브젝트 ObjJ와 충돌하고, objJ의 aabbJ와 충돌이 발생
+								objI->onTriggerEnter(aabbI, objJ, aabbJ);
 
-							//3//충돌 정보 저장하기
-							colPair.push_back(new ColPair(objI, objJ, aabbI, aabbJ));
+								//2//objJ에게 자신의 충돌체 aabbJ와 게임오브젝트 ObjI와 충돌하고, objI의 aabbI와 충돌이 발생
+								objJ->onTriggerEnter(aabbJ, objI, aabbI);
+
+								//3//충돌 정보 저장하기
+								colPair.push_back(new ColPair(objI, objJ, aabbI, aabbJ));
+							}
+							else
+							{
+								//B//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있으면
+								//////onTrigerStay이벤트 발생(반복 충돌)
+									//objI->onTriggerStay()
+
+									//1//objI에게 자신의 충돌체 aabbI와 게임오브젝트 ObjJ와 충돌하고, objJ의 aabbJ와 충돌이 발생(계속)
+								objI->onTriggerStay(aabbI, objJ, aabbJ);
+
+								//2//objJ에게 자신의 충돌체 aabbJ와 게임오브젝트 ObjI와 충돌하고, objI의 aabbI와 충돌이 발생(계속)
+								objJ->onTriggerStay(aabbJ, objI, aabbI);
+							}
+
+							/*cout << "충돌 정보----------------------" << endl;
+							cout << "첫번째 객체 :" << objI->GetName() << endl;
+							cout << "첫번째 객체 aabb의 ID:" << aabbI->getId() << endl;
+
+							cout << "두번째 객체 :" << objJ->GetName() << endl;
+							cout << "첫번째 객체 aabb의 ID:" << aabbJ->getId() << endl;*/
+
 						}
-						else
-						{
-						//B//objI(aabbI),objJ(aabbJ)의 충돌쌍이 저장되어 있으면
-						//////onTrigerStay이벤트 발생(반복 충돌)
-							//objI->onTriggerStay()
-
-							//1//objI에게 자신의 충돌체 aabbI와 게임오브젝트 ObjJ와 충돌하고, objJ의 aabbJ와 충돌이 발생(계속)
-							objI->onTriggerStay(aabbI, objJ, aabbJ);
-
-							//2//objJ에게 자신의 충돌체 aabbJ와 게임오브젝트 ObjI와 충돌하고, objI의 aabbI와 충돌이 발생(계속)
-							objJ->onTriggerStay(aabbJ, objI, aabbI);
-						}
-
-						/*cout << "충돌 정보----------------------" << endl;
-						cout << "첫번째 객체 :" << objI->GetName() << endl;
-						cout << "첫번째 객체 aabb의 ID:" << aabbI->getId() << endl;
-
-						cout << "두번째 객체 :" << objJ->GetName() << endl;
-						cout << "첫번째 객체 aabb의 ID:" << aabbJ->getId() << endl;*/
-						
 					}
 				}
 			}
