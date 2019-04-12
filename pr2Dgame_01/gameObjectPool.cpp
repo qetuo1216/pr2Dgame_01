@@ -88,7 +88,7 @@ void gameObjectPool::resetColPairs()
 {
 	for (int k = 0; k < colPair.size(); k++)
 	{
-		colPair[k]->setCollided = false;//충돌이 끝났다고 상태 변경
+		colPair[k]->setCollided(false);//충돌이 끝났다고 상태 변경
 	}
 }
 
@@ -175,6 +175,21 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 						}
 					}
 				}
+				////충돌 상태가 충돌 끝으로 유지되는 충돌쌍은 충돌이 된 것으로 표시
+				//for (int k = 0; k < colPair.size(); k++)
+				//{
+				//	if (colPair[k]->getCollided() == false)
+				//	{
+				//		printf("\n충돌이 끝남");
+
+				//		//충돌쌍 삭제
+				//		delete colPair[k];
+
+				//		//stlVector 삭제
+				//		colPair.erase(colPair.begin() + k);
+				//		k--;
+				//	}
+				//}
 			}
 		}
 
@@ -238,6 +253,7 @@ void gameObjectPool::removeDeadColPair(GameObject * o)
 			k--;
 		}
 	}
+
 }
 
 bool gameObjectPool::checkInColPairs(GameObject * objI, GameObject * objJ, AABB * aabbI, AABB * aabbJ)
@@ -249,7 +265,8 @@ bool gameObjectPool::checkInColPairs(GameObject * objI, GameObject * objJ, AABB 
 		//calPair쌍과 objI(aabbI),objJ(aabbJ)이 저장되어있는가
 		if (colPair[k]->equal(objI, objJ, aabbI, aabbJ) == true)
 		{
-			colPair[k]->setCollided = true;//아직 충돌이 끝나지 않음
+			colPair[k]->setCollided(true);//아직 충돌이 끝나지 않음
+			
 			return true;
 		}
 	}
