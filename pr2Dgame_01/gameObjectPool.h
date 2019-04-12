@@ -43,6 +43,10 @@ public:
 	
 	//충돌쌍이 저장되었는지 판단하기
 	bool checkInColPairs(GameObject *objI, GameObject *objJ, AABB *aabbI, AABB *aabbJ);
+	
+	//삭제되는 겍체가저장된 충돌쌍 제거하기
+	void removeDeadColPair(GameObject *o);
+
 	//추가된 객체 debugDraw
 	void debugDraw();
 

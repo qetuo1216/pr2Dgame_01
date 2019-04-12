@@ -172,6 +172,7 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 		//std::cout <<endl<< "--------------------" << endl;
 }
 
+
 void gameObjectPool::removeDeadObjs()
 {
 	//객체 안에서 바로 delete하는 것은 코드가 안전하지 못한다.
@@ -181,34 +182,9 @@ void gameObjectPool::removeDeadObjs()
 		{
 				GameObject *o = obj[l][i];
 			
-			if (obj[l][i]->getAlive()==false)//일치하는 아이디를 찾음
+			if (o->getAlive()==false)//일치하는 아이디를 찾음
 			{
-				//삭제되는 게임오브젝트가 충돌쌍에 있으면 제거함
-				for (int k = 0; k < colPair.size(); k++)
-				{
-					GameObject * objI = colPair[k]->getObjI();
-					GameObject * objJ = colPair[k]->getObjJ();
-					//o가 colPair의 i번째에 있는 objI나 J와 같으면 쌍을 제거
-					if (o->getId()==objI->getId()|| o->getId() == objJ->getId())
-					{
-
-						AABB * aabbI = colPair[k]->getAABBI();
-						AABB * aabbJ = colPair[k]->getAABBJ();
-
-						//충돌쌍이 제거되면서 발생하는 충돌 종료 이벤트를 발생
-						objI->onTriggerExit(aabbI, objJ, aabbJ);
-						objJ->onTriggerExit(aabbJ, objI, aabbI);
-						
-						//충돌쌍 delete하기
-						delete colPair[k];
-
-						//백터 자리 제거
-						colPair.erase(colPair.begin() + k);
-
-						//지우지 않은때만 k를 증가
-						k--;
-					}
-				}
+				removeDeadColPair(o);
 
 				//1//게임오브젝트 delete
 				delete o;
@@ -223,6 +199,35 @@ void gameObjectPool::removeDeadObjs()
 	}
 }
 
+void gameObjectPool::removeDeadColPair(GameObject * o)
+{
+	//삭제되는 게임오브젝트가 충돌쌍에 있으면 제거함
+	for (int k = 0; k < colPair.size(); k++)
+	{
+		GameObject * objI = colPair[k]->getObjI();
+		GameObject * objJ = colPair[k]->getObjJ();
+		//o가 colPair의 i번째에 있는 objI나 J와 같으면 쌍을 제거
+		if (o->getId() == objI->getId() || o->getId() == objJ->getId())
+		{
+
+			AABB * aabbI = colPair[k]->getAABBI();
+			AABB * aabbJ = colPair[k]->getAABBJ();
+
+			//충돌쌍이 제거되면서 발생하는 충돌 종료 이벤트를 발생
+			objI->onTriggerExit(aabbI, objJ, aabbJ);
+			objJ->onTriggerExit(aabbJ, objI, aabbI);
+
+			//충돌쌍 delete하기
+			delete colPair[k];
+
+			//백터 자리 제거
+			colPair.erase(colPair.begin() + k);
+
+			//지우지 않은때만 k를 증가
+			k--;
+		}
+	}
+}
 
 bool gameObjectPool::checkInColPairs(GameObject * objI, GameObject * objJ, AABB * aabbI, AABB * aabbJ)
 {
@@ -239,6 +244,8 @@ bool gameObjectPool::checkInColPairs(GameObject * objI, GameObject * objJ, AABB 
 
 	return false;
 }
+
+
 
 void gameObjectPool::debugDraw()
 {
