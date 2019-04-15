@@ -84,7 +84,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}*/
 	//메인에 테스트 객체 추가
 	pool->addGameObject(new TestObjA(100, 50), 1);
-	pool->addGameObject(new TestObjB(300, 50), 1);
+	pool->addGameObject(new TestObjB(300, 50), 2);
 
     // 기본 메시지 루프입니다:
     //while (GetMessage(&msg, nullptr, 0, 0))

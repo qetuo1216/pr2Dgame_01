@@ -38,6 +38,7 @@ public:
 	//풀에 추가된 객체 충돌검사하기
 	void checkCollision();
 	void checkSameLayerCollision(int l);//1번 레이어 충돌 검사
+	void checkDifLayerCollision(int lI,int lJ);//lI번 레이어와 lJ번 레이어 충돌 검사
 
 	//삭제 표시된 게임오브젝트 제거하기
 	void removeDeadObjs();

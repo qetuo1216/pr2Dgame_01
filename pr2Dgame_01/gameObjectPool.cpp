@@ -131,9 +131,91 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 		checkSameLayerCollision(l);
 	}
 	
+	//다른 레이어에 있는 게임 오브젝트 충돌검사
+
+	for (int lJ = 0; lJ < MAX_LAYER; lJ++)
+	{
+		for (int lI = 0; lI < MAX_LAYER; lI++)
+		{
+			if (lI < lJ) 
+			{ 
+				checkDifLayerCollision(lI, lJ); 
+			}
+		}
+	}
+
 	removeUnColliedPairs();//충돌이 종료된 쌍 제거
 		//std::cout <<endl<< "--------------------" << endl;
 }
+
+void gameObjectPool::checkDifLayerCollision(int lI, int lJ)
+{
+	//////////lI, lJ-번레이어 충돌검사하기////////
+	for (int j = 0; j < obj[lJ].size(); j++)
+	{
+		for (int i = 0; i < obj[lI].size(); i++)
+		{
+			GameObject * objI = obj[lI][i];
+			GameObject * objJ = obj[lJ][j];
+
+			//objI 와 objJ가 삭제대상이 아닌경우만..충돌 검사를 실행함
+			if (objI->getAlive() == true && objJ->getAlive() == true)
+			{
+				////////objI, objJ에서 충돌체 목록 가져오기/////
+				std::vector<AABB *> colI = objI->getCollider();
+				std::vector<AABB *> colJ = objJ->getCollider();
+
+				/////////////충돌체(AABB)간의 충돌검사//////////
+				for (int ii = 0; ii < colI.size(); ii++)
+				{
+					for (int jj = 0; jj < colJ.size(); jj++)
+					{
+						AABB * aabbI = colI[ii];  //ObjI에서 가져온 ii번째 AABB
+						AABB * aabbJ = colJ[jj];  //ObjI에서 가져온 jj번째 AABB
+
+						//////aabbI 와 aabbJ 가 충돌했는지를 검사함//////
+						float x0, y0, x1, y1;    //aabbI의 꼭지점좌표
+						float a0, b0, a1, b1;    //aabbJ의 꼭지점좌표
+
+						aabbI->getBB(x0, y0, x1, y1);
+						aabbJ->getBB(a0, b0, a1, b1);
+
+						if (x1 >= a0 && x0 <= a1 && y1 >= b0 && b1 >= y0)
+						{
+							///////////////충돌쌍이 저장되어 있는지를 판단함/////////
+							bool checkInColPair = checkInColPairs(objI, objJ, aabbI, aabbJ);
+
+							if (checkInColPair == false) //[A]ObjI (aabbI), ObjJ(aabbJ)의 충돌쌍이 저장되어 있지 않으면..
+							{
+								//// -OnTriggerEnter 이벤트 발생시키고..충돌쌍을 저장함									
+								//[1]ObjI에게..자신의 충돌체 aabbI와 게임오브젝트 ObjJ와 충돌하고..ObjJ의 aabbJ와 충돌이 발생함
+								objI->onTriggerEnter(aabbI, objJ, aabbJ);
+
+								//[2]ObjJ에게..자신의 충돌체 aabbJ와 게임오브젝트 ObjI와 충돌하고..ObjI의 aabbI와 충돌이 발생함
+								objJ->onTriggerEnter(aabbJ, objI, aabbI);
+
+								//[3]충돌 정보 저장하기...
+								colPair.push_back(new ColPair(objI, objJ, aabbI, aabbJ));
+							}
+							else { //[B]ObjI (aabbI), ObjJ(aabbJ)의 충돌쌍이 저장되어 있으면...
+
+								  //// -OnTriggerStay 이벤트 발생 (충돌이 반복되고 있음)
+								objI->onTriggerStay(aabbI, objJ, aabbJ);
+
+								//[2]ObjJ에게..자신의 충돌체 aabbJ와 게임오브젝트 ObjI와 충돌하고..ObjI의 aabbI와 충돌이 발생함
+								objJ->onTriggerStay(aabbJ, objI, aabbI);
+							}
+
+						}
+
+					}
+				}
+
+			}
+		}
+	}
+}
+
 void gameObjectPool::checkSameLayerCollision(int l)
 {
 	//1//1번 레이어 충돌검사하기
