@@ -145,7 +145,7 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 	}
 
 	removeUnColliedPairs();//충돌이 종료된 쌍 제거
-		//std::cout <<endl<< "--------------------" << endl;
+		//std::cout <<endl<< "--------------------" << endl; 
 }
 
 void gameObjectPool::checkDifLayerCollision(int lI, int lJ)
