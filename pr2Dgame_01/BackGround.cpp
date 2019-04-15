@@ -15,6 +15,9 @@ void BackGround::init()
 	//배경 이미지 로드하기
 	readBMPRect("asset/배경.bmp", 0, 0, 4303, 224, &splite);
 
+	//플레이어 이동을 막는 충돌체 추가.
+	addCollider(new AABB(0, 140, 500, 25, 0));
+
 	//스크롤 속도 초기화
 	speed = 100;//초당 100px로 이동
 }
