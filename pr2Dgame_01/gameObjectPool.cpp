@@ -125,8 +125,19 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 	//모든 충돌쌍의 상태를 충돌이 끝났다고 상태를 표시함.
 	resetColPairs();
 
+	//같은 레이어에 있는 게임 오브젝트 충돌검사
+	for (int l = 0; l < MAX_LAYER; l++)
+	{
+		checkSameLayerCollision(l);
+	}
+	
+	removeUnColliedPairs();//충돌이 종료된 쌍 제거
+		//std::cout <<endl<< "--------------------" << endl;
+}
+void gameObjectPool::checkSameLayerCollision(int l)
+{
 	//1//1번 레이어 충돌검사하기
-	for (int j = 0; j < obj[1].size(); j++)
+	for (int j = 0; j < obj[l].size(); j++)
 	{
 		for (int i = 0; i < j; i++)
 		{
@@ -134,12 +145,12 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 			//if (i < j)//중복된 순서쌍 제거
 			//std::cout << "[" << obj[1][i]->GetName() << ", " << obj[1][j]->GetName() << "]";
 			//충돌체 생성
-			GameObject * objI = obj[1][i];
-			GameObject * objJ = obj[1][j];
+			GameObject * objI = obj[l][i];
+			GameObject * objJ = obj[l][j];
 
 			//objI와 objJ가 삭제 대상이 아닌 경우만 충돌검사한다.
-			if(objI->getAlive()==true&&objJ->getAlive()==true)
-			{ 
+			if (objI->getAlive() == true && objJ->getAlive() == true)
+			{
 				//objI와 objJ에서 충돌체 목록 가져오기
 				std::vector<AABB *> colI = objI->getCollider();
 				std::vector<AABB *> colJ = objJ->getCollider();
@@ -203,30 +214,27 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 						}
 					}
 				}
-				////충돌 상태가 충돌 끝으로 유지되는 충돌쌍은 충돌이 된 것으로 표시
-				//for (int k = 0; k < colPair.size(); k++)
-				//{
-				//	if (colPair[k]->getCollided() == false)
-				//	{
-				//		printf("\n충돌이 끝남");
+				/*//충돌 상태가 충돌 끝으로 유지되는 충돌쌍은 충돌이 된 것으로 표시
+				for (int k = 0; k < colPair.size(); k++)
+				{
+					if (colPair[k]->getCollided() == false)
+					{
+						printf("\n충돌이 끝남");
 
-				//		//충돌쌍 삭제
-				//		delete colPair[k];
+						//충돌쌍 삭제
+						delete colPair[k];
 
-				//		//stlVector 삭제
-				//		colPair.erase(colPair.begin() + k);
-				//		k--;
-				//	}
-				//}
+						//stlVector 삭제
+						colPair.erase(colPair.begin() + k);
+						k--;
+					}
+				}*/
 			}
 		}
 
-		
-	}
-	removeUnColliedPairs();//충돌이 종료된 쌍 제거
-		//std::cout <<endl<< "--------------------" << endl;
-}
 
+	}
+}
 
 void gameObjectPool::removeDeadObjs()
 {
