@@ -29,3 +29,12 @@ void BackGround::update()
 	//translate(-d, 0);//잠시 막아놓음
 	//px = px - d;
 }
+
+void BackGround::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	if (OtherObj->GetName() == "나루토"&&otherAABB->getId() == 0 && myAABB->getId() == 0)
+	{
+		//printf("충돌");
+		OtherObj->translate(0, 1);
+	}
+}

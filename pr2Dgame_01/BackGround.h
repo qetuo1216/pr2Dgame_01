@@ -13,5 +13,6 @@ public:
 	//init,update 오버라이딩
 	void init();
 	void update();//이동속도 계산하여 이동시킴
+	void onTriggerStay(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//처음 충돌
 };
 
