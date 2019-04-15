@@ -82,6 +82,8 @@ void Player::init()
 	//애니메 속도 지정하기
 	setFrameDelay(0.15);
 
+	//배경 이동 방지 충돌체 추가하기
+	addCollider(new AABB(0, 0, 40, 56, 0));
 	//초기 애니메 변경하기
 	state = idle;
 	play(idle);
@@ -135,7 +137,7 @@ void Player::aniIdle()
 	//shift가 안눌리고 
 	if (getKey(VK_LSHIFT) != true)
 	{
-		if (getKey(VK_LEFT) == true || getKey(VK_RIGHT) == true)//이동키 눌리면
+		if (getKey(VK_LEFT) == true || getKey(VK_RIGHT) == true|| getKey(VK_UP) == true || getKey(VK_DOWN) == true)//이동키 눌리면
 		{
 			state = walk;
 			play(walk);
@@ -181,8 +183,17 @@ void Player::aniWalk()
 		translate(-d, 0);
 
 	}
+	if (getKey(VK_UP) == true)
+	{
+		translate(0, -d);
+	}
+	if (getKey(VK_DOWN) == true)
+	{
+		translate(0, d);
+	}
+
 	//이동 키가 놓이면 idle로
-	if (getKey(VK_RIGHT) != true && getKey(VK_LEFT) != true)
+	if (getKey(VK_RIGHT) != true && getKey(VK_LEFT) != true && getKey(VK_UP) != true && getKey(VK_DOWN) != true)
 	{
 		state = idle;
 		play(idle);
