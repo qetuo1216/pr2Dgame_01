@@ -91,7 +91,35 @@ void gameObjectPool::resetColPairs()
 		colPair[k]->setCollided(false);//충돌이 끝났다고 상태 변경
 	}
 }
+void gameObjectPool::removeUnColliedPairs()
+{
+	//삭제되는 게임오브젝트가 충돌쌍에 있으면 제거함
+	for (int k = 0; k < colPair.size(); k++)
+	{
+		
+		//o가 colPair의 i번째에 있는 objI나 J와 같으면 쌍을 제거
+		if (colPair[k]->getCollided()==false)
+		{
+			GameObject * objI = colPair[k]->getObjI();
+			GameObject * objJ = colPair[k]->getObjJ();
+			AABB * aabbI = colPair[k]->getAABBI();
+			AABB * aabbJ = colPair[k]->getAABBJ();
 
+			//충돌쌍이 제거되면서 발생하는 충돌 종료 이벤트를 발생
+			objI->onTriggerExit(aabbI, objJ, aabbJ);
+			objJ->onTriggerExit(aabbJ, objI, aabbI);
+
+			//충돌쌍 delete하기
+			delete colPair[k];
+
+			//백터 자리 제거
+			colPair.erase(colPair.begin() + k);
+
+			//지우지 않은때만 k를 증가
+			k--;
+		}
+	}
+}
 void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 {
 	//모든 충돌쌍의 상태를 충돌이 끝났다고 상태를 표시함.
@@ -195,6 +223,7 @@ void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 
 		
 	}
+	removeUnColliedPairs();//충돌이 종료된 쌍 제거
 		//std::cout <<endl<< "--------------------" << endl;
 }
 
@@ -235,7 +264,6 @@ void gameObjectPool::removeDeadColPair(GameObject * o)
 		//o가 colPair의 i번째에 있는 objI나 J와 같으면 쌍을 제거
 		if (o->getId() == objI->getId() || o->getId() == objJ->getId())
 		{
-
 			AABB * aabbI = colPair[k]->getAABBI();
 			AABB * aabbJ = colPair[k]->getAABBJ();
 

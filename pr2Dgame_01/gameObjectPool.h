@@ -49,6 +49,7 @@ public:
 
 	//충돌쌍 상태 리셋(충돌 끝으로 상태 변경)
 	void resetColPairs();
+	void removeUnColliedPairs();//충돌 종료 처리 함수
 
 	//추가된 객체 debugDraw
 	void debugDraw();

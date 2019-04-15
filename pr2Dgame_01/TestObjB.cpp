@@ -43,5 +43,5 @@ void TestObjB::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * otherA
 
 void TestObjB::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
-	printf("충돌 종료");
+	std::cout << "테스트 obj가 " << OtherObj->GetName()<<"과 충돌이 끝남"<<std::endl;
 }
