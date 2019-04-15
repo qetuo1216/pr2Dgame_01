@@ -83,7 +83,8 @@ void Player::init()
 	setFrameDelay(0.15);
 
 	//배경 이동 방지 충돌체 추가하기
-	addCollider(new AABB(0, 38, 40, 10, 0));
+	addCollider(new AABB(0, 50, 40, 1, 0));
+
 	//초기 애니메 변경하기
 	state = idle;
 	play(idle);

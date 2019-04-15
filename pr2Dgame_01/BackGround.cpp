@@ -16,7 +16,9 @@ void BackGround::init()
 	readBMPRect("asset/배경.bmp", 0, 0, 4303, 224, &splite);
 
 	//플레이어 이동을 막는 충돌체 추가.
-	addCollider(new AABB(0, 140, 500, 25, 0));
+	addCollider(new AABB(0, 140, 500, 25, 0));//위로 이동 방지 충돌체
+	addCollider(new AABB(0, 220, 500, 25, 1));//위로 이동 방지 충돌체
+	addCollider(new AABB(208, 160, 35, 15, 0));//위로 이동 방지 충돌체
 
 	//스크롤 속도 초기화
 	speed = 100;//초당 100px로 이동
@@ -36,5 +38,10 @@ void BackGround::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * othe
 	{
 		//printf("충돌");
 		OtherObj->translate(0, 1);
+	}
+
+	if (OtherObj->GetName() == "나루토"&&otherAABB->getId() == 0 && myAABB->getId() == 1)
+	{
+		OtherObj->translate(0, -1);
 	}
 }
