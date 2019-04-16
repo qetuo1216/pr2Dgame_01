@@ -318,8 +318,8 @@ void Player::aniJump()
 		if (jumpStartY < py)
 		{
 			//점프 종료
-			py = jumpStartY;
-
+			//py = jumpStartY;
+			translate(moveDist, py - jumpStartY);
 			//애니메이션 상태 종료
 			state = idle;
 			play(state);
