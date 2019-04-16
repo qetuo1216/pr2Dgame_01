@@ -106,7 +106,7 @@ void Player::init()
 		Sprite sprite;
 
 		readBMPRect("asset/naruto.bmp", 2 + i * (57 + 2), 1416, 57, 56, &sprite);
-		addSpriteCollider(&sprite, new AABB(0, 0, 57, 56, 0), px, py);
+		//addSpriteCollider(&sprite, new AABB(0, 0, 57, 56, 0), px, py);
 
 		addAniFrame(sprite, airAttack);//4번 배열에 집어넣음
 	}
