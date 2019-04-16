@@ -41,6 +41,9 @@ void Player::init()
 	{
 		Sprite sprite;
 		readBMPRect("asset/naruto.bmp", 2 + i * (36 + 2), 80, 36, 56, &sprite);//크기가 42*54, 우측상단이 2.12
+
+		addSpriteCollider(&sprite, new AABB(0, 0, 33, 56, 0), px, py);
+
 		addAniFrame(sprite, walk);//1번 배열에 집어넣음
 	}
 
@@ -51,9 +54,12 @@ void Player::init()
 
 		readBMPRect("asset/naruto.bmp", 2 + i * (68 + 2), 150, 68, 45, &sprite);//크기가 42*54, 우측상단이 2.12
 
+
 		//앵커포인트 조정하기
 		sprite.ax = 10;//+는이미지가 왼쪽으로 이동,-는 오른쪽
 		sprite.ay = -10;//+는이미지가 위으로 이동,-는 아래로
+
+		addSpriteCollider(&sprite, new AABB(-sprite.ax, -sprite.ay, 68, 45, 0), px, py);
 
 		addAniFrame(sprite, run);//2번 배열에 집어넣음
 	}
@@ -65,6 +71,7 @@ void Player::init()
 
 		readBMPRect("asset/naruto.bmp", 2 + i * (50 + 2), 332, 50, 51, &sprite);//크기가 42*54, 우측상단이 2.12
 
+		addSpriteCollider(&sprite, new AABB(0, 0, 50, 50, 0), px, py);
 		//앵커포인트 조정하기
 		//sprite.ay = 20;//+는이미지가 위으로 이동,-는 아래로
 		addAniFrame(sprite, jump);//3번 배열에 집어넣음
@@ -76,11 +83,12 @@ void Player::init()
 		Sprite sprite;
 
 		readBMPRect("asset/naruto.bmp", 2 + i * (58 + 2), 584, 58, 48, &sprite);//크기가 42*54, 우측상단이 2.12
-
-
+		
 		//앵커포인트 조정하기
 		sprite.ay = -5;//+는이미지가 위으로 이동,-는 아래로
 
+		addSpriteCollider(&sprite, new AABB(0, -sprite.ay, 58, 48, 0), px, py);
+		
 		addAniFrame(sprite, attack);//4번 배열에 집어넣음
 	}
 
@@ -88,6 +96,8 @@ void Player::init()
 	Sprite sprite;
 	readBMPRect("asset/naruto.bmp", 2, 977, 42, 40, &sprite);//크기가 42*54, 우측상단이 2.12
 	sprite.ax = 10;//+는이미지가 왼쪽으로 이동,-는 오른쪽
+
+	addSpriteCollider(&sprite, new AABB(-sprite.ay, 0, 42, 40, 0), px, py);
 	addAniFrame(sprite, hit);//5번 배열에 집어넣음
 
 	//6번 airAttack
@@ -96,7 +106,8 @@ void Player::init()
 		Sprite sprite;
 
 		readBMPRect("asset/naruto.bmp", 2 + i * (57 + 2), 1416, 57, 56, &sprite);
-		
+		addSpriteCollider(&sprite, new AABB(0, 0, 57, 56, 0), px, py);
+
 		addAniFrame(sprite, airAttack);//4번 배열에 집어넣음
 	}
 	//애니메 속도 지정하기
