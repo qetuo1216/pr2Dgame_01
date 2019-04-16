@@ -72,6 +72,10 @@ void Animation::debugDraw()
 	}
 }
 
+std::vector<AABB*> Animation::getCollider()
+{
+	return frames[aniIdx][frameIdx].col;
+}
 void Animation::translate(float dx, float dy)
 {
 	//게임 오브젝트 이동

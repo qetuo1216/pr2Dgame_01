@@ -48,7 +48,7 @@ public:
 	void setAlive(bool alive);
 
 	std::string GetName();
-	std::vector<AABB *> getCollider();
+	virtual std::vector<AABB *> getCollider();
 	//기타
 	virtual void translate(float dx,float dy);//이동(translate) 함수
 

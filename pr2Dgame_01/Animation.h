@@ -24,7 +24,10 @@ public:
 
 	void draw();
 	virtual void debugDraw();
+
 	void translate(float dx, float dy);
+
+	std::vector<AABB *> getCollider();
 	//플레이어 자체가 init과 update를 가질 예정
 
 	//기타 활용함수
