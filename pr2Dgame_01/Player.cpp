@@ -16,19 +16,30 @@ Player::~Player()
 void Player::init()
 {
 	//애니메이션 로드하기
-	Sprite sprite;
+	//Sprite sprite;
 	//0번 idle
 	for (int i = 0; i < 4; i++)
 	{
 
-	readBMPRect("asset/naruto.bmp", 2+i*(42+2), 12, 42, 54,&sprite);//크기가 42*54, 우측상단이 2.12
-	addAniFrame(sprite,idle);//0번 배열에 집어넣음
-	//frames.push_back(sprite);//애니메이션의 frames에 넣음
+		Sprite sprite;//※
+
+		readBMPRect("asset/naruto.bmp", 2+i*(42+2), 12, 42, 54,&sprite);//크기가 42*54, 우측상단이 2.12
+	
+		//충돌체 추가하기
+		//sprite.col.push_back(new AABB(0, 0, 42, 54, 0));
+		//sprite.col.clear();//이전 것 지우기
+
+		addSpriteCollider(&sprite, new AABB(0,0,42,54,0),px,py);//※같은 좌표에 계속 넣으면 좌표가 어긋남, 충돌체를 이용할 때 이전 것을 없애야한다.
+
+		addAniFrame(sprite,idle);//0번 배열에 집어넣음
+		//frames.push_back(sprite);//애니메이션의 frames에 넣음
 	}
+	//sprite.col.clear();//추가된 충돌체 제거
 
 	//1번 walk
 	for (size_t i = 0; i < 6; i++)
 	{
+		Sprite sprite;
 		readBMPRect("asset/naruto.bmp", 2 + i * (36 + 2), 80, 36, 56, &sprite);//크기가 42*54, 우측상단이 2.12
 		addAniFrame(sprite, walk);//1번 배열에 집어넣음
 	}
@@ -36,6 +47,8 @@ void Player::init()
 	//2번 run
 	for (size_t i = 0; i < 6; i++)
 	{
+		Sprite sprite;
+
 		readBMPRect("asset/naruto.bmp", 2 + i * (68 + 2), 150, 68, 45, &sprite);//크기가 42*54, 우측상단이 2.12
 
 		//앵커포인트 조정하기
@@ -48,6 +61,8 @@ void Player::init()
 	//3번 jump
 	for (size_t i = 0; i < 2; i++)
 	{
+		Sprite sprite;
+
 		readBMPRect("asset/naruto.bmp", 2 + i * (50 + 2), 332, 50, 51, &sprite);//크기가 42*54, 우측상단이 2.12
 
 		//앵커포인트 조정하기
@@ -58,6 +73,8 @@ void Player::init()
 	//4번 attack
 	for (size_t i = 0; i < 3; i++)
 	{
+		Sprite sprite;
+
 		readBMPRect("asset/naruto.bmp", 2 + i * (58 + 2), 584, 58, 48, &sprite);//크기가 42*54, 우측상단이 2.12
 
 
@@ -68,6 +85,7 @@ void Player::init()
 	}
 
 	//5번 hit
+	Sprite sprite;
 	readBMPRect("asset/naruto.bmp", 2, 977, 42, 40, &sprite);//크기가 42*54, 우측상단이 2.12
 	sprite.ax = 10;//+는이미지가 왼쪽으로 이동,-는 오른쪽
 	addAniFrame(sprite, hit);//5번 배열에 집어넣음
@@ -75,6 +93,8 @@ void Player::init()
 	//6번 airAttack
 	for (size_t i = 0; i < 3; i++)
 	{
+		Sprite sprite;
+
 		readBMPRect("asset/naruto.bmp", 2 + i * (57 + 2), 1416, 57, 56, &sprite);
 		
 		addAniFrame(sprite, airAttack);//4번 배열에 집어넣음
@@ -83,7 +103,7 @@ void Player::init()
 	setFrameDelay(0.15);
 
 	//배경 이동 방지 충돌체 추가하기
-	addCollider(new AABB(0, 50, 40, 1, 0));
+	//addCollider(new AABB(0, 55, 40, 1, 0));
 
 	//초기 애니메 변경하기
 	state = idle;

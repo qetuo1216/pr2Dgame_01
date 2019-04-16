@@ -199,4 +199,9 @@ void drawBmpFlip(float px, float py, Sprite *sprite)
 	}
 }
 
-
+////스플라이트 충돌체 함수들
+void addSpriteCollider(Sprite * sprite, AABB * aabb, float px, float py)
+{
+	aabb->translate(px, py);
+	sprite->col.push_back(aabb);
+}

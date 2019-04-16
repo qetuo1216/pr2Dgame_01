@@ -60,6 +60,40 @@ void Animation::draw()
 	}
 }
 
+void Animation::debugDraw()
+{
+	//충돌체 추가
+	//frames[aniIdx][frameIdx].col;
+	std::vector<AABB *> *ptrCol = &frames[aniIdx][frameIdx].col;
+	for (int i = 0; i < ptrCol->size(); i++)
+	{
+		(*ptrCol)[i]->debugDraw(colR,colG,colB);
+		
+	}
+}
+
+void Animation::translate(float dx, float dy)
+{
+	//게임 오브젝트 이동
+	px = px + dx;
+	py = py + dy;
+
+	//게임 스플라이트 추가된 충돌체들 이동
+	for (int j = 0; j < MAX_ANI; j++)//모든 애니메이션 반복
+	{
+		for (int i = 0; i < frames[j].size(); i++)//모든 스플라이트 반복
+		{
+			std::vector<AABB *> *ptrCol = &frames[j][i].col;
+			
+			for (int k = 0; k < ptrCol->size(); k++)
+			{
+				(*ptrCol)[k]->translate(dx, dy);
+			}
+		}
+	}
+
+}
+
 void Animation::addAniFrame(Sprite sprite,int aniId)
 {
 	frames[aniId].push_back(sprite);//애니메이션의 frames에 넣음

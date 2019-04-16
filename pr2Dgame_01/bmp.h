@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include "AABB.h"
+
 #pragma pack(push, 1)   //구조체의 변수들을 ... 1 바이트씩 붙여라!!
 
 /////////////bmp 파일 정보 구조체////////////
@@ -38,8 +41,15 @@ struct Sprite	//그림을 저장할 구조체
 	int ax;		//앵커포인트 x좌표[객체의 px,py에 맞춰지는 이미지 위치]
 	int ay;		//앵커포인트 y좌표
 	//[참고] 플립시 ax,ay를 따로 적용해야할 수 도 있다.
+
+	//그림마다 충돌체를 각각 구현한다. std::vctor
+	std::vector<AABB *> col;
+
 	unsigned int * argb;  //이미지 데이터 저장 
 };
+
+//스플라이트 충돌체 함수 추가
+void addSpriteCollider(Sprite * sprite, AABB * aabb, float px, float py);
 
 int readBmp(const char *fileName, Sprite *sprite);//전체 읽어오기
 int readBMPRect(const char * filename, int x, int y, int width, int height, Sprite *sprite);
