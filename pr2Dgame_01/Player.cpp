@@ -29,7 +29,7 @@ void Player::init()
 		//sprite.col.push_back(new AABB(0, 0, 42, 54, 0));
 		//sprite.col.clear();//이전 것 지우기
 
-		addSpriteCollider(&sprite, new AABB(0,0,42,54,0),px,py);//※같은 좌표에 계속 넣으면 좌표가 어긋남, 충돌체를 이용할 때 이전 것을 없애야한다.
+		addSpriteCollider(&sprite, new AABB(0, 50, 42, 4, 0),px,py);//※같은 좌표에 계속 넣으면 좌표가 어긋남, 충돌체를 이용할 때 이전 것을 없애야한다.
 
 		addAniFrame(sprite,idle);//0번 배열에 집어넣음
 		//frames.push_back(sprite);//애니메이션의 frames에 넣음
@@ -42,7 +42,7 @@ void Player::init()
 		Sprite sprite;
 		readBMPRect("asset/naruto.bmp", 2 + i * (36 + 2), 80, 36, 56, &sprite);//크기가 42*54, 우측상단이 2.12
 
-		addSpriteCollider(&sprite, new AABB(0, 0, 33, 56, 0), px, py);
+		addSpriteCollider(&sprite, new AABB(0, 50, 33, 6, 0), px, py);
 
 		addAniFrame(sprite, walk);//1번 배열에 집어넣음
 	}
@@ -59,7 +59,7 @@ void Player::init()
 		sprite.ax = 10;//+는이미지가 왼쪽으로 이동,-는 오른쪽
 		sprite.ay = -10;//+는이미지가 위으로 이동,-는 아래로
 
-		addSpriteCollider(&sprite, new AABB(-sprite.ax, -sprite.ay, 68, 45, 0), px, py);
+		addSpriteCollider(&sprite, new AABB(-10, 50, 68, 5, 0), px, py);
 
 		addAniFrame(sprite, run);//2번 배열에 집어넣음
 	}
@@ -71,7 +71,7 @@ void Player::init()
 
 		readBMPRect("asset/naruto.bmp", 2 + i * (50 + 2), 332, 50, 51, &sprite);//크기가 42*54, 우측상단이 2.12
 
-		addSpriteCollider(&sprite, new AABB(0, 0, 50, 50, 0), px, py);
+		//addSpriteCollider(&sprite, new AABB(0, 70, 50, 5, 0), px, py);
 		//앵커포인트 조정하기
 		//sprite.ay = 20;//+는이미지가 위으로 이동,-는 아래로
 		addAniFrame(sprite, jump);//3번 배열에 집어넣음
@@ -87,7 +87,7 @@ void Player::init()
 		//앵커포인트 조정하기
 		sprite.ay = -5;//+는이미지가 위으로 이동,-는 아래로
 
-		addSpriteCollider(&sprite, new AABB(0, -sprite.ay, 58, 48, 0), px, py);
+		addSpriteCollider(&sprite, new AABB(0, 48, 58, 3, 0), px, py);
 		
 		addAniFrame(sprite, attack);//4번 배열에 집어넣음
 	}
