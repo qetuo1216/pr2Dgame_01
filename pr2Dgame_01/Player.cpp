@@ -30,7 +30,8 @@ void Player::init()
 		//sprite.col.clear();//이전 것 지우기
 
 		addSpriteCollider(&sprite, new AABB(0, 50, 42, 4, 0),px,py);//※같은 좌표에 계속 넣으면 좌표가 어긋남, 충돌체를 이용할 때 이전 것을 없애야한다.
-
+																	//이동 방지를 위한 충돌체 : 0번
+		addSpriteCollider(&sprite, new AABB(0, 0, 42, 54, 1), px, py);//적 공격을 받기 위한 충돌체 : 1번
 		addAniFrame(sprite,idle);//0번 배열에 집어넣음
 		//frames.push_back(sprite);//애니메이션의 frames에 넣음
 	}
