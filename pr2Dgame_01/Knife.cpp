@@ -14,15 +14,21 @@ Knife::~Knife()
 void Knife::init()
 {
 	//애니메이션 로드
-	Sprite sprite;
+	//Sprite sprite;
 	for (int i = 0; i < 16; i++)
 	{
+		Sprite sprite;
+
 		readBMPRect("asset/수리검.bmp", i * (40 + 2), 1104, 40, 16, &sprite);//크기가 42*54, 우측상단이 2.12
+		//충돌체 추가하기
+		addSpriteCollider(&sprite,new AABB(0, 0, 40, 16, 0),px,py);
 		addAniFrame(sprite, 0);//0번 배열에 집어넣음
+
+
 	}
 
 	//충돌체 추가하기
-	addCollider(new AABB(0, 0, 40, 16,0));
+	//addCollider(new AABB(0, 0, 40, 16,0));
 
 	//이동속도 초기화
 	speed = 200;
