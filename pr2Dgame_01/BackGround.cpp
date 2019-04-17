@@ -16,9 +16,9 @@ void BackGround::init()
 	readBMPRect("asset/배경.bmp", 0, 0, 4303, 224, &splite);
 
 	//플레이어 이동을 막는 충돌체 추가.
-	addCollider(new AABB(0, 140, 500, 25, 0));//위로 이동 방지 충돌체
-	addCollider(new AABB(0, 220, 500, 25, 1));//위로 이동 방지 충돌체
+	addCollider(new AABB(0, 140, 4304, 25, 0));//위로 이동 방지 충돌체
 	addCollider(new AABB(208, 160, 35, 15, 0));//위로 이동 방지 충돌체
+	addCollider(new AABB(0, 220, 4304, 25, 1));//아래로 이동 방지 충돌체
 
 	//스크롤 속도 초기화
 	speed = 100;//초당 100px로 이동
@@ -28,7 +28,7 @@ void BackGround::update()
 {
 	//스크롤 이동
 	float d = speed * getDelteTime();
-	//translate(-d, 0);//잠시 막아놓음
+	translate(-d, 0);//잠시 막아놓음
 	//px = px - d;
 }
 
