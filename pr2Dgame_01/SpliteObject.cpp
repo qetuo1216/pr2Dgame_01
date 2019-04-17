@@ -4,7 +4,7 @@ SpliteObject::SpliteObject(std::string name, int tag, bool state, float px, floa
 	:GameObject(name,tag,state,px,py)//게임오브젝트 내용을 상속받은 것
 {
 	//splite구조체 초기화
-	ZeroMemory(&splite,0);//splite.height = 0 등등 메모리를 모두 0으로 초기화
+	ZeroMemory(&sprite,0);//splite.height = 0 등등 메모리를 모두 0으로 초기화
 }
 
 SpliteObject::~SpliteObject()
@@ -15,11 +15,11 @@ SpliteObject::~SpliteObject()
 		delete[] splite.argb;
 		splite.argb = NULL;
 	}*/
-	SafeDeleteArray(splite.argb);
+	SafeDeleteArray(sprite.argb);
 	
 }
 
 void SpliteObject::draw()
 {
-	drawBmp(px, py, &splite);
+	drawBmp(px, py, &sprite);
 }

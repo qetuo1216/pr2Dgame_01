@@ -5,7 +5,7 @@ class SpliteObject :public GameObject// 게임 오브젝트 객체를 상속
 {
 protected:
 	//bmp의 객체 추가
-	Sprite splite;//게임 이미지 저장 구조체
+	Sprite sprite;//게임 이미지 저장 구조체
 public:
 	//생성자&소멸자
 	SpliteObject(std::string name, int tag, bool state, float px, float py);
