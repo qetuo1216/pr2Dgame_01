@@ -182,7 +182,7 @@ void Player::aniIdle()
 	}
 	else//shift가 눌리고
 	{
-		if (getKey(VK_LEFT) == true || getKey(VK_RIGHT) == true)//이동키 눌리면
+		if (getKey(VK_LEFT) == true || getKey(VK_RIGHT) == true || getKey(VK_UP) == true || getKey(VK_DOWN) == true)//이동키 눌리면
 		{
 			state = run;	//run 상태로
 			play(run);
@@ -275,6 +275,16 @@ void Player::aniRun()
 		{
 			hFlip = true;
 			translate(-d, 0);
+		}
+		if (getKey(VK_UP) == true)//오른쪽 눌림
+		{
+			//hFlip = false;
+			translate(0, -d);
+		}
+		if (getKey(VK_DOWN) == true)//왼쪽 눌림
+		{
+			//hFlip = true;
+			translate(0, d);
 		}
 
 	}
