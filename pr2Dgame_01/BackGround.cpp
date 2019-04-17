@@ -31,9 +31,10 @@ void BackGround::init()
 	speed = 100;//초당 100px로 이동
 	scroll = true;//스크롤 중임
 }
-
+#define AA 1
 void BackGround::update()
 {
+#if AA//조건부 컴파일
 	if (scroll==true)
 	{
 		//스크롤 이동
@@ -67,28 +68,43 @@ void BackGround::update()
 			scroll = false;
 		}
 	}
-
+#endif
 }
 
 void BackGround::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
+	//캐릭터 충돌체 바운딩박스 좌표 가져오기
+	float a0, b0, a1, b1;
+	otherAABB->getBB(a0, b0, a1, b1);
+
+	//배경 충돌체 바운딩박스 좌표 가져오기
+	float x0, y0, x1, y1;
+	myAABB->getBB(x0, y0, x1, y1);
+
 	if (OtherObj->GetName() == "나루토"&&otherAABB->getId() == 0 && myAABB->getId() == 0)
 	{
-		//printf("충돌");
-		OtherObj->translate(0, 1);
+		float dy = y1 - b0;
+		OtherObj->translate(0, dy);
 	}
 
 	if (OtherObj->GetName() == "나루토"&&otherAABB->getId() == 0 && myAABB->getId() == 1)
 	{
-		OtherObj->translate(0, -1);
+		float dy = b1 - y0;
+		OtherObj->translate(0, -dy);
 	}
 
 	if (OtherObj->GetName() == "나루토"&&otherAABB->getId() == 0 && myAABB->getId() == 2)
 	{
-		OtherObj->translate(1, 0);
+		//플레이어 이동거리
+		float dx = x1 - a0;
+
+		OtherObj->translate(dx, 0);
 	}
 	if (OtherObj->GetName() == "나루토"&&otherAABB->getId() == 0 && myAABB->getId() == 3)
 	{
-		OtherObj->translate(-1, 0);
+		//플레이어 이동거리
+		float dx = a1-x0;
+
+		OtherObj->translate(-dx, 0);
 	}
 }
