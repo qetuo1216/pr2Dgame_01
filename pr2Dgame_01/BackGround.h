@@ -6,6 +6,10 @@ private:
 	//배경 스크롤 속도
 	float speed;
 	bool scroll; //true는 스크롤 진행중, false는 스크롤 끝남
+
+	//왼쪽 오른쪽 충돌체 포인터
+	AABB * leftAABB;
+	AABB * rightAABB;
 public:
 	//생성자&소멸자
 	BackGround(float px, float py);
