@@ -37,6 +37,12 @@
     <Filter Include="헤더 파일\GameObj\Animation">
       <UniqueIdentifier>{dad04556-c4b2-4126-879e-507a06f9811c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\FieldObject">
+      <UniqueIdentifier>{2c15bbe4-c7e3-4f8d-a7dd-e908a7f83c0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\FieldObject">
+      <UniqueIdentifier>{5893c7b7-1fdf-42d4-a999-0b13f98ff935}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -99,6 +105,9 @@
     <ClInclude Include="ColPair.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Barrel.h">
+      <Filter>헤더 파일\FieldObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -154,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="ColPair.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Barrel.cpp">
+      <Filter>소스 파일\FieldObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

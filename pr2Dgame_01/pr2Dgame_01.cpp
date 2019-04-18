@@ -11,8 +11,9 @@
 #include "Input.h"//윈도우 메세지 키업&다운 으로 변경이 가능
 #include "Knife.h"
 #include "gameObjectPool.h"//싱글톤 테스트
-#include "TestObjA.h"
-#include "TestObjB.h"
+//#include "TestObjA.h"
+//#include "TestObjB.h"
+#include "Barrel.h"
 #define MAX_LOADSTRING 100
 
 
@@ -74,8 +75,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	/*GameObject *obj[3] = { new BackGround(0, 0),
 							new Player(100,140),
 							new Knife(200,200)};*/
-	pool->addGameObject(new BackGround(0, 0),0);
 	pool->addGameObject(new Player(100, 140),1);
+	pool->addGameObject(new BackGround(0, 0),0);
+	pool->addGameObject(new Barrel(200, 180),2);
 	//pool->addGameObject(new Knife(200, 200),1);//플레이어에서 집어넣을 예정
 
 	/*for (int i = 0; i < 3; i++)
