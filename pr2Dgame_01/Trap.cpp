@@ -24,3 +24,12 @@ void Trap::init()
 	//애니메이션 속도 조절하기
 	setFrameDelay(1.0f);
 }
+
+void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	if (OtherObj->GetName() == "나루토"&&OtherObj->getId()==0)
+	{
+		printf("플레이어가 함정에 걸림\n");
+		
+	}
+}

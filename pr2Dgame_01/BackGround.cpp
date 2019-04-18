@@ -30,7 +30,7 @@ void BackGround::init()
 	
 	//자식객체 추가하기
 	addChildObject(new Barrel(300, 180), 2);
-	addChildObject(new Trap(200, 180), 2);
+	addChildObject(new Trap(200, 180), 0);
 	//스크롤 속도 초기화
 	speed = 100;//초당 100px로 이동
 	scroll = true;//스크롤 중임
