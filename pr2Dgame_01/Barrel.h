@@ -9,5 +9,6 @@ public:
 	~Barrel();
 
 	void init();
+	void onTriggerEnter(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);
 };
 
