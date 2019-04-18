@@ -3,6 +3,7 @@
 #include "timer.h"
 #include "graphic.h"
 #include "Barrel.h"
+#include "Trap.h"
 BackGround::BackGround(float px, float py):SpliteObject("배경",0,true,px,py)//보통 0은 아군,1번은 적,2는 배경으로
 {
 }
@@ -28,8 +29,8 @@ void BackGround::init()
 	addCollider(rightAABB);
 	
 	//자식객체 추가하기
-	addChildObject(new Barrel(200, 150), 2);
-
+	addChildObject(new Barrel(300, 180), 2);
+	addChildObject(new Trap(200, 180), 2);
 	//스크롤 속도 초기화
 	speed = 100;//초당 100px로 이동
 	scroll = true;//스크롤 중임
