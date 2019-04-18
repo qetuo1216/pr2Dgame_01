@@ -377,6 +377,11 @@ void Player::OnAnimationEvent(int aniId, int aniFrame)
 }
 
 
+void Player::DoDamage(GameObject * fromObj, GameObject * toObj, AABB * fromAABB, int damage)
+{
+	printf("나루토가 %d만큼 피해를 입음\n", damage);
+}
+
 void Player::aniAirAttack()
 {
 	//1.점프 시간 측정
