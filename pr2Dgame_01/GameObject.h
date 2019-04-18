@@ -69,5 +69,8 @@ public:
 	virtual void onTriggerEnter(AABB* myAABB,GameObject *OtherObj,AABB* otherAABB);//처음 충돌
 	virtual void onTriggerStay(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//반복
 	virtual void onTriggerExit(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//충돌 종료
+
+	//피해를 주고받는 메소드
+	virtual void DoDamage(GameObject *fromObj, GameObject *toObj, AABB* fromAABB,int damage);
 };
 

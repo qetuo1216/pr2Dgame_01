@@ -172,3 +172,7 @@ void GameObject::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * othe
 void GameObject::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
 }
+
+void GameObject::DoDamage(GameObject * fromObj, GameObject * toObj, AABB * fromAABB, int damage)
+{
+}
