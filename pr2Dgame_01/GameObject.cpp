@@ -117,6 +117,19 @@ void GameObject::addGameObject(GameObject * o,int order)
 	pool->addGameObject(o,order);
 }
 
+void GameObject::addChildObject(GameObject * o, int order)
+{
+	//자식의 목록에 추가
+	child.push_back(o);
+
+
+	//1//게임 오브젝트 풀 객체 가져오기
+	gameObjectPool * pool = gameObjectPool::instance();
+
+	//2//풀에 객체 추가하기
+	pool->addGameObject(o, order);
+}
+
 void GameObject::delGameObject(GameObject * o)
 {
 	//1//게임 오브젝트 풀 객체 가져오기

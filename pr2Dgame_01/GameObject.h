@@ -23,6 +23,9 @@ protected:		  //상속받을 때 보통 private대신 사용함
 	//충돌체 rgb 색상
 	unsigned char colR, colG, colB;
 
+	//자식 게임오브젝트 추가하기(상속과 무관하다)
+	//게임 오브젝트들을 서로 연결 같이 움직이도록 한다(계층구조로) 부모계층 이 이동할때 자식계층이 따라 움직일 수 있도록
+	std::vector<GameObject *> child;
 public:
 	//생성자&소멸자
 	GameObject(std::string name, int tag, bool state,float px, float py);
@@ -58,6 +61,9 @@ public:
 	//충돌체 추가 함수
 	void addCollider(AABB *aabb);
 	void setColColor(unsigned char r, unsigned char g, unsigned char b);//충돌체 출력 색상
+
+	//자식객체 추가 함수
+	void addChildObject(GameObject *o,int order);//자식 게임오브젝트 추가하기,레이어 포함
 
 	//충돌 이벤트 메소드
 	virtual void onTriggerEnter(AABB* myAABB,GameObject *OtherObj,AABB* otherAABB);//처음 충돌
