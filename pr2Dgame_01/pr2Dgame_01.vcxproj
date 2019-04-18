@@ -168,6 +168,7 @@
     <ClInclude Include="TestObjA.h" />
     <ClInclude Include="TestObjB.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="Trap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="TestObjA.cpp" />
     <ClCompile Include="TestObjB.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="Trap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="pr2Dgame_01.rc" />

@@ -108,6 +108,9 @@
     <ClInclude Include="Barrel.h">
       <Filter>헤더 파일\FieldObject</Filter>
     </ClInclude>
+    <ClInclude Include="Trap.h">
+      <Filter>헤더 파일\FieldObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -165,6 +168,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Barrel.cpp">
+      <Filter>소스 파일\FieldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Trap.cpp">
       <Filter>소스 파일\FieldObject</Filter>
     </ClCompile>
   </ItemGroup>
