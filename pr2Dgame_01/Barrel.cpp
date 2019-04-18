@@ -24,7 +24,7 @@ void Barrel::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAA
 
 
 	if (OtherObj->GetName() == "³ª·çÅä"&&otherAABB->getId()==0&& myAABB->getId() == 0)
-	{
+	{		
 		translate(10, 0);
 	}
 
