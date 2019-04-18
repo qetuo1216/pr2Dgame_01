@@ -17,6 +17,8 @@ void Trap::init()
 	readBmp("asset/트랩1.bmp", &sprite);
 	addAniFrame(sprite, 0);
 	readBmp("asset/트랩2.bmp", &sprite);
+	//충돌체 추가
+	addSpriteCollider(&sprite, new AABB(0, 0, 31, 31, 0), px, py);
 	addAniFrame(sprite, 0);
 
 	//애니메이션 속도 조절하기
