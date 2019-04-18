@@ -167,6 +167,10 @@ void Player::update()
 	{
 		aniAirAttack();
 	}
+	else if (state == hit)
+	{
+		aniHit();
+	}
 }
 
 void Player::aniIdle()
@@ -380,6 +384,9 @@ void Player::OnAnimationEvent(int aniId, int aniFrame)
 void Player::DoDamage(GameObject * fromObj, GameObject * toObj, AABB * fromAABB, int damage)
 {
 	printf("나루토가 %d만큼 피해를 입음\n", damage);
+	//hit애니메이션으로 변경
+	state = hit;
+	play(state);
 }
 
 void Player::aniAirAttack()
@@ -407,6 +414,13 @@ void Player::aniAirAttack()
 		play(state);
 	}
 }
+
+void Player::aniHit()
+{
+	state = idle;
+	play(state);
+}
+
 void Player::aniTest()
 {
 	//'1'키는 IDLE

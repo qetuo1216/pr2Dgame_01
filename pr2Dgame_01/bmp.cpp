@@ -23,9 +23,9 @@ int readBmp(const char *fileName, Sprite *sprite)
 	fread(&bmpHeader, sizeof(bmpHeader), 1, stream);
 
 	///////////////////bmp 파일 정보 출력해 보기///////////////////
-	printf("bfType    %x\n", bmpHeader.bfType);
-	printf("bfSize    %d\n", bmpHeader.bfSize);
-	printf("bfOffBits %d\n", bmpHeader.bfOffBits);
+	//printf("bfType    %x\n", bmpHeader.bfType);
+	//printf("bfSize    %d\n", bmpHeader.bfSize);
+	//printf("bfOffBits %d\n", bmpHeader.bfOffBits);
 
 	if (bmpHeader.bfType != 0x4d42)  //올바른 bitmap 파일이 아님
 	{
@@ -38,9 +38,9 @@ int readBmp(const char *fileName, Sprite *sprite)
 
 	fread(&bmpInfo, sizeof(bmpInfo), 1, stream);
 
-	printf("이미지 가로 크기 %d\n", bmpInfo.biWidth);
+	/*printf("이미지 가로 크기 %d\n", bmpInfo.biWidth);
 	printf("이미지 세로 크기 %d\n", bmpInfo.biHeight);
-	printf("이미지 비트 카운트 %d\n", bmpInfo.biBitCount);
+	printf("이미지 비트 카운트 %d\n", bmpInfo.biBitCount);*/
 
 	if (bmpInfo.biBitCount != 32)  //32비트 형식 - ARGB 형식의 이미지만..이용
 	{

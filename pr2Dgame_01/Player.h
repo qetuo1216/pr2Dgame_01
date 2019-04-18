@@ -37,6 +37,7 @@ public:
 	void aniJump();
 	void aniAttack();
 	void aniAirAttack();
+	void aniHit();
 
 	//애니메 전환이벤트 오버라이딩
 	void OnAnimationEvent(int aniId, int aniFrame);
