@@ -106,6 +106,11 @@ void GameObject::translate(float dx, float dy)
 	{
 		col[i]->translate(dx, dy);
 	}
+	//자식 게임오브젝트 이동시키기
+	for (int i = 0; i < child.size(); i++)
+	{
+		child[i]->translate(dx, dy);
+	}
 }
 
 void GameObject::addGameObject(GameObject * o,int order)
