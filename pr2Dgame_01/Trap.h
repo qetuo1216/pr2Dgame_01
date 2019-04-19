@@ -14,6 +14,7 @@ public:
 	~Trap();
 
 	void init();
+	void update();
 	void onTriggerEnter(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);
 };
 

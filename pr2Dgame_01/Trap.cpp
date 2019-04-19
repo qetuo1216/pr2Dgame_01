@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Trap.h"
-
+#include "Input.h"
 
 Trap::Trap(float px, float py) : Animation("트랩",1,true,px,py)
 {
@@ -58,6 +58,29 @@ void Trap::init()
 	
 	//애니메이션 속도 조절하기
 	//setFrameDelay(1.0f);
+}
+
+void Trap::update()
+{
+	if (getKey('1') == true)
+	{
+		play(idle);//0번 프레임부터 들어감
+	}
+
+	if (getKey('2') == true)
+	{
+		play(attack);
+	}
+
+	if (getKey('3') == true)
+	{
+		play(death);
+	}
+
+	if (getKey('4') == true)
+	{
+		play(die);
+	}
 }
 
 void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
