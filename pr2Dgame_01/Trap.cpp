@@ -25,6 +25,7 @@ void Trap::init()
 	for (int i = 0; i < 3; i++)
 	{
 		Sprite sprite;
+
 		readBMPRect("asset/Æ®·¦3.bmp", 963+i*(52+1),125,52,83,&sprite);
 		addAniFrame(sprite, idle);
 
@@ -36,6 +37,8 @@ void Trap::init()
 		Sprite sprite;
 
 		readBMPRect("asset/Æ®·¦3.bmp", 0 + i * (153+1), 13, 153, 95, &sprite);
+		sprite.ax = 51;
+		sprite.ay = 5;
 		addAniFrame(sprite, attack);
 	}
 
@@ -45,12 +48,15 @@ void Trap::init()
 		Sprite sprite;
 
 		readBMPRect("asset/Æ®·¦3.bmp", 0+i*(85+1), 125, 85, 87, &sprite);
+		sprite.ax = 20;
 		addAniFrame(sprite, death);
 	}
 
 	//die
 	Sprite sprite;
+
 	readBMPRect("asset/Æ®·¦3.bmp", 869, 125, 84, 87, &sprite);
+	sprite.ax = 20;
 	addAniFrame(sprite, die);
 
 	state = attack;
