@@ -13,16 +13,51 @@ Trap::~Trap()
 
 void Trap::init()
 {
-	Sprite sprite;
-	readBmp("asset/Æ®·¦1.bmp", &sprite);
-	addAniFrame(sprite, 0);
-	readBmp("asset/Æ®·¦2.bmp", &sprite);
-	//Ãæµ¹Ã¼ Ãß°¡
-	addSpriteCollider(&sprite, new AABB(0, 0, 31, 31, 0), px, py);
-	addAniFrame(sprite, 0);
+	//Sprite sprite;
+	//readBmp("asset/Æ®·¦1.bmp", &sprite);
+	//addAniFrame(sprite, 0);
+	//readBmp("asset/Æ®·¦2.bmp", &sprite);
+	////Ãæµ¹Ã¼ Ãß°¡
+	//addSpriteCollider(&sprite, new AABB(0, 0, 31, 31, 0), px, py);
+	//addAniFrame(sprite, 0);
 
+	//idle
+	for (int i = 0; i < 3; i++)
+	{
+		Sprite sprite;
+		readBMPRect("asset/Æ®·¦3.bmp", 963+i*(52+1),125,52,83,&sprite);
+		addAniFrame(sprite, idle);
+
+	}
+
+	//attack
+	for (int i = 0; i < 17; i++)
+	{
+		Sprite sprite;
+
+		readBMPRect("asset/Æ®·¦3.bmp", 0 + i * (153+1), 13, 153, 95, &sprite);
+		addAniFrame(sprite, attack);
+	}
+
+	//death
+	for (int i = 0; i < 3; i++)
+	{
+		Sprite sprite;
+
+		readBMPRect("asset/Æ®·¦3.bmp", 0+i*(85+1), 125, 85, 87, &sprite);
+		addAniFrame(sprite, death);
+	}
+
+	//die
+	Sprite sprite;
+	readBMPRect("asset/Æ®·¦3.bmp", 869, 125, 84, 87, &sprite);
+	addAniFrame(sprite, die);
+
+	state = attack;
+	play(state);
+	
 	//¾Ö´Ï¸ÞÀÌ¼Ç ¼Óµµ Á¶ÀýÇÏ±â
-	setFrameDelay(1.0f);
+	//setFrameDelay(1.0f);
 }
 
 void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
