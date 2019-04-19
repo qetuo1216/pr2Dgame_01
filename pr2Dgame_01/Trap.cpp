@@ -31,6 +31,9 @@ void Trap::init()
 		//탐지 충돌체
 		//addSpriteCollider(&sprite, new AABB(-51, -5, 153, 95, 0), px, py);		
 		addSpriteCollider(&sprite, new AABB(-100, 0, 52 + 200, 83, 0), px, py);
+		
+		addSpriteCollider(&sprite, new AABB(0, 30, 52, 83 - 40, 2), px, py);//공격 피해 주기
+
 		setColColor(0, 0, 255);
 		addAniFrame(sprite, idle);
 	}
@@ -45,7 +48,7 @@ void Trap::init()
 		sprite.ay = 5;
 
 		//탐지 충돌체
-		addSpriteCollider(&sprite, new AABB(-100, 30, 52 + 200, 83-40, 0), px, py);	//접근 탐지
+		addSpriteCollider(&sprite, new AABB(-110, 30, 52 + 200, 83-40, 0), px, py);	//접근 탐지
 
 		//공격 충돌체
 		if(3<=i&&i>14)
@@ -140,7 +143,7 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 void Trap::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
 
-	if (OtherObj->GetName() == "나루토" && myAABB->getId() == 1)
+	if (OtherObj->GetName() != "나루토" && myAABB->getId() != 1)
 	{
 		changeAniState(idle);
 	}

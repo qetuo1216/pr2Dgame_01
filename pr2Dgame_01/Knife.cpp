@@ -77,5 +77,11 @@ void Knife::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 	if (OtherObj->GetName()=="Æ®·¦"&&otherAABB->getId()!=0)
 	{
 		delGameObject(this);
+
+		//Æ®·¦¿¡ ÇÇÇØÁÖ±â
+		if (otherAABB->getId() == 2)
+		{
+			OtherObj->DoDamage(this, OtherObj,myAABB,10);
+		}
 	}
 }
