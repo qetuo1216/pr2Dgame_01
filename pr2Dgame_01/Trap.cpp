@@ -82,8 +82,7 @@ void Trap::init()
 	sprite.ax = 20;
 	addAniFrame(sprite, die);
 
-	state = idle;
-	play(state);
+	changeAniState(idle);
 
 	//애니메이션 속도 조절하기
 	//setFrameDelay(1.0f);
@@ -112,11 +111,21 @@ void Trap::update()
 	}
 }
 
+void Trap::DoDamage(GameObject * fromObj, GameObject * toObj, AABB * fromAABB, int damage)
+{
+	//hp감소
+
+	//hp가 없음
+	changeAniState(death);
+}
+
 void Trap::changeAniState(State s)
 {
 	this->state = s;
 	play(this->state);
 }
+
+
 
 void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
@@ -126,15 +135,19 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 		OtherObj->DoDamage(this, OtherObj, myAABB, 10);
 	}*/
 	//플레이어 접근 감지
-	if (OtherObj->GetName() == "나루토" && myAABB->getId() == 0)
+	if (state != death) 
 	{
-		changeAniState(attack);
-	}
 
-	if (OtherObj->GetName() == "나루토" && myAABB->getId() == 1)
-	{
-		printf("플레이어가 함정에 걸림\n");
-		OtherObj->DoDamage(this, OtherObj, myAABB, 10);
+		if (OtherObj->GetName() == "나루토" && myAABB->getId() == 0)
+		{
+			changeAniState(attack);
+		}
+
+		if (OtherObj->GetName() == "나루토" && myAABB->getId() == 1)
+		{
+			printf("플레이어가 함정에 걸림\n");
+			OtherObj->DoDamage(this, OtherObj, myAABB, 10);
+		}
 	}
 
 
@@ -142,9 +155,11 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 
 void Trap::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
-
-	if (OtherObj->GetName() != "나루토" && myAABB->getId() != 1)
+	if (state != death)
 	{
-		changeAniState(idle);
+		if (OtherObj->GetName() == "나루토" && myAABB->getId() == 0)
+		{
+			changeAniState(idle);
+		}
 	}
 }
