@@ -27,7 +27,8 @@ void Trap::init()
 		Sprite sprite;
 
 		readBMPRect("asset/트랩3.bmp", 963 + i * (52 + 1), 125, 52, 83, &sprite);
-		//충돌체
+		
+		//탐지 충돌체
 		//addSpriteCollider(&sprite, new AABB(-51, -5, 153, 95, 0), px, py);		
 		addSpriteCollider(&sprite, new AABB(-100, 0, 52 + 200, 83, 0), px, py);
 		setColColor(0, 0, 255);
@@ -43,12 +44,21 @@ void Trap::init()
 		sprite.ax = 51;
 		sprite.ay = 5;
 
-		if(i==3)addSpriteCollider(&sprite, new AABB(0, 0, 52, 83, 0), px, py);
-		else if(i>14)
+		//탐지 충돌체
+		addSpriteCollider(&sprite, new AABB(-100, 30, 52 + 200, 83-40, 0), px, py);	//접근 탐지
+
+		//공격 충돌체
+		if(3<=i&&i>14)
 		{
-			addSpriteCollider(&sprite, new AABB(-sprite.ax, -sprite.ay, 153, 95, 0), px, py);
+		addSpriteCollider(&sprite, new AABB(0, 30, 52 + 40, 80 - 40, 1), px, py);//공격 피해 주기
+		//addSpriteCollider(&sprite, new AABB(-20,30, 52+40, 80-40, 0), px, py);
 		}
-		addSpriteCollider(&sprite, new AABB(-100, 0, 52 + 200, 83, 0), px, py);
+		else
+		{
+
+			addSpriteCollider(&sprite, new AABB(0, 30, 52, 83-40, 2), px, py);//공격 피해 주기
+		}
+
 		addAniFrame(sprite, attack);
 	}
 
@@ -112,10 +122,18 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 		printf("플레이어가 함정에 걸림\n");
 		OtherObj->DoDamage(this, OtherObj, myAABB, 10);
 	}*/
+	//플레이어 접근 감지
 	if (OtherObj->GetName() == "나루토" && myAABB->getId() == 0)
 	{
 		changeAniState(attack);
 	}
+
+	if (OtherObj->GetName() == "나루토" && myAABB->getId() == 1)
+	{
+		OtherObj->DoDamage(this, OtherObj, myAABB, 10);
+	}
+
+
 }
 
 void Trap::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
