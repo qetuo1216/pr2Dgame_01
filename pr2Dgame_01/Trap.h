@@ -15,8 +15,8 @@ public:
 
 	void init();
 	void update();
-	void onTriggerEnter(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);
-
+	void onTriggerEnter(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//µπ¿‘
+	void onTriggerExit(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//¿Ã≈ª
 	void changeAniState(State s);
 };
 
