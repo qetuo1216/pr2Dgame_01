@@ -51,7 +51,7 @@ void Trap::init()
 		addSpriteCollider(&sprite, new AABB(-120, 30, 52 + 240, 83 - 40, 0), px, py);	//접근 탐지
 
 		//공격 충돌체
-		if(3<=i&&i>14)
+		if(3<=i&&i<=14)
 		{
 			addSpriteCollider(&sprite, new AABB(-20, 30, 52 + 40, 83 - 40, 1), px, py);//공격 피해 주기
 		//addSpriteCollider(&sprite, new AABB(-20,30, 52+40, 80-40, 0), px, py);
