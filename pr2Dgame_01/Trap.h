@@ -10,6 +10,8 @@ private:
 	//애니메이션 상태 변수
 	State state;
 	int hp;//트랩 체력
+
+	float dieDelay;//die애니메이션 지속 시간
 public:
 	Trap(float px,float py);
 	~Trap();

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Trap.h"
 #include "Input.h"
+#include "timer.h"
 
 Trap::Trap(float px, float py) : Animation("트랩", 1, true, px, py)
 {
@@ -87,12 +88,16 @@ void Trap::init()
 	//체력 초기화
 	hp = 100;
 
+	//die 애니메이션 지속 시간
+	dieDelay = 3.0f;
+
 	//애니메이션 속도 조절하기
 	//setFrameDelay(1.0f);
 }
 
 void Trap::update()
 {
+#if 0
 	if (getKey('1') == true)
 	{
 		play(idle);//0번 프레임부터 들어감
@@ -111,6 +116,15 @@ void Trap::update()
 	if (getKey('4') == true)
 	{
 		play(die);
+	}
+#endif
+	if (state == die)
+	{
+		dieDelay = dieDelay - getDelteTime();
+		if (dieDelay < 0) //트랩 제거
+		{
+			delGameObject(this);
+		}
 	}
 }
 
