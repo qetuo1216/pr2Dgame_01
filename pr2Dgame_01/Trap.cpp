@@ -111,13 +111,13 @@ void Trap::update()
 	}
 }
 
-void Trap::DoDamage(GameObject * fromObj, GameObject * toObj, AABB * fromAABB, int damage)
-{
-	//hp감소
-
-	//hp가 없음
-	changeAniState(death);
-}
+//void Trap::DoDamage(GameObject * fromObj, GameObject * toObj, AABB * fromAABB, int damage)
+//{
+//	//hp감소
+//
+//	//hp가 없음
+//	changeAniState(death);
+//}
 
 void Trap::changeAniState(State s)
 {

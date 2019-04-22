@@ -19,6 +19,6 @@ public:
 	void onTriggerExit(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//이탈
 	void changeAniState(State s);
 	//피해 이벤트 메소드 오버라이딩
-	void DoDamage(GameObject *fromObj, GameObject *toObj, AABB* fromAABB, int damage);
+	//void DoDamage(GameObject *fromObj, GameObject *toObj, AABB* fromAABB, int damage);
 };
 

@@ -381,13 +381,13 @@ void Player::OnAnimationEvent(int aniId, int aniFrame)
 }
 
 
-void Player::DoDamage(GameObject * fromObj, GameObject * toObj, AABB * fromAABB, int damage)
-{
-	printf("나루토가 %d만큼 피해를 입음\n", damage);
-	//hit애니메이션으로 변경
-	state = hit;
-	play(state);
-}
+//void Player::DoDamage(GameObject * fromObj, GameObject * toObj, AABB * fromAABB, int damage)
+//{
+//	printf("나루토가 %d만큼 피해를 입음\n", damage);
+//	//hit애니메이션으로 변경
+//	state = hit;
+//	play(state);
+//}
 
 void Player::aniAirAttack()
 {

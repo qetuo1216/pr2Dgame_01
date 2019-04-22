@@ -43,7 +43,7 @@ public:
 	void OnAnimationEvent(int aniId, int aniFrame);
 
 	//피해 이벤트 메소드 오버라이딩
-	void DoDamage(GameObject *fromObj, GameObject *toObj, AABB* fromAABB, int damage);
+	//void DoDamage(GameObject *fromObj, GameObject *toObj, AABB* fromAABB, int damage);
 	//
 	void aniTest();
 };
