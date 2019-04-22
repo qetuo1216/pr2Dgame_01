@@ -32,10 +32,10 @@ void BackGround::init()
 	addChildObject(new Barrel(300, 180), 2);
 	addChildObject(new Trap(200, 120), 0);
 	//스크롤 속도 초기화
-	speed = 100;//초당 100px로 이동
+	speed = 10;//초당 100px로 이동
 	scroll = true;//스크롤 중임
 }
-#define AA 0
+#define AA 1
 void BackGround::update()
 {
 #if AA//조건부 컴파일

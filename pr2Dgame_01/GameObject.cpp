@@ -9,7 +9,10 @@ GameObject::GameObject(std::string name, int tag, bool state, float px, float py
 	this->name = name;//string을 사용하면 복사안하고 바로 넣을 수 있다.
 	this->tag = tag;
 	this->state = state;
+
 	this->alive = true;	//생성자에서 객체가 살아있음으로 초기화
+	this->parentObj = NULL;//부모 오브젝트가 없음
+
 	this->px = px;
 	this->py = py;
 
@@ -127,6 +130,8 @@ void GameObject::addChildObject(GameObject * o, int order)
 	//자식의 목록에 추가
 	child.push_back(o);
 
+	//부모를 기억시킴
+	o->parentObj = this;
 
 	//1//게임 오브젝트 풀 객체 가져오기
 	gameObjectPool * pool = gameObjectPool::instance();
@@ -135,12 +140,33 @@ void GameObject::addChildObject(GameObject * o, int order)
 	pool->addGameObject(o, order);
 }
 
+
 void GameObject::delGameObject(GameObject * o)
 {
 	//1//게임 오브젝트 풀 객체 가져오기
 	gameObjectPool * pool = gameObjectPool::instance();
 
 	//2//풀에 객체 삭제하기
+	pool->delGameObject(o);//코드가 복잡해지면 문제가 생긴다.
+}
+
+void GameObject::delChildObject(GameObject * o)
+{
+	//1//자식목록에서 제거하기
+	for (int i = 0; i < child.size(); i++)
+	{
+		if (child[i]->getId() == o->getId())//아이디를 검사해서
+		{
+			//child목록에서 제거
+			child.erase(child.begin() + i);
+			break;
+		}
+	}
+
+	//2//게임 오브젝트 풀 객체 가져오기
+	gameObjectPool * pool = gameObjectPool::instance();
+
+	//3//풀에 객체 삭제하기
 	pool->delGameObject(o);//코드가 복잡해지면 문제가 생긴다.
 }
 

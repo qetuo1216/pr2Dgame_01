@@ -26,6 +26,8 @@ protected:		  //상속받을 때 보통 private대신 사용함
 	//자식 게임오브젝트 추가하기(상속과 무관하다)
 	//게임 오브젝트들을 서로 연결 같이 움직이도록 한다(계층구조로) 부모계층 이 이동할때 자식계층이 따라 움직일 수 있도록
 	std::vector<GameObject *> child;
+	GameObject * parentObj;//자식 게임오브젝트인 경우 부모객체의 포인터를 저장함
+
 public:
 	//생성자&소멸자
 	GameObject(std::string name, int tag, bool state,float px, float py);
@@ -64,6 +66,7 @@ public:
 
 	//자식객체 추가 함수
 	void addChildObject(GameObject *o,int order);//자식 게임오브젝트 추가하기,레이어 포함
+	void delChildObject(GameObject * o);//자식 객체 삭제 메소드
 
 	//충돌 이벤트 메소드
 	virtual void onTriggerEnter(AABB* myAABB,GameObject *OtherObj,AABB* otherAABB);//처음 충돌
