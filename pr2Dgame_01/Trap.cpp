@@ -32,7 +32,7 @@ void Trap::init()
 		//addSpriteCollider(&sprite, new AABB(-51, -5, 153, 95, 0), px, py);		
 		addSpriteCollider(&sprite, new AABB(-100, 0, 52 + 200, 83, 0), px, py);
 		
-		//addSpriteCollider(&sprite, new AABB(0, 30, 52, 83 - 40, 2), px, py);//공격 피해 주기
+		addSpriteCollider(&sprite, new AABB(0, 30, 52, 83 - 40, 2), px, py);//공격 피해 주기
 
 		setColColor(0, 0, 255);
 		addAniFrame(sprite, idle);
@@ -83,6 +83,9 @@ void Trap::init()
 	addAniFrame(sprite, die);
 
 	changeAniState(idle);
+	
+	//체력 초기화
+	hp = 100;
 
 	//애니메이션 속도 조절하기
 	//setFrameDelay(1.0f);
@@ -150,9 +153,16 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 		}
 
 		if (OtherObj->GetName() == "knife" && (myAABB->getId() == 1 || myAABB->getId() == 2))
+		//if (OtherObj->GetName() == "knife" && myAABB->getId() == 2)
 		{
-			printf("트랩에 수리검이 맞음");
-			changeAniState(death);
+			hp = hp - 50;
+
+			printf("트랩에 수리검이 맞음 [%d]\n",hp);
+
+			if (hp<=0)//체력이 다 닳음
+			{
+				changeAniState(death);
+			}
 		}
 	}
 

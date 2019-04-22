@@ -9,6 +9,7 @@ private:
 
 	//애니메이션 상태 변수
 	State state;
+	int hp;//트랩 체력
 public:
 	Trap(float px,float py);
 	~Trap();
