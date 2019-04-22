@@ -101,8 +101,8 @@ void Player::init()
 	readBMPRect("asset/naruto.bmp", 2, 977, 42, 40, &sprite);//크기가 42*54, 우측상단이 2.12
 	sprite.ax = 10;//+는이미지가 왼쪽으로 이동,-는 오른쪽
 
-	//addSpriteCollider(&sprite, new AABB(-sprite.ay, 0, 42, 40, 0), px, py);
-	//addSpriteCollider(&sprite, new AABB(-sprite.ay, 0, 42, 40, 1), px, py);
+	//hit 충돌체 추가
+	addSpriteCollider(&sprite, new AABB(-5, 0, 42, 40, 1), px, py);
 	addAniFrame(sprite, hit);//5번 배열에 집어넣음
 
 	//6번 airAttack

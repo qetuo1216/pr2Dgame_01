@@ -164,7 +164,7 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 			changeAniState(attack);
 		}
 
-		if (OtherObj->GetName() == "나루토" && myAABB->getId() == 1)
+		if (OtherObj->GetName() == "나루토" && otherAABB->getId() == 1 && myAABB->getId() == 1)
 		{
 			printf("플레이어가 함정에 걸림\n");
 			//OtherObj->DoDamage(this, OtherObj, myAABB, 10);
@@ -192,8 +192,9 @@ void Trap::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 	//애니메이션이 death가 아닌 경우에만 idle로 변경
 	if (state != death)
 	{
-		if (OtherObj->GetName() == "나루토" && myAABB->getId() == 0)
+		if (OtherObj->GetName() == "나루토" && otherAABB->getId() == 1 && myAABB->getId() == 0)
 		{
+			
 			changeAniState(idle);
 		}
 	}
