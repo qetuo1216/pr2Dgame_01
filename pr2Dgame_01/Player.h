@@ -23,6 +23,9 @@ private:
 	//점프 시작 y좌표
 	float jumpStartY;
 
+	//히트 애니메이션 시간
+	float hitDelay;
+
 public:
 	Player(float px,float py);
 	~Player();
@@ -41,6 +44,10 @@ public:
 
 	//애니메 전환이벤트 오버라이딩
 	void OnAnimationEvent(int aniId, int aniFrame);
+
+	//충돌 이벤트 오버라이딩
+	void onTriggerEnter(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//처음 충돌
+	void onTriggerStay(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//반복
 
 	//피해 이벤트 메소드 오버라이딩
 	//void DoDamage(GameObject *fromObj, GameObject *toObj, AABB* fromAABB, int damage);

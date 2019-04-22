@@ -137,6 +137,9 @@ void Player::init()
 	jumpMoveSpeed = 100;
 	jumpUpSpeed = 200;
 	jumpAcc = 400;//
+
+	//hit 애니메이션 지속시간
+	hitDelay = 1.0f;
 }
 void Player::update()
 {	
@@ -417,8 +420,31 @@ void Player::aniAirAttack()
 
 void Player::aniHit()
 {
-	state = idle;
-	play(state);
+	//지연시간 측정
+	hitDelay = hitDelay - getDelteTime();
+
+	if (hitDelay <= 0)//지연시간 경과
+	{
+		hitDelay = 1.0f;
+
+		state = idle;
+		play(state);
+	}
+}
+
+void Player::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	//트랩에서 피해를 입음
+	if (OtherObj->GetName() == "트랩"&&otherAABB->getId() == 1 && myAABB->getId() == 1)
+	{
+		//히트 애니메이션으로 이동
+		state = hit;
+		play(state);
+	}
+}
+
+void Player::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
 }
 
 void Player::aniTest()

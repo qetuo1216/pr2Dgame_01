@@ -167,7 +167,7 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 		if (OtherObj->GetName() == "나루토" && myAABB->getId() == 1)
 		{
 			printf("플레이어가 함정에 걸림\n");
-			OtherObj->DoDamage(this, OtherObj, myAABB, 10);
+			//OtherObj->DoDamage(this, OtherObj, myAABB, 10);
 		}
 
 		if (OtherObj->GetName() == "knife" && (myAABB->getId() == 1 || myAABB->getId() == 2))

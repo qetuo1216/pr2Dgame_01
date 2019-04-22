@@ -35,7 +35,7 @@ void BackGround::init()
 	speed = 10;//초당 100px로 이동
 	scroll = true;//스크롤 중임
 }
-#define AA 1
+#define AA 0
 void BackGround::update()
 {
 #if AA//조건부 컴파일
