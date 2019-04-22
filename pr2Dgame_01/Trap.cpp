@@ -123,9 +123,10 @@ void Trap::update()
 		dieDelay = dieDelay - getDelteTime();
 		if (dieDelay < 0) //트랩 제거
 		{
-			//delGameObject(this);
+			//delGameObject(this); -> x
 
 			//trap의 부모객체를 통해 자식객체를 제거한다.
+			this->parentObj->delChildObject(this);
 			
 		}
 	}
