@@ -425,8 +425,6 @@ void Player::aniHit()
 
 	if (hitDelay <= 0)//지연시간 경과
 	{
-		hitDelay = 1.0f;
-
 		state = idle;
 		play(state);
 	}
@@ -438,8 +436,13 @@ void Player::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAA
 	if (OtherObj->GetName() == "트랩"&&otherAABB->getId() == 1 && myAABB->getId() == 1)
 	{
 		//히트 애니메이션으로 이동
+		hitDelay = 1.0f;
+
+		translate(-30, 0);
+
 		state = hit;
 		play(state);
+
 	}
 }
 
