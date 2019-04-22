@@ -81,7 +81,8 @@ void Knife::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 		//트랩에 피해주기
 		if (otherAABB->getId() == 2)
 		{
-			OtherObj->DoDamage(this, OtherObj,myAABB,10);
+			//OtherObj->DoDamage(this, OtherObj,myAABB,10);
+			
 		}
 	}
 }

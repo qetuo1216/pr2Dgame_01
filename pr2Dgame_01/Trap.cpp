@@ -148,6 +148,12 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 			printf("플레이어가 함정에 걸림\n");
 			OtherObj->DoDamage(this, OtherObj, myAABB, 10);
 		}
+
+		if (OtherObj->GetName() == "knife" && (myAABB->getId() == 1 || myAABB->getId() == 2))
+		{
+			printf("트랩에 수리검이 맞음");
+			changeAniState(death);
+		}
 	}
 
 
