@@ -20,5 +20,8 @@ public:
 	void changeAniState(State s);
 	//피해 이벤트 메소드 오버라이딩
 	//void DoDamage(GameObject *fromObj, GameObject *toObj, AABB* fromAABB, int damage);
+
+	//애니메이션 장면 전환 이벤트
+	void OnAnimationEvent(int aniId, int aniFrame);
 };
 

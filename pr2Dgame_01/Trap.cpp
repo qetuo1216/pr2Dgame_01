@@ -170,3 +170,11 @@ void Trap::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 		}
 	}
 }
+
+void Trap::OnAnimationEvent(int aniId, int aniFrame)
+{	//하나의 애니메이션이 끝나면 사용 프레임이 다시 0번이 되는것은 한바뀌를 돌았다는 이야기이다.
+	if (aniId == death && aniFrame == 0)
+	{
+		changeAniState(die);
+	}
+}
