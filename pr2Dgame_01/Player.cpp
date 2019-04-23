@@ -115,6 +115,16 @@ void Player::init()
 
 		addAniFrame(sprite, airAttack);//4번 배열에 집어넣음
 	}
+
+	//death 이미지
+	for (int  i = 0; i < 3; i++)
+	{
+		Sprite sprite;
+
+		readBMPRect("asset/naruto.bmp", 2 + i * (58+2), 1099, 58, 40, &sprite);
+		sprite.ay = -20;
+		addAniFrame(sprite, death);
+	}
 	//애니메 속도 지정하기
 	setFrameDelay(0.15);
 
@@ -176,6 +186,10 @@ void Player::update()
 	else if (state == hit)
 	{
 		aniHit();
+	}
+	else if (state == death)
+	{
+		aniDeath();
 	}
 }
 
@@ -428,9 +442,21 @@ void Player::aniHit()
 
 	if (hitDelay <= 0)//지연시간 경과
 	{
-		state = idle;
-		play(state);
+		if (hp>=0)
+		{
+			state = idle;
+			play(state);
+		}
+		else
+		{
+			state = death;
+			play(state);
+		}
 	}
+}
+
+void Player::aniDeath()
+{
 }
 
 void Player::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
@@ -439,7 +465,7 @@ void Player::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAA
 	if (OtherObj->GetName() == "트랩"&&otherAABB->getId() == 1 && myAABB->getId() == 1)
 	{
 		//hp감소
-		hp = hp - 10;
+		hp = hp - 50;
 
 		printf("플레이어 hp : %d",hp);
 
