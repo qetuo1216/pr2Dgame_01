@@ -401,6 +401,9 @@ void Player::OnAnimationEvent(int aniId, int aniFrame)
 	{
 		//플레이어 제거
 		delGameObject(this);
+
+		//플레이어 리스폰(테스트)
+		addGameObject(new Player(px, py), 2);
 	}
 
 }
