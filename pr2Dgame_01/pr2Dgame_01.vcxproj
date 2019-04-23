@@ -184,6 +184,8 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Knife.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerAni.cpp" />
+    <ClCompile Include="PlayerInit.cpp" />
     <ClCompile Include="pr2Dgame_01.cpp" />
     <ClCompile Include="SpliteObject.cpp" />
     <ClCompile Include="stdafx.cpp">

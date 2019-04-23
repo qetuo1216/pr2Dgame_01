@@ -43,6 +43,9 @@
     <Filter Include="헤더 파일\FieldObject">
       <UniqueIdentifier>{5893c7b7-1fdf-42d4-a999-0b13f98ff935}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\GameObj\Animation\Player">
+      <UniqueIdentifier>{991d6786-685a-4b4d-9373-1ece09a27b59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -146,9 +149,6 @@
     <ClCompile Include="Animation.cpp">
       <Filter>소스 파일\GameObj\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>소스 파일\GameObj\Animation</Filter>
-    </ClCompile>
     <ClCompile Include="Knife.cpp">
       <Filter>소스 파일\GameObj\Animation</Filter>
     </ClCompile>
@@ -172,6 +172,15 @@
     </ClCompile>
     <ClCompile Include="Trap.cpp">
       <Filter>소스 파일\FieldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\GameObj\Animation\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInit.cpp">
+      <Filter>소스 파일\GameObj\Animation\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAni.cpp">
+      <Filter>소스 파일\GameObj\Animation\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
