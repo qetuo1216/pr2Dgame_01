@@ -4,7 +4,8 @@
 #include "graphic.h"
 #include "Barrel.h"
 #include "Trap.h"
-BackGround::BackGround(float px, float py):SpliteObject("배경",0,true,px,py)//보통 0은 아군,1번은 적,2는 배경으로
+#include "HUDBar.h"
+BackGround::BackGround(float px, float py):SpliteObject("배경",2,true,px,py)//보통 0은 아군,1번은 적,2는 배경으로
 {
 }
 
@@ -31,9 +32,13 @@ void BackGround::init()
 	//자식객체 추가하기
 	addChildObject(new Barrel(300, 180), 2);
 	addChildObject(new Trap(200, 120), 0);
+
 	//스크롤 속도 초기화
 	speed = 10;//초당 100px로 이동
 	scroll = true;//스크롤 중임
+
+	//hud바 테스트
+	addGameObject(new HUDBar(0, 0), 3);
 }
 #define AA 0
 void BackGround::update()
