@@ -139,7 +139,10 @@ void Player::init()
 	jumpAcc = 400;//
 
 	//hit 애니메이션 지속시간
-	hitDelay = 1.0f;
+	hitDelay = 0.5f;
+
+	//hp 지정
+	hp = 100;
 }
 void Player::update()
 {	
@@ -435,8 +438,13 @@ void Player::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAA
 	//트랩에서 피해를 입음
 	if (OtherObj->GetName() == "트랩"&&otherAABB->getId() == 1 && myAABB->getId() == 1)
 	{
+		//hp감소
+		hp = hp - 10;
+
+		printf("플레이어 hp : %d",hp);
+
 		//히트 애니메이션으로 이동
-		hitDelay = 1.0f;
+		hitDelay = 0.5f;
 
 		translate(-30, 0);
 

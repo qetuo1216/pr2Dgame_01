@@ -26,6 +26,9 @@ private:
 	//히트 애니메이션 시간
 	float hitDelay;
 
+	//플레이어 hp - 이후에 게임 매니저에서 관리
+	int hp;
+
 public:
 	Player(float px,float py);
 	~Player();
