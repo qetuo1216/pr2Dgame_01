@@ -397,6 +397,11 @@ void Player::OnAnimationEvent(int aniId, int aniFrame)
 		state = idle;
 		play(state);
 	}
+	else if(aniId==death&&aniFrame==0)
+	{
+		//플레이어 제거
+		delGameObject(this);
+	}
 
 }
 
