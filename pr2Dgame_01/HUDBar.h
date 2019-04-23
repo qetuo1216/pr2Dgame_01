@@ -15,5 +15,8 @@ public:
 
 	void init();
 	void draw();
+
+	//bar 길이값 설정
+	void setValue(float v);//길이 설정 0~1사이
 };
 

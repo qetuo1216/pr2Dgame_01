@@ -35,5 +35,10 @@ void HUDBar::draw()
 		}
 	}
 	//bar 태두리 출력
-	drawBmp(px, py+50, &barBk);
+	drawBmp(px, py, &barBk);
+}
+
+void HUDBar::setValue(float v)
+{
+	value = bar.width*v;
 }
