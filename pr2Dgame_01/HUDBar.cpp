@@ -18,7 +18,7 @@ void HUDBar::init()
 	readBmp("asset/Bar1.bmp", &bar);
 	readBmp("asset/Bar1Bk.bmp", &barBk);
 	//bar의 출력 길이값 테스트
-	value = bar.width / 2;
+	value = bar.width;
 }
 
 void HUDBar::draw()
