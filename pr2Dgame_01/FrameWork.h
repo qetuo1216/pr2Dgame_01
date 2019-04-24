@@ -13,7 +13,7 @@ public:
 	static FrameWork * instance();//pool이 null이면 객체를 만들고, 있으면 계속 사용한다.
 
 	//프레임워크 활용 메소드
-	void init();
+	void init(HWND hWnd,int width,int hight);
 	void run();
 	void exit();
 };

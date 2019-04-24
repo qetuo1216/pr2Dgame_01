@@ -34,13 +34,13 @@ FrameWork * FrameWork::instance()
 	return frameWork;
 }
 
-void FrameWork::init()
+void FrameWork::init(HWND hWnd, int width, int hight)
 {
 	gameObjectPool * pool = gameObjectPool::instance();//객체생성없이 클래스 단위로 생성
 	//new gameObjectPool();//이렇게 여러개 객체 생성 예방
 
 	//초기화 하기
-	initGraphic(hWnd, 0, 0, WIDTH, HEIGHT);
+	initGraphic(hWnd, 0, 0, width, hight);
 	initTimer();//시간 초기화
 	initInput();
 	//게임 객체 생성 및 초기화 하기
@@ -53,6 +53,8 @@ void FrameWork::init()
 
 void FrameWork::run()
 {
+	gameObjectPool * pool = gameObjectPool::instance();
+
 	//업데이트하기
 	clear(255, 0, 0);
 	updateTimer();

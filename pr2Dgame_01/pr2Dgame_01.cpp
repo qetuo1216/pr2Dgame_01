@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "pr2Dgame_01.h"
+#include "graphic.h"
 #include "debug.h"
 #define MAX_LOADSTRING 100
 
