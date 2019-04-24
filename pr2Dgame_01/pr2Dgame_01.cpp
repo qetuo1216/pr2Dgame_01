@@ -5,6 +5,8 @@
 #include "pr2Dgame_01.h"
 #include "graphic.h"
 #include "debug.h"
+#include "FrameWork.h"
+
 #define MAX_LOADSTRING 100
 
 
@@ -54,6 +56,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	MSG msg = {0};//모든요소를 0으로 초기화
 
+	//프레임 워크 객체 가져오기
+	FrameWork * frameWork = FrameWork::instance();
+
+	frameWork->init(hWnd,WIDTH,HEIGHT);
 
     // 기본 메시지 루프입니다:
     //while (GetMessage(&msg, nullptr, 0, 0))
@@ -69,9 +75,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 				DispatchMessage(&msg);
 			}
 		}
+
+		//게임 구동
+		frameWork->run();
 		
     }
 
+	//게임 종료
+	frameWork->exit();
 
 	//디버그 콘솔창 닫기
 	STOP_DEBUG_CONSOLE();
