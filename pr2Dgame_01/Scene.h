@@ -8,6 +8,7 @@ public:
 	virtual ~Scene();
 
 	void init();
+	void exit();
 
 	void update();
 	void checkCollision();

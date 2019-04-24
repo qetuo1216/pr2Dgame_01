@@ -63,6 +63,7 @@ void FrameWork::run()
 
 void FrameWork::exit()
 {
+	scene->exit();
 	//종료하기
 	exitGraphic();
 }

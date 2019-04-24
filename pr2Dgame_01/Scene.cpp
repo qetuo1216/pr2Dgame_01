@@ -21,6 +21,10 @@ void Scene::init()
 	pool->addGameObject(new BackGround(0, 0), 0);
 }
 
+void Scene::exit()
+{
+}
+
 void Scene::update()
 {
 	gameObjectPool * pool = gameObjectPool::instance();
