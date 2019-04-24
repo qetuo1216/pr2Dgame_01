@@ -39,9 +39,7 @@ void Trap::init()
 		setColColor(0, 0, 255);
 		addAniFrame(sprite, idle);
 
-		//HUD바 추가하기
-		hpBar = new HUDBar(px - 3, py - 10);
-		addChildObject(hpBar, 2);
+		
 	}
 
 	//attack
@@ -98,6 +96,10 @@ void Trap::init()
 
 	//애니메이션 속도 조절하기
 	//setFrameDelay(1.0f);
+
+	//HUD바 추가하기
+	hpBar = new HUDBar(px - 3, py - 10);
+	addChildObject(hpBar, 2);
 }
 
 void Trap::update()
@@ -182,7 +184,7 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 
 			//printf("트랩에 수리검이 맞음 [%d]\n",hp);
 			//체력바 표시
-			hpBar->setValue((float)hp / 100.0f);
+			hpBar->setValue((float)hp/100.0f);
 
 			if (hp<=0)//체력이 다 닳음
 			{
