@@ -40,7 +40,8 @@ void Trap::init()
 		addAniFrame(sprite, idle);
 
 		//HUD바 추가하기
-		addChildObject(new HUDBar(px-3,py-10),3);
+		hpBar = new HUDBar(px - 3, py - 10);
+		addChildObject(hpBar, 2);
 	}
 
 	//attack
