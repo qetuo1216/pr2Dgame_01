@@ -1,5 +1,6 @@
 #pragma once
 #include "Animation.h"
+#include "HUDBar.h"
 //애니메이션 상태 enum
 enum State { idle = 0, walk, run, jump, attack, hit,airAttack,death };
 class Player : public Animation
@@ -28,6 +29,8 @@ private:
 
 	//플레이어 hp - 이후에 게임 매니저에서 관리
 	int hp;
+	HUDBar *hpBar;//체력바
+
 
 public:
 	Player(float px,float py);

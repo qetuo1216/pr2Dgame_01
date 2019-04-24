@@ -97,6 +97,12 @@ void Animation::translate(float dx, float dy)
 		}
 	}
 
+	//자식 게임오브젝트 이동시키기
+	for (int i = 0; i < child.size(); i++)
+	{
+		child[i]->translate(dx, dy);
+	}
+
 }
 
 void Animation::addAniFrame(Sprite sprite,int aniId)
