@@ -154,6 +154,7 @@
     <ClInclude Include="bmp.h" />
     <ClInclude Include="ColPair.h" />
     <ClInclude Include="debug.h" />
+    <ClInclude Include="FrameWork.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="gameObjectPool.h" />
     <ClInclude Include="graphic.h" />
@@ -179,6 +180,7 @@
     <ClCompile Include="bmp.cpp" />
     <ClCompile Include="ColPair.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="FrameWork.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="gameObjectPool.cpp" />
     <ClCompile Include="graphic.cpp" />
