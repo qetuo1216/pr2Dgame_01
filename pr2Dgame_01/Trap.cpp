@@ -180,7 +180,9 @@ void Trap::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 		{
 			hp = hp - 50;
 
-			printf("트랩에 수리검이 맞음 [%d]\n",hp);
+			//printf("트랩에 수리검이 맞음 [%d]\n",hp);
+			//체력바 표시
+			hpBar->setValue((float)hp / 100.0f);
 
 			if (hp<=0)//체력이 다 닳음
 			{
