@@ -38,7 +38,7 @@ void BackGround::init()
 	scroll = true;//스크롤 중임
 
 	//hud바 테스트
-	addGameObject(new HUDBar(0, 0), 3);
+	//addGameObject(new HUDBar(0, 0), 3);
 }
 #define AA 0
 void BackGround::update()

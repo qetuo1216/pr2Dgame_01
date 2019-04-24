@@ -2,6 +2,7 @@
 #include "Trap.h"
 #include "Input.h"
 #include "timer.h"
+#include "HUDBar.h"
 
 Trap::Trap(float px, float py) : Animation("트랩", 1, true, px, py)
 {
@@ -37,6 +38,9 @@ void Trap::init()
 
 		setColColor(0, 0, 255);
 		addAniFrame(sprite, idle);
+
+		//HUD바 추가하기
+		addChildObject(new HUDBar(px-3,py-10),3);
 	}
 
 	//attack
