@@ -35,6 +35,12 @@ GameObject::~GameObject()//new를 생성하면 delete를 하기위해 사용
 	}
 	//stl vector 한꺼번에 지우기
 	col.clear();
+
+	//자식 게임 오브젝트 삭제하기
+	for (int i = 0; i < child.size(); i++)
+	{
+		delChildObject(child[i]);
+	}
 }
 
 void GameObject::init()
