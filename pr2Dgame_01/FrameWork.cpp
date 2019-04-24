@@ -33,6 +33,10 @@ void FrameWork::init(HWND hWnd, int width, int hight)
 	initGraphic(hWnd, 0, 0, width, hight);
 	initTimer();//시간 초기화
 	initInput();
+
+	//씬 만들기
+	scene = new Scene();
+	scene->init();
 }
 
 void FrameWork::run()
@@ -44,6 +48,15 @@ void FrameWork::run()
 	updateTimer();
 	updateInput();
 	
+	//씬 업데이트 하기
+	scene->update();
+
+	
+	scene->checkCollision();//충돌검사
+	scene->removeDeadObjs();//게임 오브젝트 제거
+	scene->draw();			//게임 오브젝트 출력
+	scene->debugDraw();		//디버그 출력
+
 	//렌더링하기
 	render();
 }
