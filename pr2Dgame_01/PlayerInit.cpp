@@ -141,6 +141,6 @@ void Player::init()
 
 	//hp ÁöÁ¤
 	hp = 100;
-	hpBar = new HUDBar(px,py);
+	hpBar = new HUDBar(px-6,py-5);
 	addChildObject(hpBar,2);
 }

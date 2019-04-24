@@ -227,6 +227,7 @@ void Player::aniHit()
 
 	if (hitDelay <= 0)//지연시간 경과
 	{
+		hpBar->translate(30, 0);
 		if (hp >= 0)
 		{
 			state = idle;
