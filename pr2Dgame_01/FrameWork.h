@@ -19,5 +19,8 @@ public:
 	void init(HWND hWnd,int width,int hight);
 	void run();
 	void exit();
+
+	//¾À ·Îµå ±â´É
+	void LoadScene(Scene * nextScene);
 };
 

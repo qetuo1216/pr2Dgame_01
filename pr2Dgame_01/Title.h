@@ -9,5 +9,6 @@ public:
 	~Title();
 
 	void init();
+	void update();
 };
 

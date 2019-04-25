@@ -64,9 +64,26 @@ void FrameWork::run()
 	render();
 }
 
+void FrameWork::LoadScene(Scene * nextScene)
+{
+	//1/기존 씬 unload하기
+	scene->exit();
+
+	//2/기존 씬 객체 제거하기
+	delete scene;
+
+	//3/씬 교체하기
+	scene = nextScene;
+
+	//4/새로운 씬 초기화
+	scene->init();
+
+}
+
 void FrameWork::exit()
 {
 	scene->exit();
 	//종료하기
 	exitGraphic();
 }
+
