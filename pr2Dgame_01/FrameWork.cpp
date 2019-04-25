@@ -47,8 +47,7 @@ void FrameWork::run()
 
 
 	//업데이트하기
-	clear(255, 0, 0);
-	updateTimer();
+	clear(255, 0, 0);	updateTimer();
 	updateInput();
 	
 	//씬 업데이트 하기
