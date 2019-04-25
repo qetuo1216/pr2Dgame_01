@@ -53,6 +53,9 @@ public:
 	void resetColPairs();
 	void removeUnColliedPairs();//충돌 종료 처리 함수
 
+	//풀에 추가된 모든 객체 지우기
+	void clear();
+
 	//추가된 객체 debugDraw
 	void debugDraw();
 

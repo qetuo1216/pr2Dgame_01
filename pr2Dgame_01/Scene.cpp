@@ -18,7 +18,7 @@ void Scene::init()
 
 void Scene::exit()
 {
-
+	gameObjectPool::instance()->clear();
 }
 
 void Scene::update()

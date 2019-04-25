@@ -120,6 +120,17 @@ void gameObjectPool::removeUnColliedPairs()
 		}
 	}
 }
+void gameObjectPool::clear()
+{
+	//풀의 모든 게임오브젝트 삭제
+	for (int l = 0; l < MAX_LAYER; l++)
+	{
+		for (int i = 0; i < obj[l].size(); i++)
+		{
+			delete obj[l][i];
+		}
+	}
+}
 void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 {
 	//모든 충돌쌍의 상태를 충돌이 끝났다고 상태를 표시함.

@@ -20,6 +20,6 @@ void GameScene::init()
 	gameObjectPool * pool = gameObjectPool::instance();//객체생성없이 클래스 단위로 생성
 	//new gameObjectPool();//이렇게 여러개 객체 생성 예방
 	pool->addGameObject(new Player(100, 140), 1);
-	pool->addGameObject(new BackGround(0, 0), 0);
+	//pool->addGameObject(new BackGround(0, 0), 0);
 	printf("\n게임씬 초기화\n");
 }
