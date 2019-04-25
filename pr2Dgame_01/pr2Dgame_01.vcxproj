@@ -172,6 +172,7 @@
     <ClInclude Include="TestObjA.h" />
     <ClInclude Include="TestObjB.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="Title.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Trap.h" />
   </ItemGroup>
@@ -206,6 +207,7 @@
     <ClCompile Include="TestObjA.cpp" />
     <ClCompile Include="TestObjB.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Trap.cpp" />
   </ItemGroup>

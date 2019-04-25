@@ -59,3 +59,12 @@ void Scene::debugDraw()
 	//게임 객체 debugDrow하기
 	pool->debugDraw();
 }
+
+void Scene::addGameObject(GameObject * o, int order)
+{
+/*
+	gameObjectPool * pool = gameObjectPool::instance();
+	pool->addGameObject(o, order);*/
+
+	gameObjectPool::instance()->addGameObject(o, order);
+}

@@ -1,4 +1,5 @@
 #pragma once
+#include "GameObject.h"
 class Scene//æ¿¿∫ ø©∑Ø∞≥∂Û ΩÃ±€≈Ê æ»æ¥¥Ÿ.
 {
 private:
@@ -15,5 +16,7 @@ public:
 	void removeDeadObjs();
 	void draw();
 	void debugDraw();
+
+	void addGameObject(GameObject *o,int order);
 };
 
