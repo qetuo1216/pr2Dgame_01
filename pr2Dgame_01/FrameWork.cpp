@@ -5,6 +5,8 @@
 #include "timer.h"
 #include "Input.h"//윈도우 메세지 키업&다운 으로 변경이 가능
 
+#include "GameScene.h"
+
 //static 포인터 만들기
 FrameWork * FrameWork::frameWork = NULL;
 
@@ -35,7 +37,7 @@ void FrameWork::init(HWND hWnd, int width, int hight)
 	initInput();
 
 	//씬 만들기
-	scene = new Scene();
+	scene = new GameScene();
 	scene->init();
 }
 

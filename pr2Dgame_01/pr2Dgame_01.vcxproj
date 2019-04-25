@@ -157,6 +157,7 @@
     <ClInclude Include="FrameWork.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="gameObjectPool.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="graphic.h" />
     <ClInclude Include="HUDBar.h" />
     <ClInclude Include="Input.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="FrameWork.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="gameObjectPool.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="HUDBar.cpp" />
     <ClCompile Include="Input.cpp" />

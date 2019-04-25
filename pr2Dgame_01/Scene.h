@@ -7,7 +7,7 @@ public:
 	Scene();
 	virtual ~Scene();
 
-	void init();
+	virtual void init();
 	void exit();
 
 	void update();

@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Scene.h"
-#include "BackGround.h"
-#include "Player.h"
-#include "Barrel.h"
+
 #include "gameObjectPool.h"//싱글톤 테스트
 Scene::Scene()
 {
@@ -15,14 +13,12 @@ Scene::~Scene()
 
 void Scene::init()
 {
-	gameObjectPool * pool = gameObjectPool::instance();//객체생성없이 클래스 단위로 생성
-	//new gameObjectPool();//이렇게 여러개 객체 생성 예방
-	pool->addGameObject(new Player(100, 140), 1);
-	pool->addGameObject(new BackGround(0, 0), 0);
+	
 }
 
 void Scene::exit()
 {
+
 }
 
 void Scene::update()
