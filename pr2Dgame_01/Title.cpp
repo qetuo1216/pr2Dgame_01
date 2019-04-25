@@ -14,6 +14,6 @@ Title::~Title()
 void Title::init()
 {
 	//타이틀 이미지 로드 하기
-	readBmp("asset/타이틀.bmp", &sprite);
+	readBMPRect("asset/타이틀.bmp",0,0,800,224, &sprite);
 	
 }
