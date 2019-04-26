@@ -31,16 +31,18 @@ void BackGround::init()
 	
 	//자식객체 추가하기
 	addChildObject(new Barrel(300, 180), 2);
-	addChildObject(new Trap(200, 120), 0);
+	addChildObject(new Trap(500, 120), 0);
+	addChildObject(new Trap(1000, 140), 0);
+	addChildObject(new Trap(3000, 140), 0);
 
 	//스크롤 속도 초기화
-	speed = 10;//초당 100px로 이동
+	speed = 100;//초당 100px로 이동
 	scroll = true;//스크롤 중임
 
 	//hud바 테스트
 	//addGameObject(new HUDBar(0, 0), 3);
 }
-#define AA 0
+#define AA 1
 void BackGround::update()
 {
 #if AA//조건부 컴파일

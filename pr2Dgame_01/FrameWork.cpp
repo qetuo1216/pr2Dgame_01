@@ -37,8 +37,8 @@ void FrameWork::init(HWND hWnd, int width, int hight)
 	initInput();
 
 	//¾À ¸¸µé±â
-	//scene = new GameScene();
-	scene = new TitleScene();
+	scene = new GameScene();
+	//scene = new TitleScene();
 	scene->init();
 }
 
