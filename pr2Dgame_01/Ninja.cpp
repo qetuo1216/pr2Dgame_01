@@ -23,7 +23,7 @@ void Ninja::init()
 		sprite.ax = 10;
 		sprite.ay = 10;
 		//탐지 충돌체			
-		addSpriteCollider(&sprite, new AABB(-5,-5,45,49,2), px, py);
+		addSpriteCollider(&sprite, new AABB(-5,-5,45,49,0), px, py);
 
 		setColColor(0, 255, 0);
 		addAniFrame(sprite, drop);
@@ -37,6 +37,9 @@ void Ninja::init()
 		Sprite sprite;
 
 		readBMPRect("asset/monster/Ninja.bmp", 0 + i * (42+2), 0, 42, 49, &sprite);
+
+		//탐지 충돌체			
+		addSpriteCollider(&sprite, new AABB(0,0,37,48,0), px, py);
 		
 		addAniFrame(sprite, idle);
 	}
@@ -48,16 +51,28 @@ void Ninja::init()
 
 		readBMPRect("asset/monster/Ninja.bmp", 0 + i * (56 + 2), 51, 56, 48, &sprite);
 		sprite.ax = 20;
+
+
+		//탐지 충돌체			
+		addSpriteCollider(&sprite, new AABB(-20,0,46,49, 0), px, py);
+
 		addAniFrame(sprite, attack);
 	}
 
 	//hit 이미지
+	int hitCol[2][4] = { {1, 3, 40, 48}, {0,0,36,52} };
+
 	for (int i = 0; i < 2; i++)
 	{
 		Sprite sprite;
 
 		readBMPRect("asset/monster/Ninja.bmp", 0 + i * (41 + 2), 218, 41,56, &sprite);
 
+		/*if (i == 0)
+			addSpriteCollider(&sprite, new AABB(1, 3, 40, 48, 0), px, py);
+		if (i == 1)
+			addSpriteCollider(&sprite, new AABB(0,0,36,52, 0), px, py);*/
+		addSpriteCollider(&sprite, new AABB(hitCol[i][0], hitCol[i][1], hitCol[i][2], hitCol[i][3], 0), px, py);
 		addAniFrame(sprite, hit);
 	}
 
