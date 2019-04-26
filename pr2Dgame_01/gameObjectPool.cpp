@@ -129,6 +129,7 @@ void gameObjectPool::clear()
 		{
 			delete obj[l][i];
 		}
+		obj[l].clear();
 	}
 }
 void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
