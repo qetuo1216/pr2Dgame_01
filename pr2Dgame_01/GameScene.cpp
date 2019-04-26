@@ -5,7 +5,7 @@
 #include "Barrel.h"
 #include "gameObjectPool.h"//싱글톤 테스트
 #include "BackGround.h"
-
+#include "Ninja.h"
 GameScene::GameScene() //: Scene() //기본생성자라서 생략이 가능하다.
 {
 }
@@ -21,5 +21,8 @@ void GameScene::init()
 	//new gameObjectPool();//이렇게 여러개 객체 생성 예방
 	pool->addGameObject(new Player(100, 140), 1);
 	pool->addGameObject(new BackGround(0, 0), 0);
+	
+	//닌자 초기화
+	pool->addGameObject(new Ninja(200, 140), 1);
 	printf("\n게임씬 초기화\n");
 }

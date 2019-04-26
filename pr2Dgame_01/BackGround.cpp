@@ -42,7 +42,7 @@ void BackGround::init()
 	//hud바 테스트
 	//addGameObject(new HUDBar(0, 0), 3);
 }
-#define AA 1
+#define AA 0
 void BackGround::update()
 {
 #if AA//조건부 컴파일

@@ -162,6 +162,7 @@
     <ClInclude Include="HUDBar.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Knife.h" />
+    <ClInclude Include="Ninja.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="pr2Dgame_01.h" />
     <ClInclude Include="Resource.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="HUDBar.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Knife.cpp" />
+    <ClCompile Include="Ninja.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAni.cpp" />
     <ClCompile Include="PlayerInit.cpp" />
