@@ -12,7 +12,7 @@ FrameWork * FrameWork::frameWork = NULL;
 
 FrameWork::FrameWork()
 {
-
+	nextScene = NULL;//전환할 다음 씬은 없음
 }
 
 FrameWork::~FrameWork()
@@ -47,7 +47,8 @@ void FrameWork::run()
 
 
 	//업데이트하기
-	clear(255, 0, 0);	updateTimer();
+	clear(255, 0, 0);	
+	updateTimer();
 	updateInput();
 	
 	//씬 업데이트 하기
@@ -59,12 +60,36 @@ void FrameWork::run()
 	scene->draw();			//게임 오브젝트 출력
 	scene->debugDraw();		//디버그 출력
 
+	//다음 씬 전환 기능
+	if (nextScene!=NULL)
+	{
+		//1/기존 씬 unload하기
+		scene->exit();
+
+		//2/기존 씬 객체 제거하기
+		delete scene;
+
+		//3/씬 교체하기
+		scene = nextScene;
+
+		//4/새로운 씬 초기화
+		scene->init();
+
+		//5//nextScene 초기화
+		nextScene = NULL;
+	}
+
 	//렌더링하기
 	render();
 }
 
 void FrameWork::LoadScene(Scene * nextScene)
 {
+	//전환할 다음 씬 포인터 추가
+	this->nextScene = nextScene;
+
+/*
+
 	//1/기존 씬 unload하기
 	scene->exit();
 
@@ -76,6 +101,7 @@ void FrameWork::LoadScene(Scene * nextScene)
 
 	//4/새로운 씬 초기화
 	scene->init();
+*/
 
 }
 
