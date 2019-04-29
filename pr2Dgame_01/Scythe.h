@@ -3,9 +3,14 @@
 class Scythe : public Animation
 {
 private:
-
+	//이동 속도
+	float speed;
 public:
-	Scythe();
+	Scythe(float px,float py);
 	~Scythe();
+
+	void init();
+	void update();
+
 };
 
