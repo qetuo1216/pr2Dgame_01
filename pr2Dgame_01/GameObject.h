@@ -52,6 +52,9 @@ public:
 	bool getAlive();
 	void setAlive(bool alive);
 
+	float getPx();//x좌표 게터
+	float getPy();//y좌표 게터
+
 	std::string GetName();
 	virtual std::vector<AABB *> getCollider();
 	//기타

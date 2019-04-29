@@ -2,6 +2,7 @@
 #include <vector>
 #include "GameObject.h"
 #include "ColPair.h"
+#include <string>
 //싱글톤사용하기
 //게임오브젝트를 배열 형태로 밖에서 객체를 접근 못 만들게 한다.
 #define MAX_LAYER 5
@@ -55,6 +56,9 @@ public:
 
 	//풀에 추가된 모든 객체 지우기
 	void clear();
+
+	//이름으로 게임 객체 찾기
+	GameObject * find(string name);
 
 	//추가된 객체 debugDraw
 	void debugDraw();

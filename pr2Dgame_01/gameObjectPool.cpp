@@ -132,6 +132,23 @@ void gameObjectPool::clear()
 		obj[l].clear();
 	}
 }
+
+GameObject * gameObjectPool::find(string name)
+{
+	for (int l = 0; l < MAX_LAYER; l++)
+	{
+		for (int i = 0; i < obj[l].size(); i++)
+		{
+			if (obj[l][i]->GetName()== name)
+			{
+				return obj[l][i];
+			}
+		}
+		
+	}
+	return NULL;//내가 찾는 포인터가 없다.
+}
+
 void gameObjectPool::checkCollision()//충돌 검사 업데이트가 끝나면 한다.
 {
 	//모든 충돌쌍의 상태를 충돌이 끝났다고 상태를 표시함.

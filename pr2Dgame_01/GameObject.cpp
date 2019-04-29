@@ -95,6 +95,16 @@ void GameObject::setAlive(bool alive)
 	this->alive = alive;
 }
 
+float GameObject::getPx()
+{
+	return px;
+}
+
+float GameObject::getPy()
+{
+	return py;
+}
+
 std::string GameObject::GetName()
 {
 	return name;

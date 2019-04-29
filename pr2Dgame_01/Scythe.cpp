@@ -2,6 +2,7 @@
 #include "Scythe.h"
 #include "bmp.h"
 #include "timer.h"
+#include "gameObjectPool.h"
 
 Scythe::Scythe(float px, float py) : Animation("낫", 1, true, px, py)
 {
@@ -29,6 +30,22 @@ void Scythe::init()
 
 void Scythe::update()
 {
+	//낫 자기좌표 가져오기
+	float x = px, y = py;
+
+	gameObjectPool * pool = gameObjectPool::instance();
+
+	GameObject * player = pool->find("나루토");
+
 	float d = speed * getDelteTime();
-	translate(-d, 0);
+
+	if (player != NULL)//나루토 객체 찾음
+	{
+		translate(player->getPx(), player->getPy());
+
+	}
+
+	//플레이어 좌표 
+	//float d = speed * getDelteTime();
+	//translate(-d, 0);
 }
