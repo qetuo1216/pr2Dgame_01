@@ -19,7 +19,7 @@ void Scythe::init()
 		Sprite sprite;
 		readBMPRect("asset/monster/Ninja.bmp",0+i*(40+2),418,40,40,&sprite);
 
-		addSpriteCollider(&sprite, new AABB(0, 0, 40, 40, 0), px, py);
+		addSpriteCollider(&sprite, new AABB(0, 0, 30, 30, 1), px, py);
 		addAniFrame(sprite, 0);
 	}
 

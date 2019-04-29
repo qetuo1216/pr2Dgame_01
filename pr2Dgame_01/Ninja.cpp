@@ -2,6 +2,7 @@
 #include "Ninja.h"
 #include "bmp.h"
 #include "Input.h"
+#include "Scythe.h"
 
 Ninja::Ninja(float px, float py):Animation("닌자", 1, true, px, py)
 {
@@ -105,6 +106,14 @@ void Ninja::update()
 
 }
 
+void Ninja::OnAnimationEvent(int aniId, int aniFrame)
+{	//닌자 낫 발사 시점
+	if (aniId == attack && aniFrame == 3)
+	{
+		addGameObject(new Scythe(px-10,py),1);
+	}
+}
+
 void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
 
@@ -137,6 +146,8 @@ void Ninja::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 		}
 	}
 }
+
+
 void Ninja::changeAniState(State s)
 {
 	state = s;
