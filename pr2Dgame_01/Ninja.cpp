@@ -22,8 +22,11 @@ void Ninja::init()
 		readBMPRect("asset/monster/Ninja.bmp", 0+i*(56+2),159,56,57, &sprite);
 		sprite.ax = 10;
 		sprite.ay = 10;
-		//탐지 충돌체			
+		//몸통 충돌체 - 0번			
 		addSpriteCollider(&sprite, new AABB(-5,-5,45,49,0), px, py);
+
+		//플레이어 탐지 충돌체 - 1번			
+		addSpriteCollider(&sprite, new AABB(-5, -5, 45, 49, 1), px, py);
 
 		setColColor(0, 255, 0);
 		addAniFrame(sprite, drop);
@@ -38,9 +41,11 @@ void Ninja::init()
 
 		readBMPRect("asset/monster/Ninja.bmp", 0 + i * (42+2), 0, 42, 49, &sprite);
 
-		//탐지 충돌체			
+		//몸통 충돌체 - 0번			
 		addSpriteCollider(&sprite, new AABB(0,0,37,48,0), px, py);
-		
+
+		//플레이어 탐지 충돌체 - 1번			
+		addSpriteCollider(&sprite, new AABB(0-100, 0, 37+200, 48, 1), px, py);
 		addAniFrame(sprite, idle);
 	}
 
@@ -53,8 +58,11 @@ void Ninja::init()
 		sprite.ax = 20;
 
 
-		//탐지 충돌체			
+		//몸통 충돌체			
 		addSpriteCollider(&sprite, new AABB(-20,0,46,49, 0), px, py);
+
+		//플레이어 탐지 충돌체 - 1번			
+		addSpriteCollider(&sprite, new AABB(-20-110, 0, 46+220, 49, 1), px, py);
 
 		addAniFrame(sprite, attack);
 	}
@@ -86,13 +94,54 @@ void Ninja::init()
 		addAniFrame(sprite, death);
 	}
 
-	play(hit);
+	changeAniState(idle);//초기 애니메이션 상태 지정하기
+	//play(idle);
 }
 
 void Ninja::update()
 {
-	aniTest();
+	//aniTest();
+
 }
+
+void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+
+	//플레이어 접근 감지
+	if (state != death)
+	{
+
+		if (OtherObj->GetName() == "나루토" && myAABB->getId() == 1)
+		{
+			changeAniState(attack);
+		}
+
+		
+
+		
+	}
+
+
+}
+
+void Ninja::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	//애니메이션이 death가 아닌 경우에만 idle로 변경
+	if (state != death)
+	{
+		if (OtherObj->GetName() == "나루토" && otherAABB->getId() == 1 && myAABB->getId() == 1)
+		{
+
+			changeAniState(idle);
+		}
+	}
+}
+void Ninja::changeAniState(State s)
+{
+	state = s;
+	play(state);
+}
+
 
 void Ninja::aniTest()
 {

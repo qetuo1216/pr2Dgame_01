@@ -23,5 +23,10 @@ public:
 	void init();
 	void update();
 	void aniTest();
+
+	void onTriggerEnter(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//돌입
+	void onTriggerExit(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//이탈
+
+	void changeAniState(State s); //애니메이션 상태 전환 메소드
 };
 
