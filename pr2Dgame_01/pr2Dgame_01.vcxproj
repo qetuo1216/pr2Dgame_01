@@ -167,6 +167,7 @@
     <ClInclude Include="pr2Dgame_01.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scythe.h" />
     <ClInclude Include="SpliteObject.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="PlayerInit.cpp" />
     <ClCompile Include="pr2Dgame_01.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Scythe.cpp" />
     <ClCompile Include="SpliteObject.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
