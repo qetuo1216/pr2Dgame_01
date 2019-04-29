@@ -45,7 +45,8 @@ void Ninja::init()
 		addSpriteCollider(&sprite, new AABB(0,0,37,48,0), px, py);
 
 		//플레이어 탐지 충돌체 - 1번			
-		addSpriteCollider(&sprite, new AABB(0-100, 0, 37+200, 48, 1), px, py);
+		addSpriteCollider(&sprite, new AABB(0-100, -30, 37+200, 48+60, 1), px, py);
+
 		addAniFrame(sprite, idle);
 	}
 
@@ -62,7 +63,7 @@ void Ninja::init()
 		addSpriteCollider(&sprite, new AABB(-20,0,46,49, 0), px, py);
 
 		//플레이어 탐지 충돌체 - 1번			
-		addSpriteCollider(&sprite, new AABB(-20-110, 0, 46+220, 49, 1), px, py);
+		addSpriteCollider(&sprite, new AABB(-20-110, 0-30, 46+220, 49+60, 1), px, py);
 
 		addAniFrame(sprite, attack);
 	}
@@ -114,7 +115,7 @@ void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 		if (OtherObj->GetName() == "나루토" && myAABB->getId() == 1)
 		{
 			changeAniState(attack);
-		}
+		}		
 
 		
 
@@ -130,7 +131,7 @@ void Ninja::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 	if (state != death)
 	{
 		if (OtherObj->GetName() == "나루토" && otherAABB->getId() == 1 && myAABB->getId() == 1)
-		{
+		{//1번 충돌체에 플레이어가 나가면 idle로 돌아간다.
 
 			changeAniState(idle);
 		}
