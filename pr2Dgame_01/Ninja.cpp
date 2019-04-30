@@ -110,7 +110,12 @@ void Ninja::OnAnimationEvent(int aniId, int aniFrame)
 {	//닌자 낫 발사 시점
 	if (aniId == attack && aniFrame == 3)
 	{
-		addGameObject(new Scythe(px-10,py),1);
+		addGameObject(new Scythe(px - 10, py), 1);
+	}
+	if (aniId == hit && aniFrame == 0)
+	{
+		setFrameDelay(0.1);
+		changeAniState(idle);
 	}
 }
 
@@ -126,6 +131,12 @@ void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 			changeAniState(attack);
 		}		
 
+		if (OtherObj->GetName() == "knife" && myAABB->getId() == 0)
+		{
+			setFrameDelay(0.3);
+			changeAniState(hit);
+		}
+
 		
 
 		
@@ -137,7 +148,7 @@ void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 void Ninja::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
 	//애니메이션이 death가 아닌 경우에만 idle로 변경
-	if (state != death)
+	if (state == attack)
 	{
 		if (OtherObj->GetName() == "나루토" && otherAABB->getId() == 1 && myAABB->getId() == 1)
 		{//1번 충돌체에 플레이어가 나가면 idle로 돌아간다.
