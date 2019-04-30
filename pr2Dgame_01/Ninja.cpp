@@ -3,7 +3,7 @@
 #include "bmp.h"
 #include "Input.h"
 #include "Scythe.h"
-
+#include "HUDBar.h"
 Ninja::Ninja(float px, float py):Animation("닌자", 1, true, px, py)
 {
 }
@@ -72,7 +72,7 @@ void Ninja::init()
 	//hit 이미지
 	int hitCol[2][4] = { {1, 3, 40, 48}, {0,0,36,52} };
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		Sprite sprite;
 
@@ -98,6 +98,12 @@ void Ninja::init()
 
 	changeAniState(idle);//초기 애니메이션 상태 지정하기
 	//play(idle);
+
+
+	//hp, hp바 초기화
+	hp = 100;
+	hpBar = new HUDBar(px - 11, py - 10);
+	addChildObject(hpBar, 2);
 }
 
 void Ninja::update()
@@ -117,6 +123,11 @@ void Ninja::OnAnimationEvent(int aniId, int aniFrame)
 		setFrameDelay(0.1);
 		changeAniState(idle);
 	}
+	if (aniId == death && aniFrame == 0)
+	{
+		delChildObject(this);
+		delGameObject(this);
+	}
 }
 
 void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
@@ -133,8 +144,24 @@ void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 
 		if (OtherObj->GetName() == "knife" && myAABB->getId() == 0)
 		{
-			setFrameDelay(0.3);
-			changeAniState(hit);
+			hp = hp - 50;
+			hpBar->setValue((float)hp / 100.0f);
+
+			if (hp <= 0)//체력이 다 닳음
+			{
+				changeAniState(death);
+			}
+			else
+			{
+				setFrameDelay(0.3);
+				changeAniState(hit);
+			}
+
+			
+			//체력바 표시
+
+		
+
 		}
 
 		
