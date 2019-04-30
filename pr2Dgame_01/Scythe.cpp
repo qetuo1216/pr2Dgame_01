@@ -27,6 +27,12 @@ void Scythe::init()
 	//이동속도 초기화
 	speed = 200;
 
+	//낫의 이동거리
+	maxDist = 200;
+
+	//이동거리 측정 변수
+	moveDist = 0;
+
 }
 
 void Scythe::update()
@@ -67,11 +73,21 @@ void Scythe::update()
 		float dy = ny * dist;
 
 		translate(dx, dy);
+
+		moveDist = moveDist + dist;//이동거리 측정
 	}
 	else//플레이어 객체를 찾지 못한 경우
 	{
 		float dist = speed * getDelteTime();
 		translate(-dist, 0);
+		
+		moveDist = moveDist + dist;//이동거리 측정
+	}
+
+	//최대 이동거리 검사
+	if (moveDist >= maxDist)
+	{
+		delGameObject(this);
 	}
 	
 
