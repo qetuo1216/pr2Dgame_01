@@ -30,6 +30,7 @@ void Scythe::init()
 	moveDist = 0; //이동거리 측정 변수
 	//플레이어를 따라가는 거리
 	followDist = 100;
+	followTime = 0.5f;
 	//라이프타임 초기화
 	lifeTime = 1.0f;//1초동안 살아있음
 
@@ -71,7 +72,8 @@ void Scythe::update()
 		float dist = speed * getDelteTime();
 		float dx, dy;
 
-		if(moveDist<=followDist)
+		//if(moveDist<=followDist)
+		if(followTime>=0)
 		{
 			dx = nx * dist;
 			dy = ny * dist;
@@ -92,7 +94,7 @@ void Scythe::update()
 		
 		moveDist = moveDist + dist;//이동거리 측정
 	}
-
+	followTime -= getDelteTime();
 	lifeTime -= getDelteTime();
 	//라이프 타임 검사
 	if (lifeTime<=0)

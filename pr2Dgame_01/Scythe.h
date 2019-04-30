@@ -15,6 +15,7 @@ private:
 
 	//낫이 플레이어를 따라가는 최대 거리
 	float followDist;
+	float followTime;
 public:
 	Scythe(float px,float py);
 	~Scythe();
