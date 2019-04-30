@@ -33,6 +33,9 @@ void Scythe::init()
 	//이동거리 측정 변수
 	moveDist = 0;
 
+	//라이프타임 초기화
+	lifeTime = 2.0f;//1초동안 살아있음
+
 }
 
 void Scythe::update()
@@ -84,11 +87,19 @@ void Scythe::update()
 		moveDist = moveDist + dist;//이동거리 측정
 	}
 
-	//최대 이동거리 검사
-	if (moveDist >= maxDist)
+	lifeTime -= getDelteTime();
+	//라이프 타임 검사
+	if (lifeTime<=0)
 	{
+
 		delGameObject(this);
 	}
+
+	//최대 이동거리 검사
+	/*if (moveDist >= maxDist)
+	{
+		delGameObject(this);
+	}*/
 	
 
 
