@@ -25,14 +25,11 @@ void Scythe::init()
 	}
 
 	//이동속도 초기화
-	speed = 200;
-
-	//낫의 이동거리
-	maxDist = 200;
-
-	//이동거리 측정 변수
-	moveDist = 0;
-
+	speed = 200; 	
+	maxDist = 200; //낫의 이동거리	
+	moveDist = 0; //이동거리 측정 변수
+	//플레이어를 따라가는 거리
+	followDist = 100;
 	//라이프타임 초기화
 	lifeTime = 1.0f;//1초동안 살아있음
 
@@ -72,9 +69,18 @@ void Scythe::update()
 
 		//속력에 의한 이동거리 적용
 		float dist = speed * getDelteTime();
-		float dx = nx * dist;
-		float dy = ny * dist;
+		float dx, dy;
 
+		if(moveDist<=followDist)
+		{
+			dx = nx * dist;
+			dy = ny * dist;
+		}
+		else
+		{
+			dx = -dist;
+			dy = 0;
+		}
 		translate(dx, dy);
 
 		moveDist = moveDist + dist;//이동거리 측정

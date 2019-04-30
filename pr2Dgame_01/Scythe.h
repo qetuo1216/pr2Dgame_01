@@ -13,6 +13,8 @@ private:
 	//게임 객체 라이프 타임 적용하기
 	float lifeTime;
 
+	//낫이 플레이어를 따라가는 최대 거리
+	float followDist;
 public:
 	Scythe(float px,float py);
 	~Scythe();
