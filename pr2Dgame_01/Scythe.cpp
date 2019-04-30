@@ -34,7 +34,7 @@ void Scythe::init()
 	moveDist = 0;
 
 	//라이프타임 초기화
-	lifeTime = 2.0f;//1초동안 살아있음
+	lifeTime = 1.0f;//1초동안 살아있음
 
 }
 
@@ -42,7 +42,7 @@ void Scythe::update()
 {
 	//유도탄의 좌표가 px,py일때 적의 좌표가 player->getPx(),player->getPx()
 	//즉 적으로 가는 좌표는 translate((px - player->getPx()),py - player->getPx()))는 바로 도착한다.
-	//그래서 길이만큼 나눠야하는데 = √(x-a)^2+(y-)
+	//그래서 길이만큼 나눠야하는데 = √(x-a)^2+(y-b)^2
 
 	gameObjectPool * pool = gameObjectPool::instance();
 
@@ -106,4 +106,12 @@ void Scythe::update()
 	//그냥 낫 날리기
 	//float d = speed * getDelteTime();
 	//translate(-d, 0);
+}
+
+void Scythe::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	if (OtherObj->GetName() == "나루토"||OtherObj->GetName()=="knife")
+	{
+		delGameObject(this);
+	};
 }

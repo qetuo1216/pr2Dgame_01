@@ -85,4 +85,8 @@ void Knife::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 			
 		}
 	}
+	if (OtherObj->GetName()=="³´")
+	{
+		delGameObject(this);
+	}
 }
