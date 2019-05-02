@@ -31,7 +31,9 @@ void BackGround::init()
 	addCollider(rightAABB);
 
 	//닌자 생성 충돌체
-	addCollider(new AABB(300,60,20,150,4));
+	addCollider(new AABB(300, 60, 20, 150, 4));
+	addCollider(new AABB(350, 60, 20, 150, 5));
+	addCollider(new AABB(400, 60, 20, 150, 6));
 
 	//자식객체 추가하기
 	//addChildObject(new Barrel(300, 180), 2);
@@ -47,7 +49,9 @@ void BackGround::init()
 	//addGameObject(new HUDBar(0, 0), 3);
 
 	//닌자 스폰 판단 변수
-	ninjaSpawn = false;
+	ninjaSpawn[0] = false;
+	ninjaSpawn[1] = false;
+	ninjaSpawn[2] = false;
 }
 #define AA 0
 void BackGround::update()
@@ -132,7 +136,9 @@ void BackGround::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * oth
 	//플레이어가 4번 충돌체에 접근한건지 확인
 	if (OtherObj->GetName() == "나루토"&&otherAABB->getId()==1&&myAABB->getId() == 4)
 	{
-		if (ninjaSpawn==false)
+		int idx = myAABB->getId() - 4;
+
+		if (ninjaSpawn[idx] == false)
 		{
 			printf("닌자 생성\n");
 			//플레이어 위치
@@ -141,7 +147,7 @@ void BackGround::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * oth
 
 			addGameObject(new Ninja(nx + 100, ny), 1);
 
-			ninjaSpawn = true;
+			ninjaSpawn[idx] = true;
 		}
 	}
 }
