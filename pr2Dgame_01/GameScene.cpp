@@ -23,6 +23,6 @@ void GameScene::init()
 	pool->addGameObject(new BackGround(0, 0), 0);
 	
 	//닌자 초기화
-	pool->addGameObject(new Ninja(350, 140), 1);
+	//pool->addGameObject(new Ninja(350, 140), 1);
 	printf("\n게임씬 초기화\n");
 }

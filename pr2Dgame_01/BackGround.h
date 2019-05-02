@@ -19,5 +19,6 @@ public:
 	void init();
 	void update();//이동속도 계산하여 이동시킴
 	void onTriggerStay(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//처음 충돌
+	void onTriggerEnter(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//처음 충돌
 };
 

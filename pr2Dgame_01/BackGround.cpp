@@ -5,6 +5,7 @@
 #include "Barrel.h"
 #include "Trap.h"
 #include "HUDBar.h"
+#include "Ninja.h"
 BackGround::BackGround(float px, float py):SpliteObject("배경",2,true,px,py)//보통 0은 아군,1번은 적,2는 배경으로
 {
 }
@@ -28,9 +29,12 @@ void BackGround::init()
 
 	rightAABB = new AABB(getClientWidth()+15, 140, 25, 105, 3);//왼쪽 충돌체
 	addCollider(rightAABB);
-	
+
+	//닌자 생성 충돌체
+	addCollider(new AABB(300,60,20,150,4));
+
 	//자식객체 추가하기
-	addChildObject(new Barrel(300, 180), 2);
+	//addChildObject(new Barrel(300, 180), 2);
 	addChildObject(new Trap(500, 120), 0);
 	addChildObject(new Trap(1000, 140), 0);
 	addChildObject(new Trap(3000, 140), 0);
@@ -117,5 +121,19 @@ void BackGround::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * othe
 		float dx = a1-x0;
 
 		OtherObj->translate(-dx, 0);
+	}
+}
+
+void BackGround::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
+{
+	//플레이어가 4번 충돌체에 접근한건지 확인
+	if (OtherObj->GetName() == "나루토"&&otherAABB->getId()==1&&myAABB->getId() == 4)
+	{
+		printf("닌자 생성\n");
+		//플레이어 위치
+		float nx = OtherObj->getPx();
+		float ny = OtherObj->getPy();
+
+		addGameObject(new Ninja(nx+100, ny), 1);
 	}
 }
