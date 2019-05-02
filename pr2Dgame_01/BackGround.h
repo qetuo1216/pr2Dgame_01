@@ -10,6 +10,9 @@ private:
 	//왼쪽 오른쪽 충돌체 포인터
 	AABB * leftAABB;
 	AABB * rightAABB;
+
+	//닌자 스폰 여부 확인 함수
+	bool ninjaSpawn;//false는 안함, true는 했음
 public:
 	//생성자&소멸자
 	BackGround(float px, float py);

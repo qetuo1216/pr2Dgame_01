@@ -45,6 +45,9 @@ void BackGround::init()
 
 	//hud바 테스트
 	//addGameObject(new HUDBar(0, 0), 3);
+
+	//닌자 스폰 판단 변수
+	ninjaSpawn = false;
 }
 #define AA 0
 void BackGround::update()
@@ -129,11 +132,16 @@ void BackGround::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * oth
 	//플레이어가 4번 충돌체에 접근한건지 확인
 	if (OtherObj->GetName() == "나루토"&&otherAABB->getId()==1&&myAABB->getId() == 4)
 	{
-		printf("닌자 생성\n");
-		//플레이어 위치
-		float nx = OtherObj->getPx();
-		float ny = 40;//OtherObj->getPy();
+		if (ninjaSpawn==false)
+		{
+			printf("닌자 생성\n");
+			//플레이어 위치
+			float nx = OtherObj->getPx();
+			float ny = 40;//OtherObj->getPy();
 
-		addGameObject(new Ninja(nx+100, ny), 1);
+			addGameObject(new Ninja(nx + 100, ny), 1);
+
+			ninjaSpawn = true;
+		}
 	}
 }
