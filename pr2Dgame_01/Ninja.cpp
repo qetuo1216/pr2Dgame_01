@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "Scythe.h"
 #include "HUDBar.h"
+#include "timer.h"
 Ninja::Ninja(float px, float py):Animation("닌자", 1, true, px, py)
 {
 }
@@ -96,7 +97,7 @@ void Ninja::init()
 		addAniFrame(sprite, death);
 	}
 
-	changeAniState(idle);//초기 애니메이션 상태 지정하기
+	changeAniState(drop);//초기 애니메이션 상태 지정하기
 	//play(idle);
 
 
@@ -104,12 +105,31 @@ void Ninja::init()
 	hp = 100;
 	hpBar = new HUDBar(px - 11, py - 10);
 	addChildObject(hpBar, 2);
+
+	dropSpeed = 200; //닌자 드랍속도
+	groundY = 160;		//바닥 좌표 초기화
 }
 
 void Ninja::update()
 {
 	//aniTest();
+	//animation이 drop상태일때
+	if(state==drop) aniDrop();
+}
 
+void Ninja::aniDrop()
+{
+	float dist = dropSpeed * getDelteTime();
+	
+	
+	if (py>= groundY)//바닥에 도착했는지 체크
+	{
+		changeAniState(idle);
+	}
+	else
+	{
+		translate(0, dist);
+	}
 }
 
 void Ninja::OnAnimationEvent(int aniId, int aniFrame)
@@ -191,6 +211,8 @@ void Ninja::changeAniState(State s)
 	state = s;
 	play(state);
 }
+
+
 
 
 void Ninja::aniTest()

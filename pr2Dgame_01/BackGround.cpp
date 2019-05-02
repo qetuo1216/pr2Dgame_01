@@ -132,7 +132,7 @@ void BackGround::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * oth
 		printf("닌자 생성\n");
 		//플레이어 위치
 		float nx = OtherObj->getPx();
-		float ny = OtherObj->getPy();
+		float ny = 40;//OtherObj->getPy();
 
 		addGameObject(new Ninja(nx+100, ny), 1);
 	}

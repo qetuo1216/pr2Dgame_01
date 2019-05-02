@@ -17,12 +17,18 @@ private:
 	HUDBar * hpBar;//체력바 // 포인터로 해야 점수 조정 가능 
 
 	float dieDelay;//die애니메이션 지속 시간
+	
+	float dropSpeed;
+	float groundY;
+
 public:
 	Ninja(float px,float py);
 	~Ninja();
 
 	void init();
 	void update();
+
+	void aniDrop();
 	void aniTest();
 
 	void onTriggerEnter(AABB* myAABB, GameObject *OtherObj, AABB* otherAABB);//돌입
