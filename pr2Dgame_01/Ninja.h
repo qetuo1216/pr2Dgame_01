@@ -21,6 +21,9 @@ private:
 	float dropSpeed;
 	float groundY;
 
+	//닌자가 공격중인지를 판단하는 변수
+	bool isAttack;
+
 public:
 	Ninja(float px,float py);
 	~Ninja();

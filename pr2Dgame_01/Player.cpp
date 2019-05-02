@@ -111,26 +111,26 @@ void Player::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAA
 		play(state);
 
 	}
-	if (OtherObj->GetName() == "낫"&& otherAABB->getId() == 1 && myAABB->getId() == 1)
-	{
-		//hp감소
-		hp = hp - 50;
+	//if (OtherObj->GetName() == "낫"&& otherAABB->getId() == 1 && myAABB->getId() == 1)
+	//{
+	//	//hp감소
+	//	hp = hp - 50;
 
-		//히트 애니메이션으로 이동
-		hitDelay = 0.5f;
+	//	//히트 애니메이션으로 이동
+	//	hitDelay = 0.5f;
 
-		translate(-30, 0);
-		if (state != hit)
-		{
-			hpBar->translate(-30, 0);//체력바를 이동시킴
-		}
+	//	translate(-30, 0);
+	//	if (state != hit)
+	//	{
+	//		hpBar->translate(-30, 0);//체력바를 이동시킴
+	//	}
 
-		hpBar->setValue((float)hp / 100.0f);
-		//printf("플레이어 hp : %d",hp);
+	//	hpBar->setValue((float)hp / 100.0f);
+	//	//printf("플레이어 hp : %d",hp);
 
-		state = hit;
-		play(state);
-	}
+	//	state = hit;
+	//	play(state);
+	//}
 }
 
 void Player::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)

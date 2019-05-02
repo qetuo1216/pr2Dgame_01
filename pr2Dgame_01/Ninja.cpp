@@ -108,6 +108,8 @@ void Ninja::init()
 
 	dropSpeed = 200; //닌자 드랍속도
 	groundY = 160;		//바닥 좌표 초기화
+
+	isAttack = false;//처음엔 공격이 아니다.
 }
 
 void Ninja::update()
@@ -148,6 +150,19 @@ void Ninja::OnAnimationEvent(int aniId, int aniFrame)
 		delChildObject(this);//닌자 지우기
 		delGameObject(this);
 	}
+
+	//공격중일때 attack과 idle 애니메이션 전환하기
+	if (isAttack == true)
+	{
+		if (aniId == idle && aniFrame == 0)
+		{
+			changeAniState(attack);
+		}
+		if (aniId == attack && aniFrame == 0)
+		{
+			changeAniState(idle);
+		}
+	}
 }
 
 void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
@@ -159,6 +174,7 @@ void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 
 		if (OtherObj->GetName() == "나루토" && myAABB->getId() == 1)
 		{
+			isAttack = true;//닌자 공격 시작
 			changeAniState(attack);
 		}		
 
@@ -200,6 +216,7 @@ void Ninja::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB
 		if (OtherObj->GetName() == "나루토" && otherAABB->getId() == 1 && myAABB->getId() == 1)
 		{//1번 충돌체에 플레이어가 나가면 idle로 돌아간다.
 
+			isAttack = false;//닌자 공격 시작
 			changeAniState(idle);
 		}
 	}
