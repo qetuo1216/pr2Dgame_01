@@ -180,6 +180,7 @@ void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 
 		if (OtherObj->GetName() == "knife" && myAABB->getId() == 0)
 		{
+			isAttack = false;
 			hp = hp - 50;
 			hpBar->setValue((float)hp / 100.0f); //체력바 표시
 
