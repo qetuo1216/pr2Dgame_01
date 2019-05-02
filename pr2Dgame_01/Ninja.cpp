@@ -211,7 +211,8 @@ void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 void Ninja::onTriggerExit(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
 	//애니메이션이 death가 아닌 경우에만 idle로 변경
-	if (state == attack)
+	//if (state == attack)
+	if (isAttack == true)
 	{
 		if (OtherObj->GetName() == "나루토" && otherAABB->getId() == 1 && myAABB->getId() == 1)
 		{//1번 충돌체에 플레이어가 나가면 idle로 돌아간다.
