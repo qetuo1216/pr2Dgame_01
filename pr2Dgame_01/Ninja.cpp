@@ -125,7 +125,7 @@ void Ninja::OnAnimationEvent(int aniId, int aniFrame)
 	}
 	if (aniId == death && aniFrame == 0)
 	{
-		delChildObject(this);
+		delChildObject(this);//닌자 지우기
 		delGameObject(this);
 	}
 }
@@ -145,7 +145,7 @@ void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 		if (OtherObj->GetName() == "knife" && myAABB->getId() == 0)
 		{
 			hp = hp - 50;
-			hpBar->setValue((float)hp / 100.0f);
+			hpBar->setValue((float)hp / 100.0f); //체력바 표시
 
 			if (hp <= 0)//체력이 다 닳음
 			{
@@ -158,7 +158,7 @@ void Ninja::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAAB
 			}
 
 			
-			//체력바 표시
+			
 
 		
 
