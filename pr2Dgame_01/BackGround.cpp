@@ -134,7 +134,7 @@ void BackGround::onTriggerStay(AABB * myAABB, GameObject * OtherObj, AABB * othe
 void BackGround::onTriggerEnter(AABB * myAABB, GameObject * OtherObj, AABB * otherAABB)
 {
 	//플레이어가 4번 충돌체에 접근한건지 확인
-	if (OtherObj->GetName() == "나루토"&&otherAABB->getId()==1&&myAABB->getId() == 4)
+	if (OtherObj->GetName() == "나루토"&&otherAABB->getId()==1 && (myAABB->getId() == 4|| myAABB->getId() == 5|| myAABB->getId() == 6))
 	{
 		int idx = myAABB->getId() - 4;
 
