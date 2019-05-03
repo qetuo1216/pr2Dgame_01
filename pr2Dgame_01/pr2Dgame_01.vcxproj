@@ -177,6 +177,7 @@
     <ClInclude Include="Title.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Trap.h" />
+    <ClInclude Include="Wolf.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
@@ -214,6 +215,7 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Trap.cpp" />
+    <ClCompile Include="Wolf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="pr2Dgame_01.rc" />
